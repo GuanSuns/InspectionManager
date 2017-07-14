@@ -46,12 +46,7 @@ public class InnerHostsInspectionConfigParser {
             initHostsInspectionRoot();
         }
 
-        Element sheet411Elem = hostsInspectionRoot.getChild(ConnectorParserConfig.getSheet411Tag());
-        if(sheet411Elem == null){
-            throw new Exception("Unexpected XML Config file format: missing Sheet411 tag in HostsInspection");
-        }
-
-        sheet411Parser = new InnerHostsSheet411ConfigParser(sheet411Elem);
+        sheet411Parser = new InnerHostsSheet411ConfigParser(hostsInspectionRoot);
         return sheet411Parser;
     }
 

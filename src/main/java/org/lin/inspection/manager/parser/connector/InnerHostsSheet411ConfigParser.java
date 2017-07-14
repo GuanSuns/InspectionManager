@@ -141,14 +141,19 @@ public class InnerHostsSheet411ConfigParser {
                 throw new Exception("Uninitialized core element");
             }
 
-            List hostsElems = coreElem.getChildren(strTag);
-            if(hostsElems == null || hostsElems.isEmpty()){
+            Element hostsRootElem = coreElem.getChild(strTag);
+            if(hostsRootElem == null){
                 throw new Exception("Unexpected XML Config file format: missing Sheet411 core " + strTag + " list");
+            }
+
+            List hostsElems = hostsRootElem.getChildren(ConnectorParserConfig.getHostTag());
+            if(hostsElems == null || hostsElems.isEmpty()){
+                throw new Exception("Unexpected XML Config file format: empty Sheet411 core hosts2");
             }
 
             ArrayList<HostConfig> hosts = new ArrayList<HostConfig>();
             for (Iterator it = hostsElems.iterator(); it.hasNext();) {
-                Element hostElem = (Element) it.next();
+                Element hostElem = (Element)it.next();
                 HostConfig host = new HostConfig();
                 host.copyFromElement(hostElem);
                 hosts.add(host);
@@ -209,14 +214,19 @@ public class InnerHostsSheet411ConfigParser {
                 throw new Exception("Uninitialized personal element");
             }
 
-            List hostsElems = personalElem.getChildren(strTag);
-            if(hostsElems == null || hostsElems.isEmpty()){
+            Element hostsRootElem = personalElem.getChild(strTag);
+            if(hostsRootElem == null){
                 throw new Exception("Unexpected XML Config file format: missing Sheet411 personal " + strTag + " list");
+            }
+
+            List hostsElems = hostsRootElem.getChildren(ConnectorParserConfig.getHostTag());
+            if(hostsElems == null || hostsElems.isEmpty()){
+                throw new Exception("Unexpected XML Config file format: empty Sheet411 personal hosts2");
             }
 
             ArrayList<HostConfig> hosts = new ArrayList<HostConfig>();
             for (Iterator it = hostsElems.iterator(); it.hasNext();) {
-                Element hostElem = (Element) it.next();
+                Element hostElem = (Element)it.next();
                 HostConfig host = new HostConfig();
                 host.copyFromElement(hostElem);
                 hosts.add(host);

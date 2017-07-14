@@ -25,8 +25,8 @@ public class ConnectorParserConfig {
     //Hosts Inspection Config Sheet 411
     private static String sheet411Tag = "Sheet411";
     private static String sheet411CoreTag = "Core";
-    private static String sheet411CoreRootDirectoryTag = "/";
-    private static String sheet411CoreSoftwareDirectoryTag = "/software";
+    private static String sheet411CoreRootDirectoryTag = "rootDirectory";
+    private static String sheet411CoreSoftwareDirectoryTag = "softwareDirectory";
     private static String sheet411CoreHosts2Tag = "hosts2";
     private static String sheet411CoreHosts3Tag = "hosts3";
     private static String sheet411CoreHosts4Tag = "hosts4";
@@ -34,11 +34,148 @@ public class ConnectorParserConfig {
     private static String sheet411CoreHosts6Tag = "hosts6";
     private static String sheet411CoreHosts8Tag = "hosts8";
     private static String sheet411PersonalTag = "Personal";
-    private static String sheet411PersonalRootDirectoryTag = "/";
-    private static String sheet411PersonalSoftwareDirectoryTag = "/software";
+    private static String sheet411PersonalRootDirectoryTag = "rootDirectory";
+    private static String sheet411PersonalSoftwareDirectoryTag = "softwareDirectory";
     private static String sheet411PersonalHosts2Tag = "hosts2";
     private static String sheet411PersonalHosts3Tag = "hosts3";
     private static String sheet411PersonalHosts45Tag = "hosts45";
+    
+    //Hosts Inspection Config Sheet 421
+    private static String sheet421Tag = "Sheet421";
+    private static String sheet421CoreTag = "Core";
+    private static String sheet421CoreRootDirectoryTag = "rootDirectory";
+    private static String sheet421CoreSoftwareDirectoryTag = "softwareDirectory";
+    private static String sheet421CoreGgsDirectoryTag = "softwareGgsDirectory";
+    private static String sheet421CoreHosts2Tag = "hosts2";
+    private static String sheet421CoreHosts35Tag = "hosts35";
+    private static String sheet421CoreHosts4Tag = "hosts4";
+    private static String sheet421PersonalTag = "Personal";
+    private static String sheet421PersonalRootDirectoryTag = "rootDirectory";
+    private static String sheet421PersonalSoftwareDirectoryTag = "softwareDirectory";
+    private static String sheet421PersonalGgsDirectoryTag = "softwareGgsDirectory";
+    private static String sheet421PersonalHosts2Tag = "hosts2";
+    private static String sheet421PersonalHosts3Tag = "hosts3";
+    private static String sheet421PersonalHosts45Tag = "hosts45";
+
+    public static String getSheet421Tag() {
+        return sheet421Tag;
+    }
+
+    public static void setSheet421Tag(String sheet421Tag) {
+        ConnectorParserConfig.sheet421Tag = sheet421Tag;
+    }
+
+    public static String getSheet421CoreTag() {
+        return sheet421CoreTag;
+    }
+
+    public static void setSheet421CoreTag(String sheet421CoreTag) {
+        ConnectorParserConfig.sheet421CoreTag = sheet421CoreTag;
+    }
+
+    public static String getSheet421CoreRootDirectoryTag() {
+        return sheet421CoreRootDirectoryTag;
+    }
+
+    public static void setSheet421CoreRootDirectoryTag(String sheet421CoreRootDirectoryTag) {
+        ConnectorParserConfig.sheet421CoreRootDirectoryTag = sheet421CoreRootDirectoryTag;
+    }
+
+    public static String getSheet421CoreSoftwareDirectoryTag() {
+        return sheet421CoreSoftwareDirectoryTag;
+    }
+
+    public static void setSheet421CoreSoftwareDirectoryTag(String sheet421CoreSoftwareDirectoryTag) {
+        ConnectorParserConfig.sheet421CoreSoftwareDirectoryTag = sheet421CoreSoftwareDirectoryTag;
+    }
+
+    public static String getSheet421CoreGgsDirectoryTag() {
+        return sheet421CoreGgsDirectoryTag;
+    }
+
+    public static void setSheet421CoreGgsDirectoryTag(String sheet421CoreGgsDirectoryTag) {
+        ConnectorParserConfig.sheet421CoreGgsDirectoryTag = sheet421CoreGgsDirectoryTag;
+    }
+
+    public static String getSheet421CoreHosts2Tag() {
+        return sheet421CoreHosts2Tag;
+    }
+
+    public static void setSheet421CoreHosts2Tag(String sheet421CoreHosts2Tag) {
+        ConnectorParserConfig.sheet421CoreHosts2Tag = sheet421CoreHosts2Tag;
+    }
+
+    public static String getSheet421CoreHosts35Tag() {
+        return sheet421CoreHosts35Tag;
+    }
+
+    public static void setSheet421CoreHosts35Tag(String sheet421CoreHosts35Tag) {
+        ConnectorParserConfig.sheet421CoreHosts35Tag = sheet421CoreHosts35Tag;
+    }
+
+    public static String getSheet421CoreHosts4Tag() {
+        return sheet421CoreHosts4Tag;
+    }
+
+    public static void setSheet421CoreHosts4Tag(String sheet421CoreHosts4Tag) {
+        ConnectorParserConfig.sheet421CoreHosts4Tag = sheet421CoreHosts4Tag;
+    }
+
+    public static String getSheet421PersonalTag() {
+        return sheet421PersonalTag;
+    }
+
+    public static void setSheet421PersonalTag(String sheet421PersonalTag) {
+        ConnectorParserConfig.sheet421PersonalTag = sheet421PersonalTag;
+    }
+
+    public static String getSheet421PersonalRootDirectoryTag() {
+        return sheet421PersonalRootDirectoryTag;
+    }
+
+    public static void setSheet421PersonalRootDirectoryTag(String sheet421PersonalRootDirectoryTag) {
+        ConnectorParserConfig.sheet421PersonalRootDirectoryTag = sheet421PersonalRootDirectoryTag;
+    }
+
+    public static String getSheet421PersonalSoftwareDirectoryTag() {
+        return sheet421PersonalSoftwareDirectoryTag;
+    }
+
+    public static void setSheet421PersonalSoftwareDirectoryTag(String sheet421PersonalSoftwareDirectoryTag) {
+        ConnectorParserConfig.sheet421PersonalSoftwareDirectoryTag = sheet421PersonalSoftwareDirectoryTag;
+    }
+
+    public static String getSheet421PersonalGgsDirectoryTag() {
+        return sheet421PersonalGgsDirectoryTag;
+    }
+
+    public static void setSheet421PersonalGgsDirectoryTag(String sheet421PersonalGgsDirectoryTag) {
+        ConnectorParserConfig.sheet421PersonalGgsDirectoryTag = sheet421PersonalGgsDirectoryTag;
+    }
+
+    public static String getSheet421PersonalHosts2Tag() {
+        return sheet421PersonalHosts2Tag;
+    }
+
+    public static void setSheet421PersonalHosts2Tag(String sheet421PersonalHosts2Tag) {
+        ConnectorParserConfig.sheet421PersonalHosts2Tag = sheet421PersonalHosts2Tag;
+    }
+
+    public static String getSheet421PersonalHosts3Tag() {
+        return sheet421PersonalHosts3Tag;
+    }
+
+    public static void setSheet421PersonalHosts3Tag(String sheet421PersonalHosts3Tag) {
+        ConnectorParserConfig.sheet421PersonalHosts3Tag = sheet421PersonalHosts3Tag;
+    }
+
+    public static String getSheet421PersonalHosts45Tag() {
+        return sheet421PersonalHosts45Tag;
+    }
+
+    public static void setSheet421PersonalHosts45Tag(String sheet421PersonalHosts45Tag) {
+        ConnectorParserConfig.sheet421PersonalHosts45Tag = sheet421PersonalHosts45Tag;
+    }
 
     public static String getIpAttr() {
         return ipAttr;
