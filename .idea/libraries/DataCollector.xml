@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="DataCollector">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/DataCollector.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
