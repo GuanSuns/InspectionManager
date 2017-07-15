@@ -4,6 +4,8 @@ import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 import org.lin.inspection.manager.config.ConnectorParserConfig;
+import org.lin.inspection.manager.parser.connector.connector.InnerConnectorConfigParser;
+import org.lin.inspection.manager.parser.connector.hosts.InnerHostsInspectionConfigParser;
 
 /**
  * Created by guanl on 7/14/2017.

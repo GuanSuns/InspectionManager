@@ -73,6 +73,75 @@ public class ConnectorParserConfig {
     private static String sheet428PersonalHosts3Tag = "hosts3";
     private static String sheet428PersonalHosts4Tag = "hosts4";
 
+    //Connector Config
+    private static String databaseInspectionfigRootTag = "DatabaseInspection";
+
+    //PersonalDatabase Config
+    private static String personalDatabaseTag = "PersonalDatabase";
+    private static String personalCoreDatabaseTag = "CoreHosts";
+
+    //CoreDatabase Config
+    private static String coreDatabaseTag = "CoreDatabase";
+    private static String coreTaxationHostsTag = "TaxationHosts";
+    private static String coreIntegrationHostsTag = "IntegrationHosts";
+    private static String coreQueryHostsTag = "QueryHosts";
+
+    public static String getDatabaseInspectionfigRootTag() {
+        return databaseInspectionfigRootTag;
+    }
+
+    public static void setDatabaseInspectionfigRootTag(String databaseInspectionfigRootTag) {
+        ConnectorParserConfig.databaseInspectionfigRootTag = databaseInspectionfigRootTag;
+    }
+
+    public static String getPersonalDatabaseTag() {
+        return personalDatabaseTag;
+    }
+
+    public static void setPersonalDatabaseTag(String personalDatabaseTag) {
+        ConnectorParserConfig.personalDatabaseTag = personalDatabaseTag;
+    }
+
+    public static String getPersonalCoreDatabaseTag() {
+        return personalCoreDatabaseTag;
+    }
+
+    public static void setPersonalCoreDatabaseTag(String personalCoreDatabaseTag) {
+        ConnectorParserConfig.personalCoreDatabaseTag = personalCoreDatabaseTag;
+    }
+
+    public static String getCoreDatabaseTag() {
+        return coreDatabaseTag;
+    }
+
+    public static void setCoreDatabaseTag(String coreDatabaseTag) {
+        ConnectorParserConfig.coreDatabaseTag = coreDatabaseTag;
+    }
+
+    public static String getCoreTaxationHostsTag() {
+        return coreTaxationHostsTag;
+    }
+
+    public static void setCoreTaxationHostsTag(String coreTaxationHostsTag) {
+        ConnectorParserConfig.coreTaxationHostsTag = coreTaxationHostsTag;
+    }
+
+    public static String getCoreIntegrationHostsTag() {
+        return coreIntegrationHostsTag;
+    }
+
+    public static void setCoreIntegrationHostsTag(String coreIntegrationHostsTag) {
+        ConnectorParserConfig.coreIntegrationHostsTag = coreIntegrationHostsTag;
+    }
+
+    public static String getCoreQueryHostsTag() {
+        return coreQueryHostsTag;
+    }
+
+    public static void setCoreQueryHostsTag(String coreQueryHostsTag) {
+        ConnectorParserConfig.coreQueryHostsTag = coreQueryHostsTag;
+    }
+
     public static String getSheet428Tag() {
         return sheet428Tag;
     }

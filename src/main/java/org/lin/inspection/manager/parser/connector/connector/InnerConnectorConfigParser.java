@@ -1,4 +1,4 @@
-package org.lin.inspection.manager.parser.connector;
+package org.lin.inspection.manager.parser.connector.connector;
 
 import org.jdom.Element;
 import org.lin.inspection.manager.config.ConnectorParserConfig;
@@ -12,10 +12,12 @@ public class InnerConnectorConfigParser {
 
     public InnerConnectorConfigParser(Element rootElem) {
         this.rootElem = rootElem;
+        this.connectorConfigRoot = null;
     }
 
     public InnerConnectorConfigParser() {
         this.rootElem = null;
+        this.connectorConfigRoot = null;
     }
 
     private void initConnectorConfigRoot() throws Exception{

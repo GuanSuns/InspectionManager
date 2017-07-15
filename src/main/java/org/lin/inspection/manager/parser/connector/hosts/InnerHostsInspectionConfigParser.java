@@ -1,4 +1,4 @@
-package org.lin.inspection.manager.parser.connector;
+package org.lin.inspection.manager.parser.connector.hosts;
 
 import org.jdom.Element;
 import org.lin.inspection.manager.config.ConnectorParserConfig;
@@ -12,12 +12,14 @@ public class InnerHostsInspectionConfigParser {
 
     private InnerHostsSheet411ConfigParser sheet411Parser;
     private InnerHostsSheet421ConfigParser sheet421Parser;
+    private InnerHostsSheet428ConfigParser sheet428Parser;
 
     public InnerHostsInspectionConfigParser() {
         this.rootElem = null;
         this.hostsInspectionRoot = null;
         this.sheet411Parser = null;
         this.sheet421Parser = null;
+        this.sheet428Parser = null;
     }
 
     public InnerHostsInspectionConfigParser(Element rootElem) {
@@ -25,6 +27,7 @@ public class InnerHostsInspectionConfigParser {
         this.hostsInspectionRoot = null;
         this.sheet411Parser = null;
         this.sheet421Parser = null;
+        this.sheet428Parser = null;
     }
 
     private void initHostsInspectionRoot() throws Exception{
@@ -66,5 +69,16 @@ public class InnerHostsInspectionConfigParser {
         return sheet421Parser;
     }
 
+    public InnerHostsSheet428ConfigParser getSheet428Parser() throws Exception{
+        if(sheet428Parser != null){
+            return sheet428Parser;
+        }
 
+        if(hostsInspectionRoot == null){
+            initHostsInspectionRoot();
+        }
+
+        sheet428Parser = new InnerHostsSheet428ConfigParser(hostsInspectionRoot);
+        return sheet428Parser;
+    }
 }

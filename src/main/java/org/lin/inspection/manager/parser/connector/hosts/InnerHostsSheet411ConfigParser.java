@@ -1,7 +1,8 @@
-package org.lin.inspection.manager.parser.connector;
+package org.lin.inspection.manager.parser.connector.hosts;
 
 import org.jdom.Element;
 import org.lin.inspection.manager.config.ConnectorParserConfig;
+import org.lin.inspection.manager.parser.connector.HostConfig;
 
 import java.util.ArrayList;
 import java.util.Iterator;

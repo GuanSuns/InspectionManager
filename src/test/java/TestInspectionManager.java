@@ -62,6 +62,28 @@ public class TestInspectionManager {
             System.out.println(connectorParser.getHostsInspectionConfig()
                     .getSheet421Parser().getPersonal().getHosts3());
 
+            System.out.println("\nSheet 428");
+            System.out.println(connectorParser.getHostsInspectionConfig()
+                    .getSheet428Parser().getPersonal().getHosts1());
+            System.out.println(connectorParser.getHostsInspectionConfig()
+                    .getSheet428Parser().getPersonal().getHosts2());
+            System.out.println(connectorParser.getHostsInspectionConfig()
+                    .getSheet428Parser().getPersonal().getHosts3());
+            System.out.println(connectorParser.getHostsInspectionConfig()
+                    .getSheet428Parser().getPersonal().getHosts4());
+            System.out.println(connectorParser.getHostsInspectionConfig()
+                    .getSheet428Parser().getTimeCMD());
+            System.out.println(connectorParser.getHostsInspectionConfig()
+                    .getSheet428Parser().getCorrectReport());
+            System.out.println(connectorParser.getHostsInspectionConfig()
+                    .getSheet428Parser().getTimeDiffTolerance());
+            System.out.println(connectorParser.getHostsInspectionConfig()
+                    .getSheet428Parser().getCore().getHosts1());
+            System.out.println(connectorParser.getHostsInspectionConfig()
+                    .getSheet428Parser().getCore().getHosts2());
+            System.out.println(connectorParser.getHostsInspectionConfig()
+                    .getSheet428Parser().getCore().getHosts34());
+
 
         }catch (Exception e){
             e.printStackTrace();
