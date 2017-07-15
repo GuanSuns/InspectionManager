@@ -11,17 +11,20 @@ public class InnerHostsInspectionConfigParser {
     private Element hostsInspectionRoot;
 
     private InnerHostsSheet411ConfigParser sheet411Parser;
+    private InnerHostsSheet421ConfigParser sheet421Parser;
 
     public InnerHostsInspectionConfigParser() {
         this.rootElem = null;
         this.hostsInspectionRoot = null;
         this.sheet411Parser = null;
+        this.sheet421Parser = null;
     }
 
     public InnerHostsInspectionConfigParser(Element rootElem) {
         this.rootElem = rootElem;
         this.hostsInspectionRoot = null;
         this.sheet411Parser = null;
+        this.sheet421Parser = null;
     }
 
     private void initHostsInspectionRoot() throws Exception{
@@ -48,6 +51,19 @@ public class InnerHostsInspectionConfigParser {
 
         sheet411Parser = new InnerHostsSheet411ConfigParser(hostsInspectionRoot);
         return sheet411Parser;
+    }
+
+    public InnerHostsSheet421ConfigParser getSheet421Parser() throws Exception{
+        if(sheet421Parser != null){
+            return sheet421Parser;
+        }
+
+        if(hostsInspectionRoot == null){
+            initHostsInspectionRoot();
+        }
+
+        sheet421Parser = new InnerHostsSheet421ConfigParser(hostsInspectionRoot);
+        return sheet421Parser;
     }
 
 

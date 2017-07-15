@@ -57,6 +57,134 @@ public class ConnectorParserConfig {
     private static String sheet421PersonalHosts3Tag = "hosts3";
     private static String sheet421PersonalHosts45Tag = "hosts45";
 
+    //Hosts Inspection Config Sheet 428
+    private static String sheet428Tag = "Sheet428";
+    private static String sheet428TimeServerTag = "timeServer";
+    private static String sheet428TimeCmdTag = "getTimeCMD";
+    private static String sheet428CorrectReportTag = "correctReport";
+    private static String sheet428DiffToleranceTag = "diffTolerance";
+    private static String sheet428CoreTag = "Core";
+    private static String sheet428CoreHosts1Tag = "hosts1";
+    private static String sheet428CoreHosts2Tag = "hosts2";
+    private static String sheet428CoreHosts34Tag = "hosts34";
+    private static String sheet428PersonalTag = "Personal";
+    private static String sheet428PersonalHosts1Tag = "hosts1";
+    private static String sheet428PersonalHosts2Tag = "hosts2";
+    private static String sheet428PersonalHosts3Tag = "hosts3";
+    private static String sheet428PersonalHosts4Tag = "hosts4";
+
+    public static String getSheet428Tag() {
+        return sheet428Tag;
+    }
+
+    public static void setSheet428Tag(String sheet428Tag) {
+        ConnectorParserConfig.sheet428Tag = sheet428Tag;
+    }
+
+    public static String getSheet428TimeServerTag() {
+        return sheet428TimeServerTag;
+    }
+
+    public static void setSheet428TimeServerTag(String sheet428TimeServerTag) {
+        ConnectorParserConfig.sheet428TimeServerTag = sheet428TimeServerTag;
+    }
+
+    public static String getSheet428TimeCmdTag() {
+        return sheet428TimeCmdTag;
+    }
+
+    public static void setSheet428TimeCmdTag(String sheet428TimeCmdTag) {
+        ConnectorParserConfig.sheet428TimeCmdTag = sheet428TimeCmdTag;
+    }
+
+    public static String getSheet428CorrectReportTag() {
+        return sheet428CorrectReportTag;
+    }
+
+    public static void setSheet428CorrectReportTag(String sheet428CorrectReportTag) {
+        ConnectorParserConfig.sheet428CorrectReportTag = sheet428CorrectReportTag;
+    }
+
+    public static String getSheet428DiffToleranceTag() {
+        return sheet428DiffToleranceTag;
+    }
+
+    public static void setSheet428DiffToleranceTag(String sheet428DiffToleranceTag) {
+        ConnectorParserConfig.sheet428DiffToleranceTag = sheet428DiffToleranceTag;
+    }
+
+    public static String getSheet428CoreTag() {
+        return sheet428CoreTag;
+    }
+
+    public static void setSheet428CoreTag(String sheet428CoreTag) {
+        ConnectorParserConfig.sheet428CoreTag = sheet428CoreTag;
+    }
+
+    public static String getSheet428CoreHosts1Tag() {
+        return sheet428CoreHosts1Tag;
+    }
+
+    public static void setSheet428CoreHosts1Tag(String sheet428CoreHosts1Tag) {
+        ConnectorParserConfig.sheet428CoreHosts1Tag = sheet428CoreHosts1Tag;
+    }
+
+    public static String getSheet428CoreHosts2Tag() {
+        return sheet428CoreHosts2Tag;
+    }
+
+    public static void setSheet428CoreHosts2Tag(String sheet428CoreHosts2Tag) {
+        ConnectorParserConfig.sheet428CoreHosts2Tag = sheet428CoreHosts2Tag;
+    }
+
+    public static String getSheet428CoreHosts34Tag() {
+        return sheet428CoreHosts34Tag;
+    }
+
+    public static void setSheet428CoreHosts34Tag(String sheet428CoreHosts34Tag) {
+        ConnectorParserConfig.sheet428CoreHosts34Tag = sheet428CoreHosts34Tag;
+    }
+
+    public static String getSheet428PersonalTag() {
+        return sheet428PersonalTag;
+    }
+
+    public static void setSheet428PersonalTag(String sheet428PersonalTag) {
+        ConnectorParserConfig.sheet428PersonalTag = sheet428PersonalTag;
+    }
+
+    public static String getSheet428PersonalHosts1Tag() {
+        return sheet428PersonalHosts1Tag;
+    }
+
+    public static void setSheet428PersonalHosts1Tag(String sheet428PersonalHosts1Tag) {
+        ConnectorParserConfig.sheet428PersonalHosts1Tag = sheet428PersonalHosts1Tag;
+    }
+
+    public static String getSheet428PersonalHosts2Tag() {
+        return sheet428PersonalHosts2Tag;
+    }
+
+    public static void setSheet428PersonalHosts2Tag(String sheet428PersonalHosts2Tag) {
+        ConnectorParserConfig.sheet428PersonalHosts2Tag = sheet428PersonalHosts2Tag;
+    }
+
+    public static String getSheet428PersonalHosts3Tag() {
+        return sheet428PersonalHosts3Tag;
+    }
+
+    public static void setSheet428PersonalHosts3Tag(String sheet428PersonalHosts3Tag) {
+        ConnectorParserConfig.sheet428PersonalHosts3Tag = sheet428PersonalHosts3Tag;
+    }
+
+    public static String getSheet428PersonalHosts4Tag() {
+        return sheet428PersonalHosts4Tag;
+    }
+
+    public static void setSheet428PersonalHosts4Tag(String sheet428PersonalHosts4Tag) {
+        ConnectorParserConfig.sheet428PersonalHosts4Tag = sheet428PersonalHosts4Tag;
+    }
+
     public static String getSheet421Tag() {
         return sheet421Tag;
     }

@@ -148,7 +148,7 @@ public class InnerHostsSheet411ConfigParser {
 
             List hostsElems = hostsRootElem.getChildren(ConnectorParserConfig.getHostTag());
             if(hostsElems == null || hostsElems.isEmpty()){
-                throw new Exception("Unexpected XML Config file format: empty Sheet411 core hosts2");
+                throw new Exception("Unexpected XML Config file format: empty Sheet411 core" + strTag);
             }
 
             ArrayList<HostConfig> hosts = new ArrayList<HostConfig>();
@@ -221,7 +221,7 @@ public class InnerHostsSheet411ConfigParser {
 
             List hostsElems = hostsRootElem.getChildren(ConnectorParserConfig.getHostTag());
             if(hostsElems == null || hostsElems.isEmpty()){
-                throw new Exception("Unexpected XML Config file format: empty Sheet411 personal hosts2");
+                throw new Exception("Unexpected XML Config file format: empty Sheet411 personal " + strTag);
             }
 
             ArrayList<HostConfig> hosts = new ArrayList<HostConfig>();
