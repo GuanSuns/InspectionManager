@@ -77,14 +77,14 @@ public class ConnectorParserConfig {
     private static String databaseInspectionfigRootTag = "DatabaseInspection";
 
     //PersonalDatabase Config
-    private static String personalDatabaseTag = "PersonalDatabase";
-    private static String personalCoreDatabaseTag = "CoreHosts";
+    private static String dbInspectionPersonalDatabaseTag = "PersonalDatabase";
+    private static String dbInspectionPersonalCoreDatabaseTag = "CoreHosts";
 
     //CoreDatabase Config
-    private static String coreDatabaseTag = "CoreDatabase";
-    private static String coreTaxationHostsTag = "TaxationHosts";
-    private static String coreIntegrationHostsTag = "IntegrationHosts";
-    private static String coreQueryHostsTag = "QueryHosts";
+    private static String dbInspectionCoreDatabaseTag = "CoreDatabase";
+    private static String dbInspectionCoreTaxationHostsTag = "TaxationHosts";
+    private static String dbInspectionCoreIntegrationHostsTag = "IntegrationHosts";
+    private static String dbInspectionCoreQueryHostsTag = "QueryHosts";
 
     public static String getDatabaseInspectionfigRootTag() {
         return databaseInspectionfigRootTag;
@@ -94,52 +94,52 @@ public class ConnectorParserConfig {
         ConnectorParserConfig.databaseInspectionfigRootTag = databaseInspectionfigRootTag;
     }
 
-    public static String getPersonalDatabaseTag() {
-        return personalDatabaseTag;
+    public static String getDbInspectionPersonalDatabaseTag() {
+        return dbInspectionPersonalDatabaseTag;
     }
 
-    public static void setPersonalDatabaseTag(String personalDatabaseTag) {
-        ConnectorParserConfig.personalDatabaseTag = personalDatabaseTag;
+    public static void setDbInspectionPersonalDatabaseTag(String dbInspectionPersonalDatabaseTag) {
+        ConnectorParserConfig.dbInspectionPersonalDatabaseTag = dbInspectionPersonalDatabaseTag;
     }
 
-    public static String getPersonalCoreDatabaseTag() {
-        return personalCoreDatabaseTag;
+    public static String getDbInspectionPersonalCoreDatabaseTag() {
+        return dbInspectionPersonalCoreDatabaseTag;
     }
 
-    public static void setPersonalCoreDatabaseTag(String personalCoreDatabaseTag) {
-        ConnectorParserConfig.personalCoreDatabaseTag = personalCoreDatabaseTag;
+    public static void setDbInspectionPersonalCoreDatabaseTag(String dbInspectionPersonalCoreDatabaseTag) {
+        ConnectorParserConfig.dbInspectionPersonalCoreDatabaseTag = dbInspectionPersonalCoreDatabaseTag;
     }
 
-    public static String getCoreDatabaseTag() {
-        return coreDatabaseTag;
+    public static String getDbInspectionCoreDatabaseTag() {
+        return dbInspectionCoreDatabaseTag;
     }
 
-    public static void setCoreDatabaseTag(String coreDatabaseTag) {
-        ConnectorParserConfig.coreDatabaseTag = coreDatabaseTag;
+    public static void setDbInspectionCoreDatabaseTag(String dbInspectionCoreDatabaseTag) {
+        ConnectorParserConfig.dbInspectionCoreDatabaseTag = dbInspectionCoreDatabaseTag;
     }
 
-    public static String getCoreTaxationHostsTag() {
-        return coreTaxationHostsTag;
+    public static String getDbInspectionCoreTaxationHostsTag() {
+        return dbInspectionCoreTaxationHostsTag;
     }
 
-    public static void setCoreTaxationHostsTag(String coreTaxationHostsTag) {
-        ConnectorParserConfig.coreTaxationHostsTag = coreTaxationHostsTag;
+    public static void setDbInspectionCoreTaxationHostsTag(String dbInspectionCoreTaxationHostsTag) {
+        ConnectorParserConfig.dbInspectionCoreTaxationHostsTag = dbInspectionCoreTaxationHostsTag;
     }
 
-    public static String getCoreIntegrationHostsTag() {
-        return coreIntegrationHostsTag;
+    public static String getDbInspectionCoreIntegrationHostsTag() {
+        return dbInspectionCoreIntegrationHostsTag;
     }
 
-    public static void setCoreIntegrationHostsTag(String coreIntegrationHostsTag) {
-        ConnectorParserConfig.coreIntegrationHostsTag = coreIntegrationHostsTag;
+    public static void setDbInspectionCoreIntegrationHostsTag(String dbInspectionCoreIntegrationHostsTag) {
+        ConnectorParserConfig.dbInspectionCoreIntegrationHostsTag = dbInspectionCoreIntegrationHostsTag;
     }
 
-    public static String getCoreQueryHostsTag() {
-        return coreQueryHostsTag;
+    public static String getDbInspectionCoreQueryHostsTag() {
+        return dbInspectionCoreQueryHostsTag;
     }
 
-    public static void setCoreQueryHostsTag(String coreQueryHostsTag) {
-        ConnectorParserConfig.coreQueryHostsTag = coreQueryHostsTag;
+    public static void setDbInspectionCoreQueryHostsTag(String dbInspectionCoreQueryHostsTag) {
+        ConnectorParserConfig.dbInspectionCoreQueryHostsTag = dbInspectionCoreQueryHostsTag;
     }
 
     public static String getSheet428Tag() {
