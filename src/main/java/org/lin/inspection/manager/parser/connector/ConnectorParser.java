@@ -5,6 +5,7 @@ import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 import org.lin.inspection.manager.config.ConnectorParserConfig;
 import org.lin.inspection.manager.parser.connector.connector.InnerConnectorConfigParser;
+import org.lin.inspection.manager.parser.connector.database.InnerDatabaseInspectionConfigParser;
 import org.lin.inspection.manager.parser.connector.hosts.InnerHostsInspectionConfigParser;
 
 /**
@@ -15,6 +16,7 @@ public class ConnectorParser {
     private Element rootElem;
     private InnerConnectorConfigParser connectorConfig;
     private InnerHostsInspectionConfigParser hostsInspectionConfig;
+    private InnerDatabaseInspectionConfigParser databaseInspectionConfig;
 
     public ConnectorParser() throws Exception{
         init();
@@ -48,6 +50,15 @@ public class ConnectorParser {
         }else{
             hostsInspectionConfig = new InnerHostsInspectionConfigParser(rootElem);
             return hostsInspectionConfig;
+        }
+    }
+
+    public InnerDatabaseInspectionConfigParser getDatabaseInspectionConfig(){
+        if(databaseInspectionConfig != null){
+            return databaseInspectionConfig;
+        }else{
+            databaseInspectionConfig = new InnerDatabaseInspectionConfigParser(rootElem);
+            return databaseInspectionConfig;
         }
     }
 

@@ -84,6 +84,17 @@ public class TestInspectionManager {
             System.out.println(connectorParser.getHostsInspectionConfig()
                     .getSheet428Parser().getCore().getHosts34());
 
+            System.out.println("\nDatabase Inspection");
+            System.out.println(connectorParser.getDatabaseInspectionConfig()
+                    .getCore().getTaxationHosts());
+            System.out.println(connectorParser.getDatabaseInspectionConfig()
+                    .getCore().getQueryHosts());
+            System.out.println(connectorParser.getDatabaseInspectionConfig()
+                    .getCore().getIntegrationHosts());
+            System.out.println(connectorParser.getDatabaseInspectionConfig()
+                    .getPersonal().getCoreHosts());
+
+
 
         }catch (Exception e){
             e.printStackTrace();
