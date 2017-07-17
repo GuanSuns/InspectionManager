@@ -5,6 +5,8 @@ import org.suns.data.collector.collectors.sheet411.Sheet411CoreCollector;
 import org.suns.data.collector.collectors.sheet411.Sheet411PersonalCollector;
 import org.suns.data.collector.collectors.sheet421.Sheet421CoreCollector;
 import org.suns.data.collector.collectors.sheet421.Sheet421PersonalCollector;
+import org.suns.data.collector.collectors.sheet422.Sheet422CoreCollector;
+import org.suns.data.collector.collectors.sheet422.Sheet422PersonalCollector;
 import org.suns.data.collector.collectors.sheet428.Sheet428CoreCollector;
 import org.suns.data.collector.collectors.sheet428.Sheet428PersonalCollector;
 import org.suns.data.collector.config.sheet428.Sheet428CoreConfig;
@@ -28,8 +30,11 @@ public class TestInspectionManager {
             //Sheet421PersonalCollector.inspect();
             //Sheet421CoreCollector.inspect();
 
-            Sheet428PersonalCollector.inspect();
-            Sheet428CoreCollector.inspect();
+            //Sheet428PersonalCollector.inspect();
+            //Sheet428CoreCollector.inspect();
+
+            //Sheet422PersonalCollector.inspect();
+            //Sheet422CoreCollector.inspect();
 
 
             /*

@@ -55,7 +55,7 @@ public class InnerPersonalDatabaseConfigParser {
         for (Iterator it = coreHosts.iterator(); it.hasNext();) {
             Element hostElem = (Element)it.next();
             HostConfig host = new HostConfig();
-            host.copyFromElement(hostElem);
+            host.copyDbHostFromElement(hostElem);
             hosts.add(host);
         }
         return hosts;

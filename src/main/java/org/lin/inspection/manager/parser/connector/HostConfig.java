@@ -11,6 +11,8 @@ public class HostConfig {
     private int port;
     private String user;
     private String password;
+    private String sid;
+    private String logPath;
 
     public void copyFromElement(Element hostElem) throws Exception{
         String ip = hostElem.getAttributeValue(ConnectorParserConfig.getIpAttr());
@@ -37,6 +39,38 @@ public class HostConfig {
         setPassword(password);
         setUser(user);
         setPort(Integer.valueOf(port));
+    }
+
+    public void copyDbHostFromElement(Element hostElem) throws Exception{
+        copyFromElement(hostElem);
+
+        String sid = hostElem.getAttributeValue(ConnectorParserConfig.getSidAttr());
+        if(sid == null || sid.equals("")){
+            throw new Exception("Missing attribute sid");
+        }
+
+        String logPath = hostElem.getAttributeValue(ConnectorParserConfig.getLogAttr());
+        if(logPath == null || logPath.equals("")){
+            throw new Exception("Missing attribute log");
+        }
+
+        setLogPath(logPath);
+    }
+
+    public String getLogPath() {
+        return logPath;
+    }
+
+    public void setLogPath(String logPath) {
+        this.logPath = logPath;
+    }
+
+    public String getSid() {
+        return sid;
+    }
+
+    public void setSid(String sid) {
+        this.sid = sid;
     }
 
     public String getIp() {

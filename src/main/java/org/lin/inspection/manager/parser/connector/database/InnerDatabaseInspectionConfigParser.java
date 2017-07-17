@@ -31,7 +31,7 @@ public class InnerDatabaseInspectionConfigParser {
         }
 
         databaseInspectionRootElem = rootElem
-                .getChild(ConnectorParserConfig.getDatabaseInspectionfigRootTag());
+                .getChild(ConnectorParserConfig.getDatabaseInspectionConfigRootTag());
 
         if(databaseInspectionRootElem == null){
             throw new Exception("Unexpected XML Config file format: missing database inspection element");

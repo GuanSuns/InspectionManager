@@ -2,6 +2,7 @@ package org.lin.inspection.manager.configurator.connector;
 
 import org.lin.inspection.manager.parser.connector.ConnectorParser;
 import org.lin.inspection.manager.parser.connector.HostConfig;
+import org.suns.data.collector.config.DFFormat;
 import org.suns.data.collector.config.HostConnectorConfig;
 import org.suns.data.collector.config.OracleConnectorConfig;
 import org.suns.data.collector.config.sheet411.Sheet411PersonalConfig;
@@ -36,9 +37,33 @@ public class DataCollectorConfigurator {
         }
 
         configureOracleConnector();
+        configureDfFormat();
         configureSheet411();
         configureSheet421();
+        configureSheet422();
+        configureSheet423();
+        configureSheet426();
         configureSheet428();
+        configureSheet429();
+
+    }
+
+    private void configureDfFormat() throws Exception{
+        if(connectorParser == null){
+            throw new Exception("Uninitialized connector parser");
+        }
+
+        int fileSystemColumn = connectorParser.getDfFormatConfig()
+                .getFileSystemColumn();
+        DFFormat.setFileSystemColumn(fileSystemColumn);
+
+        int mountedSysColumn = connectorParser.getDfFormatConfig()
+                .getMountedSysColumn();
+        DFFormat.setMountedSysColumn(mountedSysColumn);
+
+        int usageColumn = connectorParser.getDfFormatConfig()
+                .getUsageColumn();
+        DFFormat.setUsageColumn(usageColumn);
     }
 
     private void configureOracleConnector() throws Exception{
@@ -90,5 +115,65 @@ public class DataCollectorConfigurator {
 
         sheet428Configurator.configureCore();
         sheet428Configurator.configurePersonal();
+    }
+
+    private void configureSheet422() throws Exception{
+        if(connectorParser == null){
+            throw new Exception("Uninitialized connector parser");
+        }
+
+        DataCollectorSheet422Configurator sheet422Configurator
+                = new DataCollectorSheet422Configurator(connectorParser);
+
+        sheet422Configurator.configureCore();
+        sheet422Configurator.configurePersonal();
+    }
+
+    private void configureSheet423() throws Exception{
+        if(connectorParser == null){
+            throw new Exception("Uninitialized connector parser");
+        }
+
+        DataCollectorSheet423Configurator sheet423Configurator
+                = new DataCollectorSheet423Configurator(connectorParser);
+
+        sheet423Configurator.configureCore();
+        sheet423Configurator.configurePersonal();
+    }
+
+    private void configureSheet424() throws Exception{
+        if(connectorParser == null){
+            throw new Exception("Uninitialized connector parser");
+        }
+
+        DataCollectorSheet424Configurator sheet424Configurator
+                = new DataCollectorSheet424Configurator(connectorParser);
+
+        sheet424Configurator.configureCore();
+        sheet424Configurator.configurePersonal();
+    }
+
+    private void configureSheet426() throws Exception{
+        if(connectorParser == null){
+            throw new Exception("Uninitialized connector parser");
+        }
+
+        DataCollectorSheet426Configurator sheet426Configurator
+                = new DataCollectorSheet426Configurator(connectorParser);
+
+        sheet426Configurator.configureCore();
+        sheet426Configurator.configurePersonal();
+    }
+
+    private void configureSheet429() throws Exception{
+        if(connectorParser == null){
+            throw new Exception("Uninitialized connector parser");
+        }
+
+        DataCollectorSheet429Configurator sheet429Configurator
+                = new DataCollectorSheet429Configurator(connectorParser);
+
+        sheet429Configurator.configureCore();
+        sheet429Configurator.configurePersonal();
     }
 }

@@ -12,6 +12,8 @@ public class ConnectorParserConfig {
     private static String portAttr = "port";
     private static String userAttr = "user";
     private static String passwordAttr = "password";
+    private static String sidAttr = "sid";
+    private static String logAttr = "log";
 
     //Connector Config
     private static String connectorConfigRootTag = "ConnectorConfig";
@@ -74,7 +76,7 @@ public class ConnectorParserConfig {
     private static String sheet428PersonalHosts4Tag = "hosts4";
 
     //Connector Config
-    private static String databaseInspectionfigRootTag = "DatabaseInspection";
+    private static String databaseInspectionConfigRootTag = "DatabaseInspection";
 
     //PersonalDatabase Config
     private static String dbInspectionPersonalDatabaseTag = "PersonalDatabase";
@@ -86,12 +88,66 @@ public class ConnectorParserConfig {
     private static String dbInspectionCoreIntegrationHostsTag = "IntegrationHosts";
     private static String dbInspectionCoreQueryHostsTag = "QueryHosts";
 
-    public static String getDatabaseInspectionfigRootTag() {
-        return databaseInspectionfigRootTag;
+    //DfFormat Config
+    private static String dfFormatTag = "DFFormat";
+    private static String dfFileSystemColumnTag = "fileSystemColumn";
+    private static String dfMountedSysColumnTag = "mountedSysColumn";
+    private static String dfUsageColumn = "usageColumn";
+
+    public static String getDfFormatTag() {
+        return dfFormatTag;
     }
 
-    public static void setDatabaseInspectionfigRootTag(String databaseInspectionfigRootTag) {
-        ConnectorParserConfig.databaseInspectionfigRootTag = databaseInspectionfigRootTag;
+    public static void setDfFormatTag(String dfFormatTag) {
+        ConnectorParserConfig.dfFormatTag = dfFormatTag;
+    }
+
+    public static String getDfFileSystemColumnTag() {
+        return dfFileSystemColumnTag;
+    }
+
+    public static void setDfFileSystemColumnTag(String dfFileSystemColumnTag) {
+        ConnectorParserConfig.dfFileSystemColumnTag = dfFileSystemColumnTag;
+    }
+
+    public static String getDfMountedSysColumnTag() {
+        return dfMountedSysColumnTag;
+    }
+
+    public static void setDfMountedSysColumnTag(String dfMountedSysColumnTag) {
+        ConnectorParserConfig.dfMountedSysColumnTag = dfMountedSysColumnTag;
+    }
+
+    public static String getDfUsageColumn() {
+        return dfUsageColumn;
+    }
+
+    public static void setDfUsageColumn(String dfUsageColumn) {
+        ConnectorParserConfig.dfUsageColumn = dfUsageColumn;
+    }
+
+    public static String getLogAttr() {
+        return logAttr;
+    }
+
+    public static void setLogAttr(String logAttr) {
+        ConnectorParserConfig.logAttr = logAttr;
+    }
+
+    public static String getSidAttr() {
+        return sidAttr;
+    }
+
+    public static void setSidAttr(String sidAttr) {
+        ConnectorParserConfig.sidAttr = sidAttr;
+    }
+
+    public static String getDatabaseInspectionConfigRootTag() {
+        return databaseInspectionConfigRootTag;
+    }
+
+    public static void setDatabaseInspectionConfigRootTag(String databaseInspectionConfigRootTag) {
+        ConnectorParserConfig.databaseInspectionConfigRootTag = databaseInspectionConfigRootTag;
     }
 
     public static String getDbInspectionPersonalDatabaseTag() {

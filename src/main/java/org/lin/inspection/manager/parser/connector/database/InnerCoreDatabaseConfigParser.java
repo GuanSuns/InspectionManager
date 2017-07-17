@@ -55,7 +55,7 @@ public class InnerCoreDatabaseConfigParser {
         for (Iterator it = taxationHosts.iterator(); it.hasNext();) {
             Element hostElem = (Element)it.next();
             HostConfig host = new HostConfig();
-            host.copyFromElement(hostElem);
+            host.copyDbHostFromElement(hostElem);
             hosts.add(host);
         }
         return hosts;
@@ -80,7 +80,7 @@ public class InnerCoreDatabaseConfigParser {
         for (Iterator it = integrationHosts.iterator(); it.hasNext();) {
             Element hostElem = (Element)it.next();
             HostConfig host = new HostConfig();
-            host.copyFromElement(hostElem);
+            host.copyDbHostFromElement(hostElem);
             hosts.add(host);
         }
         return hosts;
@@ -105,7 +105,7 @@ public class InnerCoreDatabaseConfigParser {
         for (Iterator it = queryHosts.iterator(); it.hasNext();) {
             Element hostElem = (Element)it.next();
             HostConfig host = new HostConfig();
-            host.copyFromElement(hostElem);
+            host.copyDbHostFromElement(hostElem);
             hosts.add(host);
         }
         return hosts;

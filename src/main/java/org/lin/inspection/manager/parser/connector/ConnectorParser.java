@@ -6,6 +6,7 @@ import org.jdom.input.SAXBuilder;
 import org.lin.inspection.manager.config.ConnectorParserConfig;
 import org.lin.inspection.manager.parser.connector.connector.InnerConnectorConfigParser;
 import org.lin.inspection.manager.parser.connector.database.InnerDatabaseInspectionConfigParser;
+import org.lin.inspection.manager.parser.connector.df.InnerDfFormatConfigParser;
 import org.lin.inspection.manager.parser.connector.hosts.InnerHostsInspectionConfigParser;
 
 /**
@@ -15,14 +16,16 @@ public class ConnectorParser {
     private Document connectorDoc;
     private Element rootElem;
     private InnerConnectorConfigParser connectorConfig;
+    private InnerDfFormatConfigParser dfFormatConfig;
     private InnerHostsInspectionConfigParser hostsInspectionConfig;
     private InnerDatabaseInspectionConfigParser databaseInspectionConfig;
 
     public ConnectorParser() throws Exception{
         init();
-        connectorConfig = null;
-        hostsInspectionConfig = null;
-        databaseInspectionConfig = null;
+        this.connectorConfig = null;
+        this.hostsInspectionConfig = null;
+        this.databaseInspectionConfig = null;
+        this.dfFormatConfig = null;
     }
 
     private void init() throws Exception{
@@ -60,6 +63,15 @@ public class ConnectorParser {
         }else{
             databaseInspectionConfig = new InnerDatabaseInspectionConfigParser(rootElem);
             return databaseInspectionConfig;
+        }
+    }
+
+    public InnerDfFormatConfigParser getDfFormatConfig(){
+        if(dfFormatConfig != null){
+            return dfFormatConfig;
+        }else{
+            dfFormatConfig = new InnerDfFormatConfigParser(rootElem);
+            return dfFormatConfig;
         }
     }
 
