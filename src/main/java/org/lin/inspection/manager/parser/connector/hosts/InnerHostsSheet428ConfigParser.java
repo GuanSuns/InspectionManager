@@ -42,8 +42,28 @@ public class InnerHostsSheet428ConfigParser {
         }
     }
 
+    public HostConfig getTimeServer() throws Exception{
+        if(sheet428Elem == null){
+            init();
+        }
+
+        Element timeServerElem = sheet428Elem.getChild(ConnectorParserConfig.getSheet428TimeServerTag());
+        if(timeServerElem == null){
+            throw new Exception("Unexpected XML Config file format: missing Sheet428 Time Server element");
+        }
+
+        Element hostElem = timeServerElem.getChild(ConnectorParserConfig.getHostTag());
+        if(hostElem == null){
+            throw new Exception("Unexpected XML Config file format: empty Sheet428 Time Server element");
+        }
+
+        HostConfig host = new HostConfig();
+        host.copyFromElement(hostElem);
+        return host;
+    }
+
     public String getTimeCMD() throws Exception{
-        if(hostsInspectionElem == null){
+        if(sheet428Elem == null){
             init();
         }
 
@@ -55,7 +75,7 @@ public class InnerHostsSheet428ConfigParser {
     }
 
     public String getCorrectReport() throws Exception{
-        if(hostsInspectionElem == null){
+        if(sheet428Elem == null){
             init();
         }
 
@@ -67,7 +87,7 @@ public class InnerHostsSheet428ConfigParser {
     }
 
     public long getTimeDiffTolerance() throws Exception{
-        if(hostsInspectionElem == null){
+        if(sheet428Elem == null){
             init();
         }
 

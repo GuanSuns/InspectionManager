@@ -1,5 +1,13 @@
 import org.junit.Test;
+import org.lin.inspection.manager.configurator.connector.DataCollectorConfigurator;
 import org.lin.inspection.manager.parser.connector.ConnectorParser;
+import org.suns.data.collector.collectors.sheet411.Sheet411CoreCollector;
+import org.suns.data.collector.collectors.sheet411.Sheet411PersonalCollector;
+import org.suns.data.collector.collectors.sheet421.Sheet421CoreCollector;
+import org.suns.data.collector.collectors.sheet421.Sheet421PersonalCollector;
+import org.suns.data.collector.collectors.sheet428.Sheet428CoreCollector;
+import org.suns.data.collector.collectors.sheet428.Sheet428PersonalCollector;
+import org.suns.data.collector.config.sheet428.Sheet428CoreConfig;
 
 /**
  * Created by guanl on 7/14/2017.
@@ -8,8 +16,24 @@ public class TestInspectionManager {
     @Test
     public void testInspectionManager(){
         try{
-            ConnectorParser connectorParser = new ConnectorParser();
 
+            ConnectorParser connectorParser = new ConnectorParser();
+            DataCollectorConfigurator dataCollectorConfigurator = new DataCollectorConfigurator(connectorParser);
+            dataCollectorConfigurator.configure();
+
+
+            //Sheet411PersonalCollector.inspect();
+            //Sheet411CoreCollector.inspect();
+
+            //Sheet421PersonalCollector.inspect();
+            //Sheet421CoreCollector.inspect();
+
+            Sheet428PersonalCollector.inspect();
+            Sheet428CoreCollector.inspect();
+
+
+            /*
+            ConnectorParser connectorParser = new ConnectorParser();
             System.out.println("\nSheet 411");
             System.out.println(connectorParser.getConnectorConfig().getOracleDriver());
             System.out.println(connectorParser.getConnectorConfig().getOracleUrl());
@@ -93,9 +117,7 @@ public class TestInspectionManager {
                     .getCore().getIntegrationHosts());
             System.out.println(connectorParser.getDatabaseInspectionConfig()
                     .getPersonal().getCoreHosts());
-
-
-
+            */
         }catch (Exception e){
             e.printStackTrace();
         }

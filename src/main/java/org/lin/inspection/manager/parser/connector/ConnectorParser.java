@@ -22,6 +22,7 @@ public class ConnectorParser {
         init();
         connectorConfig = null;
         hostsInspectionConfig = null;
+        databaseInspectionConfig = null;
     }
 
     private void init() throws Exception{
