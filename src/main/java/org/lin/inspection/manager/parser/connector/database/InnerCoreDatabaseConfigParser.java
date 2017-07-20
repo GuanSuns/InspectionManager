@@ -27,7 +27,7 @@ public class InnerCoreDatabaseConfigParser {
 
     private void init() throws Exception{
         if(databaseInspectionElem == null){
-            init();
+            throw new Exception("Uninitialized databaseInspection Elem");
         }
 
         coreElem = databaseInspectionElem.getChild(ConnectorParserConfig.getDbInspectionCoreDatabaseTag());

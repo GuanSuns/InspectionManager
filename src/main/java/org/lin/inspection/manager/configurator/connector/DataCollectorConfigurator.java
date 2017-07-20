@@ -15,12 +15,8 @@ import java.util.ArrayList;
 public class DataCollectorConfigurator {
     private ConnectorParser connectorParser;
 
-    public DataCollectorConfigurator(ConnectorParser connectorParser) {
-        this.connectorParser = connectorParser;
-    }
-
-    public DataCollectorConfigurator() {
-        this.connectorParser = null;
+    public DataCollectorConfigurator() throws Exception{
+        this.connectorParser = new ConnectorParser();
     }
 
     public ConnectorParser getConnectorParser() {
@@ -42,7 +38,8 @@ public class DataCollectorConfigurator {
         configureSheet421();
         configureSheet422();
         configureSheet423();
-        configureSheet426();
+        configureSheet424();
+        //configureSheet426();
         configureSheet428();
         configureSheet429();
 

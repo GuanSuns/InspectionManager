@@ -48,6 +48,7 @@ public class HostConfig {
         if(sid == null || sid.equals("")){
             throw new Exception("Missing attribute sid");
         }
+        setSid(sid);
 
         String logPath = hostElem.getAttributeValue(ConnectorParserConfig.getLogAttr());
         if(logPath == null || logPath.equals("")){

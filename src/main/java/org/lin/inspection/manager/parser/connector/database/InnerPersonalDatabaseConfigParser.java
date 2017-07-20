@@ -27,7 +27,7 @@ public class InnerPersonalDatabaseConfigParser {
 
     private void init() throws Exception{
         if(databaseInspectionElem == null){
-            init();
+            throw new Exception("Uninitialized databaseInspection Elem");
         }
 
         personalElem = databaseInspectionElem.getChild(ConnectorParserConfig.getDbInspectionPersonalDatabaseTag());
