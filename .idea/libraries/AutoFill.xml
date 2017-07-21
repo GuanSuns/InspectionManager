@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="AutoFill">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/AutoFill.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

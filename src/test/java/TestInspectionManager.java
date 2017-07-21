@@ -1,7 +1,6 @@
 import excel.filler.generator.*;
 import org.junit.Test;
 import org.lin.inspection.manager.configurator.ConfigManager;
-import org.lin.inspection.manager.configurator.connector.DataCollectorConfigurator;
 import org.lin.inspection.manager.parser.connector.ConnectorParser;
 import org.suns.data.collector.collectors.sheet411.Sheet411CoreCollector;
 import org.suns.data.collector.collectors.sheet411.Sheet411PersonalCollector;
@@ -13,8 +12,6 @@ import org.suns.data.collector.collectors.sheet423.Sheet423CoreCollector;
 import org.suns.data.collector.collectors.sheet423.Sheet423PersonalCollector;
 import org.suns.data.collector.collectors.sheet424.Sheet424CoreCollector;
 import org.suns.data.collector.collectors.sheet424.Sheet424PersonalCollector;
-import org.suns.data.collector.collectors.sheet426.Sheet426CoreCollector;
-import org.suns.data.collector.collectors.sheet426.Sheet426PersonalCollector;
 import org.suns.data.collector.collectors.sheet428.Sheet428CoreCollector;
 import org.suns.data.collector.collectors.sheet428.Sheet428PersonalCollector;
 import org.suns.data.collector.collectors.sheet429.Sheet429CoreCollector;
