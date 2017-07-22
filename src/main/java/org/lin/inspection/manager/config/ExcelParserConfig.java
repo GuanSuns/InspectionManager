@@ -1,7 +1,7 @@
 package org.lin.inspection.manager.config;
 
 public class ExcelParserConfig {
-    private static String rootDirectory ="\\config\\";//"C:\\Users\\guanl\\Desktop\\Test\\XML File\\";
+    private static String rootDirectory ="config\\";//"C:\\Users\\guanl\\Desktop\\Test\\XML File\\";
     private static String excelConfigXML = "ExcelXMLConfig.xml";
 
 

@@ -53,7 +53,7 @@ public class Manager {
         Sheet428PersonalCollector.inspect();
         System.out.println(df.format(new Date()) + " Inspecting Sheet 428 Core");
         Sheet428CoreCollector.inspect();
-
+/*
         System.out.println(df.format(new Date()) + " Inspecting Sheet 422 Personal");
         Sheet422PersonalCollector.inspect();
         System.out.println(df.format(new Date()) + " Inspecting Sheet 422 Core");
@@ -78,6 +78,7 @@ public class Manager {
         Sheet429PersonalCollector.inspect();
         System.out.println(df.format(new Date()) + " Inspecting Sheet 429 Core");
         Sheet429CoreCollector.inspect();
+*/
     }
 
     private static void generateExcel() throws Exception{

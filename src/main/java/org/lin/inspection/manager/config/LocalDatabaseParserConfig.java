@@ -1,7 +1,7 @@
 package org.lin.inspection.manager.config;
 
 public class LocalDatabaseParserConfig {
-    private static String rootDirectory ="\\config\\";//"C:\\Users\\guanl\\Desktop\\Test\\XML File\\";
+    private static String rootDirectory ="config\\";//"C:\\Users\\guanl\\Desktop\\Test\\XML File\\";
     private static String localDatabaseConfigXML = "LocalDatabaseConfig.xml";
 
     private static String databaseTypeTag = "databaseType";
