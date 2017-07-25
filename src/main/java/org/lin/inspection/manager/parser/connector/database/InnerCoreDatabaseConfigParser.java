@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by guanl on 7/15/2017.
  */
-public class InnerCoreDatabaseConfigParser {
+public class InnerCoreDatabaseConfigParser extends AbstractInnerDBInspectionConfigParser{
     private Element databaseInspectionElem;
     private Element coreElem;
 
@@ -40,74 +40,50 @@ public class InnerCoreDatabaseConfigParser {
         if(coreElem == null){
             init();
         }
+        return copyHostsFromElemList(getDBHostsList(coreElem
+                , ConnectorParserConfig.getDbInspectionCoreTaxationHostsTag()));
+    }
 
-        Element taxationHostsElem = coreElem.getChild(ConnectorParserConfig.getDbInspectionCoreTaxationHostsTag());
-        if(taxationHostsElem == null){
-            throw new Exception("Unexpected XML Config file format: missing core Taxation Hosts element");
+    public ArrayList<HostConfig> getTaxationOSInspectionHosts() throws Exception{
+        if(coreElem == null){
+            init();
         }
-
-        List taxationHosts = taxationHostsElem.getChildren(ConnectorParserConfig.getHostTag());
-        if(taxationHosts == null || taxationHosts.isEmpty()){
-            throw new Exception("Unexpected XML Config file format: empty core Taxation Hosts");
-        }
-
-        ArrayList<HostConfig> hosts = new ArrayList<>();
-        for (Iterator it = taxationHosts.iterator(); it.hasNext();) {
-            Element hostElem = (Element)it.next();
-            HostConfig host = new HostConfig();
-            host.copyDbHostFromElement(hostElem);
-            hosts.add(host);
-        }
-        return hosts;
+        List dbHostList = getDBHostsList(coreElem
+                , ConnectorParserConfig.getDbInspectionCoreTaxationHostsTag());
+        return getOSInspectionHosts(dbHostList);
     }
 
     public ArrayList<HostConfig> getIntegrationHosts() throws Exception{
         if(coreElem == null){
             init();
         }
+        return copyHostsFromElemList(getDBHostsList(coreElem
+                , ConnectorParserConfig.getDbInspectionCoreIntegrationHostsTag()));
+    }
 
-        Element integrationHostsElem = coreElem.getChild(ConnectorParserConfig.getDbInspectionCoreIntegrationHostsTag());
-        if(integrationHostsElem == null){
-            throw new Exception("Unexpected XML Config file format: missing core Integration Hosts element");
+    public ArrayList<HostConfig> getIntegrationOSInspectionHosts() throws Exception{
+        if(coreElem == null){
+            init();
         }
-
-        List integrationHosts = integrationHostsElem.getChildren(ConnectorParserConfig.getHostTag());
-        if(integrationHosts == null || integrationHosts.isEmpty()){
-            throw new Exception("Unexpected XML Config file format: empty core Integration Hosts");
-        }
-
-        ArrayList<HostConfig> hosts = new ArrayList<>();
-        for (Iterator it = integrationHosts.iterator(); it.hasNext();) {
-            Element hostElem = (Element)it.next();
-            HostConfig host = new HostConfig();
-            host.copyDbHostFromElement(hostElem);
-            hosts.add(host);
-        }
-        return hosts;
+        List dbHostList = getDBHostsList(coreElem
+                , ConnectorParserConfig.getDbInspectionCoreIntegrationHostsTag());
+        return getOSInspectionHosts(dbHostList);
     }
 
     public ArrayList<HostConfig> getQueryHosts() throws Exception{
         if(coreElem == null){
             init();
         }
+        return copyHostsFromElemList(getDBHostsList(coreElem
+                , ConnectorParserConfig.getDbInspectionCoreQueryHostsTag()));
+    }
 
-        Element queryHostsElem = coreElem.getChild(ConnectorParserConfig.getDbInspectionCoreQueryHostsTag());
-        if(queryHostsElem == null){
-            throw new Exception("Unexpected XML Config file format: missing core Query Hosts element");
+    public ArrayList<HostConfig> getQueryOSInspectionHosts() throws Exception{
+        if(coreElem == null){
+            init();
         }
-
-        List queryHosts = queryHostsElem.getChildren(ConnectorParserConfig.getHostTag());
-        if(queryHosts == null || queryHosts.isEmpty()){
-            throw new Exception("Unexpected XML Config file format: empty core Query Hosts");
-        }
-
-        ArrayList<HostConfig> hosts = new ArrayList<>();
-        for (Iterator it = queryHosts.iterator(); it.hasNext();) {
-            Element hostElem = (Element)it.next();
-            HostConfig host = new HostConfig();
-            host.copyDbHostFromElement(hostElem);
-            hosts.add(host);
-        }
-        return hosts;
+        List dbHostList = getDBHostsList(coreElem
+                , ConnectorParserConfig.getDbInspectionCoreQueryHostsTag());
+        return getOSInspectionHosts(dbHostList);
     }
 }

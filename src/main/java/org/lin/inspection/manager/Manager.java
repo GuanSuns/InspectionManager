@@ -2,6 +2,7 @@ package org.lin.inspection.manager;
 
 import excel.filler.generator.*;
 import org.lin.inspection.manager.configurator.ConfigManager;
+import org.lin.inspection.manager.parser.connector.ConnectorParser;
 import org.suns.data.collector.collectors.sheet411.Sheet411CoreCollector;
 import org.suns.data.collector.collectors.sheet411.Sheet411PersonalCollector;
 import org.suns.data.collector.collectors.sheet421.Sheet421CoreCollector;
@@ -29,7 +30,7 @@ public class Manager {
             configManager.configure();
 
             inspect();
-            generateExcel();
+            //generateExcel();
 
         }catch (Exception e){
             e.printStackTrace();
@@ -40,20 +41,25 @@ public class Manager {
         SimpleDateFormat df = new SimpleDateFormat("yy/MM/dd HH:mm");
 
         System.out.println(df.format(new Date()) + " Inspecting Sheet 411 Personal");
-        Sheet411PersonalCollector.inspect();
+        Sheet411PersonalCollector sheet411PersonalCollector = new Sheet411PersonalCollector();
+        sheet411PersonalCollector.inspect();
         System.out.println(df.format(new Date()) + " Inspecting Sheet 411 Core");
-        Sheet411CoreCollector.inspect();
+        Sheet411CoreCollector sheet411CoreCollector = new Sheet411CoreCollector();
+        sheet411CoreCollector.inspect();
 
         System.out.println(df.format(new Date()) + " Inspecting Sheet 421 Personal");
-        Sheet421PersonalCollector.inspect();
+        Sheet421PersonalCollector sheet421PersonalCollector = new Sheet421PersonalCollector();
+        sheet421PersonalCollector.inspect();
         System.out.println(df.format(new Date()) + " Inspecting Sheet 421 Core");
-        Sheet421CoreCollector.inspect();
+        Sheet421CoreCollector sheet421CoreCollector = new Sheet421CoreCollector();
+        sheet421CoreCollector.inspect();
 
+/*
         System.out.println(df.format(new Date()) + " Inspecting Sheet 428 Personal");
         Sheet428PersonalCollector.inspect();
         System.out.println(df.format(new Date()) + " Inspecting Sheet 428 Core");
         Sheet428CoreCollector.inspect();
-/*
+
         System.out.println(df.format(new Date()) + " Inspecting Sheet 422 Personal");
         Sheet422PersonalCollector.inspect();
         System.out.println(df.format(new Date()) + " Inspecting Sheet 422 Core");
@@ -68,7 +74,7 @@ public class Manager {
         Sheet424PersonalCollector.inspect();
         System.out.println(df.format(new Date()) + " Inspecting Sheet 424 Core");
         Sheet424CoreCollector.inspect();
-
+*/
         System.out.println(df.format(new Date()) + " Inspecting Sheet 426 Personal");
         Sheet426PersonalCollector.inspect();
         System.out.println(df.format(new Date()) + " Inspecting Sheet 426 Core");
@@ -78,7 +84,7 @@ public class Manager {
         Sheet429PersonalCollector.inspect();
         System.out.println(df.format(new Date()) + " Inspecting Sheet 429 Core");
         Sheet429CoreCollector.inspect();
-*/
+
     }
 
     private static void generateExcel() throws Exception{

@@ -35,7 +35,7 @@ public class DataCollectorSheet426Configurator {
         }
 
         ArrayList<HostConfig> coreHosts = connectorParser.getDatabaseInspectionConfig()
-                .getPersonal().getCoreHosts();
+                .getPersonal().getCoreOSInspectionHosts();
         int sizeHost = coreHosts.size();
         String[] hosts = new String[sizeHost];
         String[] users = new String[sizeHost];
@@ -56,7 +56,7 @@ public class DataCollectorSheet426Configurator {
         }
 
         ArrayList<HostConfig> taxationHostConfigs = connectorParser.getDatabaseInspectionConfig()
-                .getCore().getTaxationHosts();
+                .getCore().getTaxationOSInspectionHosts();
         int taxationSize = taxationHostConfigs.size();
         String[] taxationHosts = new String[taxationSize];
         String[] taxationUsers = new String[taxationSize];
@@ -71,7 +71,7 @@ public class DataCollectorSheet426Configurator {
         Sheet426CoreConfig.setLogPath2(taxationLogPaths);
 
         ArrayList<HostConfig> queryHostConfigs = connectorParser.getDatabaseInspectionConfig()
-                .getCore().getQueryHosts();
+                .getCore().getQueryOSInspectionHosts();
         int querySize = queryHostConfigs.size();
         String[] queryHosts = new String[querySize];
         String[] queryUsers = new String[querySize];
@@ -86,7 +86,7 @@ public class DataCollectorSheet426Configurator {
         Sheet426CoreConfig.setLogPath3(queryLogPaths);
 
         ArrayList<HostConfig> integrationHostConfigs = connectorParser.getDatabaseInspectionConfig()
-                .getCore().getIntegrationHosts();
+                .getCore().getIntegrationOSInspectionHosts();
         int integrationSize = integrationHostConfigs.size();
         String[] integrationHosts = new String[integrationSize];
         String[] integrationUsers = new String[integrationSize];

@@ -39,7 +39,7 @@ public class DataCollectorConfigurator {
         configureSheet422();
         configureSheet423();
         configureSheet424();
-        //configureSheet426();
+        configureSheet426();
         configureSheet428();
         configureSheet429();
 

@@ -4,10 +4,11 @@ package org.lin.inspection.manager.config;
  * Created by guanl on 7/14/2017.
  */
 public class ConnectorParserConfig {
-    private static String rootDirectory ="config\\";//"C:\\Users\\guanl\\Desktop\\Test\\XML File\\";
+    private static String rootDirectory ="C:\\Users\\guanl\\Desktop\\Test\\config\\";
     private static String connectorConfigXML = "ConnectorConfig.xml";
 
     private static String hostTag = "host";
+    private static String inspectionOSHostTag = "OSInspection";
     private static String ipAttr = "ip";
     private static String portAttr = "port";
     private static String userAttr = "user";
@@ -93,6 +94,14 @@ public class ConnectorParserConfig {
     private static String dfFileSystemColumnTag = "fileSystemColumn";
     private static String dfMountedSysColumnTag = "mountedSysColumn";
     private static String dfUsageColumn = "usageColumn";
+
+    public static String getInspectionOSHostTag() {
+        return inspectionOSHostTag;
+    }
+
+    public static void setInspectionOSHostTag(String inspectionOSHostTag) {
+        ConnectorParserConfig.inspectionOSHostTag = inspectionOSHostTag;
+    }
 
     public static String getDfFormatTag() {
         return dfFormatTag;

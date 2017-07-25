@@ -27,101 +27,13 @@ public class TestInspectionManager {
     @Test
     public void testInspectionManager(){
         try{
-            ConfigManager configManager = new ConfigManager();
-            configManager.configure();
-
-            SimpleDateFormat df = new SimpleDateFormat("yy/MM/dd HH:mm");
-
-            System.out.println(df.format(new Date()) + " Inspecting Sheet 411 Personal");
-            Sheet411PersonalCollector.inspect();
-            System.out.println(df.format(new Date()) + " Inspecting Sheet 411 Core");
-            Sheet411CoreCollector.inspect();
-
-            System.out.println(df.format(new Date()) + " Inspecting Sheet 421 Personal");
-            Sheet421PersonalCollector.inspect();
-            System.out.println(df.format(new Date()) + " Inspecting Sheet 421 Core");
-            Sheet421CoreCollector.inspect();
-
-            System.out.println(df.format(new Date()) + " Inspecting Sheet 428 Personal");
-            Sheet428PersonalCollector.inspect();
-            System.out.println(df.format(new Date()) + " Inspecting Sheet 428 Core");
-            Sheet428CoreCollector.inspect();
-
-            System.out.println(df.format(new Date()) + " Inspecting Sheet 422 Personal");
-            Sheet422PersonalCollector.inspect();
-            System.out.println(df.format(new Date()) + " Inspecting Sheet 422 Core");
-            Sheet422CoreCollector.inspect();
-
-            System.out.println(df.format(new Date()) + " Inspecting Sheet 423 Personal");
-            Sheet423PersonalCollector.inspect();
-            System.out.println(df.format(new Date()) + " Inspecting Sheet 423 Core");
-            Sheet423CoreCollector.inspect();
-
-            System.out.println(df.format(new Date()) + " Inspecting Sheet 424 Personal");
-            Sheet424PersonalCollector.inspect();
-            System.out.println(df.format(new Date()) + " Inspecting Sheet 424 Core");
-            Sheet424CoreCollector.inspect();
-/*
-            System.out.println(df.format(new Date()) + " Inspecting Sheet 426 Personal");
-            Sheet426PersonalCollector.inspect();
-            System.out.println(df.format(new Date()) + " Inspecting Sheet 426 Core");
-            Sheet426CoreCollector.inspect();
-*/
-            System.out.println(df.format(new Date()) + " Inspecting Sheet 429 Personal");
-            Sheet429PersonalCollector.inspect();
-            System.out.println(df.format(new Date()) + " Inspecting Sheet 429 Core");
-            Sheet429CoreCollector.inspect();
+            test_parser();
 
         }catch (Exception e){
             e.printStackTrace();
         }
 
     }
-
-    @Test
-    public void generateExcel() throws Exception{
-        SimpleDateFormat df = new SimpleDateFormat("yy/MM/dd HH:mm");
-        System.out.println(df.format(new Date()) + " Filling Excel Sheet 411 Personal");
-        Sheet411Generator.generatePersonal();
-        System.out.println(df.format(new Date()) + " Filling Excel Sheet 411 Core");
-        Sheet411Generator.generateCore();
-
-        System.out.println(df.format(new Date()) + " Filling Excel Sheet 421 Personal");
-        Sheet421Generator.generatePersonal();
-        System.out.println(df.format(new Date()) + " Filling Excel Sheet 421 Core");
-        Sheet421Generator.generateCore();
-
-        System.out.println(df.format(new Date()) + " Filling Excel Sheet 422 Personal");
-        Sheet422Generator.generatePersonal();
-        System.out.println(df.format(new Date()) + " Filling Excel Sheet 422 Core");
-        Sheet422Generator.generateCore();
-
-        System.out.println(df.format(new Date()) + " Filling Excel Sheet 423 Personal");
-        Sheet423Generator.generatePersonal();
-        System.out.println(df.format(new Date()) + " Filling Excel Sheet 423 Core");
-        Sheet423Generator.generateCore();
-
-        System.out.println(df.format(new Date()) + " Filling Excel Sheet 424 Personal");
-        Sheet424Generator.generatePersonal();
-        System.out.println(df.format(new Date()) + " Filling Excel Sheet 424 Core");
-        Sheet424Generator.generateCore();
-
-        System.out.println(df.format(new Date()) + " Filling Excel Sheet 426 Personal");
-        Sheet426Generator.generatePersonal();
-        System.out.println(df.format(new Date()) + " Filling Excel Sheet 426 Core");
-        Sheet426Generator.generateCore();
-
-        System.out.println(df.format(new Date()) + " Filling Excel Sheet 428 Personal");
-        Sheet428Generator.generatePersonal();
-        System.out.println(df.format(new Date()) + " Filling Excel Sheet 428 Core");
-        Sheet428Generator.generateCore();
-
-        System.out.println(df.format(new Date()) + " Filling Excel Sheet 429 Personal");
-        Sheet429Generator.generatePersonal();
-        System.out.println(df.format(new Date()) + " Filling Excel Sheet 429 Core");
-        Sheet429Generator.generateCore();
-    }
-
     //@Test
     public void test_parser(){
         try{
@@ -203,12 +115,27 @@ public class TestInspectionManager {
             System.out.println("\nDatabase Inspection");
             System.out.println(connectorParser.getDatabaseInspectionConfig()
                     .getCore().getTaxationHosts());
+            System.out.println("OS Inspection Host");
+            System.out.println(connectorParser.getDatabaseInspectionConfig()
+                    .getCore().getTaxationOSInspectionHosts());
+            System.out.println("");
             System.out.println(connectorParser.getDatabaseInspectionConfig()
                     .getCore().getQueryHosts());
+            System.out.println("OS Inspection Host");
+            System.out.println(connectorParser.getDatabaseInspectionConfig()
+                    .getCore().getQueryOSInspectionHosts());
+            System.out.println("");
             System.out.println(connectorParser.getDatabaseInspectionConfig()
                     .getCore().getIntegrationHosts());
+            System.out.println("OS Inspection Host");
+            System.out.println(connectorParser.getDatabaseInspectionConfig()
+                    .getCore().getIntegrationOSInspectionHosts());
+            System.out.println("");
             System.out.println(connectorParser.getDatabaseInspectionConfig()
                     .getPersonal().getCoreHosts());
+            System.out.println("OS Inspection Host");
+            System.out.println(connectorParser.getDatabaseInspectionConfig()
+                    .getPersonal().getCoreOSInspectionHosts());
         }catch (Exception e){
             e.printStackTrace();
         }

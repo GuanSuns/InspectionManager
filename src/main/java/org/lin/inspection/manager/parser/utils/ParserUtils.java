@@ -18,6 +18,20 @@ public class ParserUtils {
         return childElem.getText();
     }
 
+    public static String getStringFromAttr(Element rootElem
+            , String tag) throws Exception{
+        if(rootElem == null || tag == null || tag.equals("")){
+            throw new Exception("Uninitialized argument");
+        }
+
+        String result = rootElem.getAttributeValue(tag);
+        if(result == null){
+            throw new Exception("Unexpected XML Format: missing " + tag + " attribute");
+        }
+
+        return result;
+    }
+
     public static int getIntFromElement(Element rootElem
             , String tag) throws Exception{
         if(rootElem == null || tag == null || tag.equals("")){
@@ -30,5 +44,19 @@ public class ParserUtils {
         }
 
         return Integer.valueOf(childElem.getText());
+    }
+
+    public static int getIntFromAttr(Element rootElem
+            , String tag) throws Exception{
+        if(rootElem == null || tag == null || tag.equals("")){
+            throw new Exception("Uninitialized argument");
+        }
+
+        String result = rootElem.getAttributeValue(tag);
+        if(result == null || result.equals("")){
+            throw new Exception("Unexpected XML Format: missing " + tag + " attribute");
+        }
+
+        return Integer.valueOf(result);
     }
 }
