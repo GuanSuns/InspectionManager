@@ -4,7 +4,7 @@ package org.lin.inspection.manager.config;
  * Created by guanl on 7/14/2017.
  */
 public class ConnectorParserConfig {
-    private static String rootDirectory ="C:\\Users\\guanl\\Desktop\\Test\\config\\";
+    private static String rootDirectory ="config\\";
     private static String connectorConfigXML = "ConnectorConfig.xml";
 
     private static String hostTag = "host";

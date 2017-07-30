@@ -10,6 +10,7 @@ import java.util.ArrayList;
 /**
  * Created by guanl on 7/17/2017.
  */
+
 public class DataCollectorSheet424Configurator {
     private ConnectorParser connectorParser;
 
