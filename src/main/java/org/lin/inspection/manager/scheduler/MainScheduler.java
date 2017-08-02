@@ -2,21 +2,33 @@ package org.lin.inspection.manager.scheduler;
 
 import org.apache.poi.ss.formula.functions.Count;
 import org.lin.inspection.manager.config.SchedulerConfig;
+import org.lin.inspection.manager.utils.Pair;
+import org.lin.inspection.manager.utils.SchedulerType;
+import org.lin.inspection.manager.utils.SchedulerUtils;
 import org.suns.inspection.logger.InspectionLogger;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.concurrent.*;
 
-public class MainScheduler implements Runnable{
+public class MainScheduler extends AbstractScheduler{
     @Override
     public void run() {
         try{
             ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
             CountDownLatch dailyWaitCountDown = inspectDaily(service);
-
+            CountDownLatch weeklyWaitCountDown = inspectWeekly(service);
 
             if(dailyWaitCountDown != null){
+                InspectionLogger.info("Main scheduler waits for daily inspection");
                 dailyWaitCountDown.await();
+                InspectionLogger.info("Main scheduler finishes waiting for daily inspection");
+            }
+            if(weeklyWaitCountDown != null){
+                InspectionLogger.info("Main scheduler waits for monthly inspection");
+                weeklyWaitCountDown.await();
+                InspectionLogger.info("Main scheduler finishes waiting for monthly inspection");
             }
         }catch (Exception e){
             InspectionLogger.error("Error In Main Scheduler - "
@@ -27,138 +39,78 @@ public class MainScheduler implements Runnable{
 
     private CountDownLatch inspectWeekly(ScheduledExecutorService service){
         try{
+            CountDownLatch waitForChildCountDown = null;
+            final CountDownLatch setFutureCountDown = new CountDownLatch(1);
+
+            Calendar now = Calendar.getInstance();
+
+            if(isSunday(now)){
+                List<Pair<Integer, Integer>> inspectionTimes
+                        = new ArrayList<>(1);
+                inspectionTimes.add(new Pair<>(22,0));
+                waitForChildCountDown = SchedulerUtils.setInspection(service
+                        , setFutureCountDown, SchedulerType.WEEKLY
+                        , inspectionTimes);
+
+                InspectionLogger.info("Weekly Inspection " +
+                        "counting down future countDown");
+                setFutureCountDown.countDown();
+            }
+
+            return waitForChildCountDown;
 
         }catch (Exception e){
-
+            InspectionLogger.error("Error in weekly inspection - "
+                    + e.toString());
+            return null;
         }
-        return null;
     }
 
     private CountDownLatch inspectDaily(ScheduledExecutorService service){
         try{
             CountDownLatch waitForChildCountDown = null;
             final CountDownLatch setFutureCountDown = new CountDownLatch(1);
+
             Calendar now = Calendar.getInstance();
+
             if(isOneDayBeforeTaxPeriod(now)){
-                waitForChildCountDown = new CountDownLatch(1);
-                Calendar executeTime = Calendar.getInstance();
-                executeTime.set(Calendar.HOUR_OF_DAY, 22);
-                executeTime.set(Calendar.MINUTE, 0);
+                List<Pair<Integer, Integer>> inspectionTimes
+                        = new ArrayList<>(1);
+                inspectionTimes.add(new Pair<>(22,0));
+                waitForChildCountDown = SchedulerUtils.setInspection(service
+                        , setFutureCountDown, SchedulerType.DAILY
+                        , inspectionTimes);
 
-                DailyScheduler dailyScheduler = new DailyScheduler();
-                dailyScheduler.setMainSchedulerCountDown(waitForChildCountDown);
-                dailyScheduler.setSetFutureCountDown(setFutureCountDown);
-                if(executeTime.after(now)){
-                    InspectionLogger.info("Daily Inspection creating daily inspection future");
-                    Future future = service.scheduleAtFixedRate(dailyScheduler
-                            , executeTime.getTimeInMillis() - now.getTimeInMillis()
-                            , 600*1000, TimeUnit.MILLISECONDS);
-
-                    dailyScheduler.setFuture(future);
-                    InspectionLogger.info("Daily Inspection counting down future countDown");
-                    setFutureCountDown.countDown();
-                }
-            }else if(isInLastThreeDay(now)){
-                waitForChildCountDown = new CountDownLatch(3);
-
-                Calendar executeTime = Calendar.getInstance();
-                executeTime.set(Calendar.HOUR_OF_DAY, 8);
-                executeTime.set(Calendar.MINUTE, 0);
-
-                DailyScheduler dailyScheduler1 = new DailyScheduler();
-                dailyScheduler1.setMainSchedulerCountDown(waitForChildCountDown);
-                dailyScheduler1.setSetFutureCountDown(setFutureCountDown);
-                if(executeTime.after(now)){
-                    InspectionLogger.info("Daily Inspection creating daily inspection future");
-                    Future future = service.scheduleAtFixedRate(dailyScheduler1
-                            , executeTime.getTimeInMillis() - now.getTimeInMillis()
-                            , 600*1000, TimeUnit.MILLISECONDS);
-
-                    dailyScheduler1.setFuture(future);
-                }
-
-                executeTime.set(Calendar.HOUR_OF_DAY, 11);
-                executeTime.set(Calendar.MINUTE, 0);
-
-                DailyScheduler dailyScheduler2 = new DailyScheduler();
-                dailyScheduler2.setMainSchedulerCountDown(waitForChildCountDown);
-                dailyScheduler2.setSetFutureCountDown(setFutureCountDown);
-                if(executeTime.after(now)){
-                    InspectionLogger.info("Daily Inspection creating daily inspection future");
-                    Future future = service.scheduleAtFixedRate(dailyScheduler2
-                            , executeTime.getTimeInMillis() - now.getTimeInMillis()
-                            , 600*1000, TimeUnit.MILLISECONDS);
-
-                    dailyScheduler2.setFuture(future);
-                }
-
-                executeTime.set(Calendar.HOUR_OF_DAY, 17);
-                executeTime.set(Calendar.MINUTE, 0);
-
-                DailyScheduler dailyScheduler3 = new DailyScheduler();
-                dailyScheduler3.setMainSchedulerCountDown(waitForChildCountDown);
-                dailyScheduler3.setSetFutureCountDown(setFutureCountDown);
-                if(executeTime.after(now)){
-                    InspectionLogger.info("Daily Inspection creating daily inspection future");
-                    Future future = service.scheduleAtFixedRate(dailyScheduler3
-                            , executeTime.getTimeInMillis() - now.getTimeInMillis()
-                            , 600*1000, TimeUnit.MILLISECONDS);
-
-                    dailyScheduler3.setFuture(future);
-                }
-
-                InspectionLogger.info("Daily Inspection counting down future countDown");
+                InspectionLogger.info("Daily (One day before Tax Period) " +
+                        "Inspection counting down future countDown");
                 setFutureCountDown.countDown();
+
+            }else if(isInLastThreeDay(now)){
+                List<Pair<Integer, Integer>> inspectionTimes
+                        = new ArrayList<>(3);
+                inspectionTimes.add(new Pair<>(6,30));
+                inspectionTimes.add(new Pair<>(11,0));
+                inspectionTimes.add(new Pair<>(22,0));
+                waitForChildCountDown = SchedulerUtils.setInspection(service
+                        , setFutureCountDown, SchedulerType.DAILY
+                        , inspectionTimes);
+
+                InspectionLogger.info("Daily (Last three day) Inspection " +
+                        "counting down future countDown");
+                setFutureCountDown.countDown();
+
             }else if(isInTaxPeriod(now)){
-                waitForChildCountDown = new CountDownLatch(3);
+                List<Pair<Integer, Integer>> inspectionTimes
+                        = new ArrayList<>(3);
+                inspectionTimes.add(new Pair<>(8,0));
+                inspectionTimes.add(new Pair<>(11,0));
+                inspectionTimes.add(new Pair<>(17,0));
+                waitForChildCountDown = SchedulerUtils.setInspection(service
+                        , setFutureCountDown, SchedulerType.DAILY
+                        , inspectionTimes);
 
-                Calendar executeTime = Calendar.getInstance();
-                executeTime.set(Calendar.HOUR_OF_DAY, 6);
-                executeTime.set(Calendar.MINUTE, 30);
-
-                DailyScheduler dailyScheduler1 = new DailyScheduler();
-                dailyScheduler1.setMainSchedulerCountDown(waitForChildCountDown);
-                dailyScheduler1.setSetFutureCountDown(setFutureCountDown);
-                if(executeTime.after(now)){
-                    InspectionLogger.info("Daily Inspection creating daily inspection future");
-                    Future future = service.scheduleAtFixedRate(dailyScheduler1
-                            , executeTime.getTimeInMillis() - now.getTimeInMillis()
-                            , 600*1000, TimeUnit.MILLISECONDS);
-
-                    dailyScheduler1.setFuture(future);
-                }
-
-                executeTime.set(Calendar.HOUR_OF_DAY, 11);
-                executeTime.set(Calendar.MINUTE, 0);
-
-                DailyScheduler dailyScheduler2 = new DailyScheduler();
-                dailyScheduler2.setMainSchedulerCountDown(waitForChildCountDown);
-                dailyScheduler2.setSetFutureCountDown(setFutureCountDown);
-                if(executeTime.after(now)){
-                    InspectionLogger.info("Daily Inspection creating daily inspection future");
-                    Future future = service.scheduleAtFixedRate(dailyScheduler2
-                            , executeTime.getTimeInMillis() - now.getTimeInMillis()
-                            , 600*1000, TimeUnit.MILLISECONDS);
-
-                    dailyScheduler2.setFuture(future);
-                }
-
-                executeTime.set(Calendar.HOUR_OF_DAY, 22);
-                executeTime.set(Calendar.MINUTE, 0);
-
-                DailyScheduler dailyScheduler3 = new DailyScheduler();
-                dailyScheduler3.setMainSchedulerCountDown(waitForChildCountDown);
-                dailyScheduler3.setSetFutureCountDown(setFutureCountDown);
-                if(executeTime.after(now)){
-                    InspectionLogger.info("Daily Inspection creating daily inspection future");
-                    Future future = service.scheduleAtFixedRate(dailyScheduler3
-                            , executeTime.getTimeInMillis() - now.getTimeInMillis()
-                            , 600*1000, TimeUnit.MILLISECONDS);
-
-                    dailyScheduler3.setFuture(future);
-                }
-
-                InspectionLogger.info("Daily Inspection counting down future countDown");
+                InspectionLogger.info("Daily (In Common Tax Period) Inspection " +
+                        "counting down future countDown");
                 setFutureCountDown.countDown();
             }
 
@@ -169,6 +121,11 @@ public class MainScheduler implements Runnable{
                     + e.toString());
             return null;
         }
+    }
+
+    private static boolean isSunday(Calendar now){
+        int dayOfWeek = now.get(Calendar.DAY_OF_WEEK) - 1;
+        return dayOfWeek == 0;
     }
 
     private static boolean isInTaxPeriod(Calendar now){

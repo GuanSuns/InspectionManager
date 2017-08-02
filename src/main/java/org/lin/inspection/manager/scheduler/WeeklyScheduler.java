@@ -7,31 +7,17 @@ import org.suns.inspection.logger.InspectionLogger;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.Future;
 
-public class WeeklyScheduler implements Runnable {
-    private Future future;
-    private CountDownLatch setFutureCountDown;
-    private CountDownLatch mainSchedulerCountDown;
-
-    public void setFuture(Future future) {
-        this.future = future;
-    }
-
-    public void setSetFutureCountDown(CountDownLatch setFutureCountDown) {
-        this.setFutureCountDown = setFutureCountDown;
-    }
-
-    public void setMainSchedulerCountDown(CountDownLatch mainSchedulerCountDown) {
-        this.mainSchedulerCountDown = mainSchedulerCountDown;
-    }
-
+public class WeeklyScheduler extends AbstractScheduler {
     @Override
     public void run() {
         try{
+            if(getSetFutureCountDown() == null){
+                throw new Exception("Uninitialized setFutureCountDown");
+            }
+
             InspectionLogger.info("Weekly Inspection waiting for setFutureCountDown");
-            setFutureCountDown.await();
+            getSetFutureCountDown().await();
 
             SimpleDateFormat df = new SimpleDateFormat("yy/MM/dd HH:mm");
 
@@ -48,15 +34,26 @@ public class WeeklyScheduler implements Runnable {
             sheet422CoreCollector.inspect();
 
             System.out.println(df.format(new Date()) + " Filling Excel Sheet 422 Personal");
-            InspectionLogger.info("Daily Inspection Generating 422 core Excel");
+            InspectionLogger.info("Daily Inspection Generating 422 personal Excel");
             Sheet422Generator.generatePersonal();
             System.out.println(df.format(new Date()) + " Filling Excel Sheet 422 Core");
+            InspectionLogger.info("Daily Inspection Generating 422 core Excel");
             Sheet422Generator.generateCore();
 
-            InspectionLogger.info("Daily Inspection Waking up main scheduler");
-            mainSchedulerCountDown.countDown();
-            InspectionLogger.info("Daily Inspection finishes");
-            future.cancel(true);
+            if(getMainSchedulerCountDown() == null){
+                throw new Exception("Uninitialized MainSchedulerCountDown");
+            }
+
+            InspectionLogger.info("Weekly Inspection Waking up main scheduler");
+            getMainSchedulerCountDown().countDown();
+
+            if(getFuture() == null){
+                throw new Exception("Uninitialized Future");
+            }
+
+            InspectionLogger.info("Weekly Inspection finishes and kills itself");
+            getFuture().cancel(true);
+
         }catch (Exception e){
             InspectionLogger.error("Fail in Weekly Inspection - "
                     + e.toString());
