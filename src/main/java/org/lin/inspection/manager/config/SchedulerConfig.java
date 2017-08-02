@@ -39,6 +39,70 @@ public class SchedulerConfig {
     private static String hourAttr = "HH";
     private static String minuteAttr = "mm";
 
+    private static String dailyInspectionTag = "DailyInspection";
+    private static String eveOfTaxPeriodTag = "EveOfTaxPeriod";
+    private static String lastThreeDayTag = "LastThreeDay";
+    private static String withinTaxPeriod = "WithinTaxPeriod";
+    private static String monthlyInspectionTag = "MonthlyInspection";
+    private static String weeklyInspectionTag = "WeeklyInspection";
+    private static String timeTag = "time";
+
+    public static String getDailyInspectionTag() {
+        return dailyInspectionTag;
+    }
+
+    public static void setDailyInspectionTag(String dailyInspectionTag) {
+        SchedulerConfig.dailyInspectionTag = dailyInspectionTag;
+    }
+
+    public static String getEveOfTaxPeriodTag() {
+        return eveOfTaxPeriodTag;
+    }
+
+    public static void setEveOfTaxPeriodTag(String eveOfTaxPeriodTag) {
+        SchedulerConfig.eveOfTaxPeriodTag = eveOfTaxPeriodTag;
+    }
+
+    public static String getLastThreeDayTag() {
+        return lastThreeDayTag;
+    }
+
+    public static void setLastThreeDayTag(String lastThreeDayTag) {
+        SchedulerConfig.lastThreeDayTag = lastThreeDayTag;
+    }
+
+    public static String getWithinTaxPeriod() {
+        return withinTaxPeriod;
+    }
+
+    public static void setWithinTaxPeriod(String withinTaxPeriod) {
+        SchedulerConfig.withinTaxPeriod = withinTaxPeriod;
+    }
+
+    public static String getMonthlyInspectionTag() {
+        return monthlyInspectionTag;
+    }
+
+    public static void setMonthlyInspectionTag(String monthlyInspectionTag) {
+        SchedulerConfig.monthlyInspectionTag = monthlyInspectionTag;
+    }
+
+    public static String getWeeklyInspectionTag() {
+        return weeklyInspectionTag;
+    }
+
+    public static void setWeeklyInspectionTag(String weeklyInspectionTag) {
+        SchedulerConfig.weeklyInspectionTag = weeklyInspectionTag;
+    }
+
+    public static String getTimeTag() {
+        return timeTag;
+    }
+
+    public static void setTimeTag(String timeTag) {
+        SchedulerConfig.timeTag = timeTag;
+    }
+
     public static String getRootDirectory() {
         return rootDirectory;
     }

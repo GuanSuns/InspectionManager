@@ -1,6 +1,5 @@
 package org.lin.inspection.manager.scheduler;
 
-import org.apache.poi.ss.formula.functions.Count;
 import org.lin.inspection.manager.config.SchedulerConfig;
 import org.lin.inspection.manager.utils.Pair;
 import org.lin.inspection.manager.utils.SchedulerType;
@@ -19,6 +18,7 @@ public class MainScheduler extends AbstractScheduler{
             ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
             CountDownLatch dailyWaitCountDown = inspectDaily(service);
             CountDownLatch weeklyWaitCountDown = inspectWeekly(service);
+            CountDownLatch monthlyWaitCountDown = inspectMonthly(service);
 
             if(dailyWaitCountDown != null){
                 InspectionLogger.info("Main scheduler waits for daily inspection");
@@ -26,8 +26,13 @@ public class MainScheduler extends AbstractScheduler{
                 InspectionLogger.info("Main scheduler finishes waiting for daily inspection");
             }
             if(weeklyWaitCountDown != null){
-                InspectionLogger.info("Main scheduler waits for monthly inspection");
+                InspectionLogger.info("Main scheduler waits for weekly inspection");
                 weeklyWaitCountDown.await();
+                InspectionLogger.info("Main scheduler finishes waiting for weekly inspection");
+            }
+            if(monthlyWaitCountDown != null){
+                InspectionLogger.info("Main scheduler waits for monthly inspection");
+                monthlyWaitCountDown.await();
                 InspectionLogger.info("Main scheduler finishes waiting for monthly inspection");
             }
         }catch (Exception e){
@@ -35,6 +40,35 @@ public class MainScheduler extends AbstractScheduler{
                     + e.toString());
         }
 
+    }
+
+    private CountDownLatch inspectMonthly(ScheduledExecutorService service){
+        try{
+            CountDownLatch waitForChildCountDown = null;
+            final CountDownLatch setFutureCountDown = new CountDownLatch(1);
+
+            Calendar now = Calendar.getInstance();
+
+            if(isLastDayOfMonth(now)){
+                List<Pair<Integer, Integer>> inspectionTimes
+                        = new ArrayList<>(1);
+                inspectionTimes.add(new Pair<>(9,0));
+                waitForChildCountDown = SchedulerUtils.setInspection(service
+                        , setFutureCountDown, SchedulerType.MONTHLY
+                        , inspectionTimes);
+
+                InspectionLogger.info("Monthly Inspection " +
+                        "counting down future countDown");
+                setFutureCountDown.countDown();
+            }
+
+            return waitForChildCountDown;
+
+        }catch (Exception e){
+            InspectionLogger.error("Error in monthly inspection - "
+                    + e.toString());
+            return null;
+        }
     }
 
     private CountDownLatch inspectWeekly(ScheduledExecutorService service){

@@ -24,4 +24,12 @@ public class Pair<H extends Object, M extends Object> {
     public void setMinute(M minute) {
         this.minute = minute;
     }
+
+    @Override
+    public String toString() {
+        return "Pair{" +
+                "hour=" + hour +
+                ", minute=" + minute +
+                '}';
+    }
 }
