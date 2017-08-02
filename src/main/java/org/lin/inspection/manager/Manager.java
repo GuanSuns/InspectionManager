@@ -16,6 +16,11 @@ import org.suns.data.collector.collectors.sheet426.Sheet426CoreCollector;
 import org.suns.data.collector.collectors.sheet426.Sheet426PersonalCollector;
 import org.suns.data.collector.collectors.sheet428.Sheet428CoreCollector;
 import org.suns.data.collector.collectors.sheet428.Sheet428PersonalCollector;
+import org.suns.data.collector.collectors.sheet429.Sheet429CoreCollector;
+import org.suns.data.collector.collectors.sheet429.Sheet429PersonalCollector;
+import org.suns.database.utils.controller.*;
+import org.suns.inspection.logger.InspectionLogger;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -25,12 +30,29 @@ public class Manager {
             ConfigManager configManager = new ConfigManager();
             configManager.configure();
 
+            if(args.length > 0 && args[0].equals("clear")){
+                clearAllTable();
+            }
+
+            InspectionLogger.turnOnDebug();
+
             inspect();
-            //generateExcel();
+            generateExcel();
 
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    private static void clearAllTable() throws Exception{
+        Sheet411Controller.clearAll();
+        Sheet421Controller.clearAll();
+        Sheet422Controller.clearAll();
+        Sheet423Controller.clearAll();
+        Sheet424Controller.clearAll();
+        Sheet426Controller.clearAll();
+        Sheet428Controller.clearAll();
+        Sheet429Controller.clearAll();
     }
 
     private static void inspect() throws Exception{
@@ -99,7 +121,7 @@ public class Manager {
         Sheet426CoreCollector sheet426CoreCollector
                 = new Sheet426CoreCollector();
         sheet426CoreCollector.inspect();
-/*
+
         System.out.println(df.format(new Date()) + " Inspecting Sheet 429 Personal");
         Sheet429PersonalCollector sheet429PersonalCollector
                 = new Sheet429PersonalCollector();
@@ -108,11 +130,13 @@ public class Manager {
         Sheet429CoreCollector sheet429CoreCollector
                 = new Sheet429CoreCollector();
         sheet429CoreCollector.inspect();
-*/
+
+
     }
 
     private static void generateExcel() throws Exception{
         SimpleDateFormat df = new SimpleDateFormat("yy/MM/dd HH:mm");
+
         System.out.println(df.format(new Date()) + " Filling Excel Sheet 411 Personal");
         Sheet411Generator.generatePersonal();
         System.out.println(df.format(new Date()) + " Filling Excel Sheet 411 Core");
@@ -152,5 +176,6 @@ public class Manager {
         Sheet429Generator.generatePersonal();
         System.out.println(df.format(new Date()) + " Filling Excel Sheet 429 Core");
         Sheet429Generator.generateCore();
+
     }
 }

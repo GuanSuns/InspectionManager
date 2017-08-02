@@ -50,17 +50,24 @@ public class DataCollectorConfigurator {
             throw new Exception("Uninitialized connector parser");
         }
 
-        int fileSystemColumn = connectorParser.getDfFormatConfig()
-                .getFileSystemColumn();
-        DFFormat.setFileSystemColumn(fileSystemColumn);
+        DFFormat.setFileSystemColumnAIX(connectorParser.getDfFormatConfig()
+                .getFileSystemColumn(DFFormat.InspectionSysType.AIX));
 
-        int mountedSysColumn = connectorParser.getDfFormatConfig()
-                .getMountedSysColumn();
-        DFFormat.setMountedSysColumn(mountedSysColumn);
+        DFFormat.setFileSystemColumnLinux(connectorParser.getDfFormatConfig()
+                .getFileSystemColumn(DFFormat.InspectionSysType.LINUX));
 
-        int usageColumn = connectorParser.getDfFormatConfig()
-                .getUsageColumn();
-        DFFormat.setUsageColumn(usageColumn);
+        DFFormat.setMountedSysColumnAIX(connectorParser.getDfFormatConfig()
+                .getMountedSysColumn(DFFormat.InspectionSysType.AIX));
+
+        DFFormat.setMountedSysColumnLinux(connectorParser.getDfFormatConfig()
+                .getMountedSysColumn(DFFormat.InspectionSysType.LINUX));
+
+        DFFormat.setUsageColumnAIX(connectorParser.getDfFormatConfig()
+                .getUsageColumn(DFFormat.InspectionSysType.AIX));
+
+        DFFormat.setUsageColumnLinux(connectorParser.getDfFormatConfig()
+                .getUsageColumn(DFFormat.InspectionSysType.LINUX));
+
     }
 
     private void configureOracleConnector() throws Exception{

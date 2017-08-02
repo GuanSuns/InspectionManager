@@ -94,6 +94,24 @@ public class ConnectorParserConfig {
     private static String dfFileSystemColumnTag = "fileSystemColumn";
     private static String dfMountedSysColumnTag = "mountedSysColumn";
     private static String dfUsageColumn = "usageColumn";
+    private static String linuxAttr = "linux";
+    private static String aixAttr = "aix";
+
+    public static String getLinuxAttr() {
+        return linuxAttr;
+    }
+
+    public static void setLinuxAttr(String linuxAttr) {
+        ConnectorParserConfig.linuxAttr = linuxAttr;
+    }
+
+    public static String getAixAttr() {
+        return aixAttr;
+    }
+
+    public static void setAixAttr(String aixAttr) {
+        ConnectorParserConfig.aixAttr = aixAttr;
+    }
 
     public static String getInspectionOSHostTag() {
         return inspectionOSHostTag;

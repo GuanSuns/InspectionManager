@@ -2,6 +2,8 @@ package org.lin.inspection.manager.parser.connector.df;
 
 import org.jdom.Element;
 import org.lin.inspection.manager.config.ConnectorParserConfig;
+import org.lin.inspection.manager.parser.utils.ParserUtils;
+import org.suns.data.collector.config.DFFormat;
 
 /**
  * Created by guanl on 7/17/2017.
@@ -33,7 +35,8 @@ public class InnerDfFormatConfigParser {
         }
     }
 
-    public int getFileSystemColumn() throws Exception{
+    public int getFileSystemColumn(DFFormat.InspectionSysType sysType)
+            throws Exception{
         if(dfFormatConfigRoot == null){
             initConnectorConfigRoot();
         }
@@ -44,11 +47,17 @@ public class InnerDfFormatConfigParser {
             throw new Exception("Unexpected XML Config file format: missing fileSystemColumn tag");
         }
 
-        String strFileSysColumn = fileSystemColumnElem.getText();
-        return Integer.valueOf(strFileSysColumn);
+        if(sysType.equals(DFFormat.InspectionSysType.LINUX)){
+            return ParserUtils.getIntFromAttr(fileSystemColumnElem
+                    , ConnectorParserConfig.getLinuxAttr());
+        }else{
+            return ParserUtils.getIntFromAttr(fileSystemColumnElem
+                    , ConnectorParserConfig.getAixAttr());
+        }
     }
 
-    public int getMountedSysColumn() throws Exception{
+    public int getMountedSysColumn(DFFormat.InspectionSysType sysType)
+            throws Exception{
         if(dfFormatConfigRoot == null){
             initConnectorConfigRoot();
         }
@@ -59,11 +68,17 @@ public class InnerDfFormatConfigParser {
             throw new Exception("Unexpected XML Config file format: missing mountedSysColumn tag");
         }
 
-        String strMountedSysColumn = mountedSysColumnElem.getText();
-        return Integer.valueOf(strMountedSysColumn);
+        if(sysType.equals(DFFormat.InspectionSysType.LINUX)){
+            return ParserUtils.getIntFromAttr(mountedSysColumnElem
+                    , ConnectorParserConfig.getLinuxAttr());
+        }else{
+            return ParserUtils.getIntFromAttr(mountedSysColumnElem
+                    , ConnectorParserConfig.getAixAttr());
+        }
     }
 
-    public int getUsageColumn() throws Exception{
+    public int getUsageColumn(DFFormat.InspectionSysType sysType)
+            throws Exception{
         if(dfFormatConfigRoot == null){
             initConnectorConfigRoot();
         }
@@ -74,7 +89,12 @@ public class InnerDfFormatConfigParser {
             throw new Exception("Unexpected XML Config file format: missing usageColumn tag");
         }
 
-        String strUsageColumn = usageColumnElem.getText();
-        return Integer.valueOf(strUsageColumn);
+        if(sysType.equals(DFFormat.InspectionSysType.LINUX)){
+            return ParserUtils.getIntFromAttr(usageColumnElem
+                    , ConnectorParserConfig.getLinuxAttr());
+        }else{
+            return ParserUtils.getIntFromAttr(usageColumnElem
+                    , ConnectorParserConfig.getAixAttr());
+        }
     }
 }

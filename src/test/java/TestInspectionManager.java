@@ -2,6 +2,7 @@ import excel.filler.generator.*;
 import org.junit.Test;
 import org.lin.inspection.manager.configurator.ConfigManager;
 import org.lin.inspection.manager.parser.connector.ConnectorParser;
+import org.lin.inspection.manager.parser.scheduler.SchedulerConfigParser;
 import org.suns.data.collector.collectors.sheet411.Sheet411CoreCollector;
 import org.suns.data.collector.collectors.sheet411.Sheet411PersonalCollector;
 import org.suns.data.collector.collectors.sheet421.Sheet421CoreCollector;
@@ -16,6 +17,7 @@ import org.suns.data.collector.collectors.sheet428.Sheet428CoreCollector;
 import org.suns.data.collector.collectors.sheet428.Sheet428PersonalCollector;
 import org.suns.data.collector.collectors.sheet429.Sheet429CoreCollector;
 import org.suns.data.collector.collectors.sheet429.Sheet429PersonalCollector;
+import org.suns.data.collector.config.DFFormat;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -136,6 +138,25 @@ public class TestInspectionManager {
             System.out.println("OS Inspection Host");
             System.out.println(connectorParser.getDatabaseInspectionConfig()
                     .getPersonal().getCoreOSInspectionHosts());
+
+            SchedulerConfigParser schedulerConfigParser = new SchedulerConfigParser();
+            System.out.println();
+            System.out.println(schedulerConfigParser.getRunTimeMM());
+            System.out.println(schedulerConfigParser.getRunTimeHH());
+            System.out.println(schedulerConfigParser.getLastDayJan());
+            System.out.println(schedulerConfigParser.getLastDayFeb());
+            System.out.println(schedulerConfigParser.getLastDayMar());
+            System.out.println(schedulerConfigParser.getLastDayApr());
+
+            System.out.println();
+            System.out.println(DFFormat.getFileSystemColumn(DFFormat.InspectionSysType.AIX));
+            System.out.println(DFFormat.getFileSystemColumn(DFFormat.InspectionSysType.LINUX));
+            System.out.println(DFFormat.getUsageColumn(DFFormat.InspectionSysType.AIX));
+            System.out.println(DFFormat.getUsageColumn(DFFormat.InspectionSysType.LINUX));
+            System.out.println(DFFormat.getMountedSysColumn(DFFormat.InspectionSysType.AIX));
+            System.out.println(DFFormat.getMountedSysColumn(DFFormat.InspectionSysType.LINUX));
+
+
         }catch (Exception e){
             e.printStackTrace();
         }
