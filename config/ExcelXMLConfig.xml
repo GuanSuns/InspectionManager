@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<ExcelXMLConfig>
+	<ExcelConfig>
+		<rootDirectory>Excel\</rootDirectory>
+		<!-- 个人税收系统巡检表格 -->
+		<personalFile>金税三期个人税收系统基础环境健康检查情况表.xls</personalFile>
+		<!-- 核心征管系统巡检表格 -->
+		<coreFile>金税三期核心征管系统基础环境健康检查情况表.xls</coreFile>
+		<province>广东</province>
+		<!-- Excel表格内表名，务必与Excel内Sheet名字完全一致 -->
+		<sheetNames>
+			<sheet411>4.1.1应用OS文件系统目录使用率</sheet411>
+			<sheet421>4.2.1数据库OS文件系统目录使用率</sheet421>
+			<sheet422>4.2.2表空间使用率检查</sheet422>
+			<sheet423>4.2.3ASM共享磁盘检查</sheet423>
+			<sheet424>4.2.4统计信息收集检查</sheet424>
+			<sheet426>4.2.6alert日志检查</sheet426>
+			<sheet428>4.2.8时钟同步检查</sheet428>
+			<sheet429>4.2.9集群心跳检查</sheet429>
+		</sheetNames>
+	</ExcelConfig>
+
+	<!-- Following elements are Integer -->
+	<!-- 若Excel表格为全新的空表格，填入的最近的巡检记录（单位为天）-->
+	<!-- 建议大于31天 -->
+	<daysRecentInstances>31</daysRecentInstances> 
+
+	<CellStyle>
+		<!-- Following elements are Bolean -->
+		<!-- 是否有边框 -->
+		<border>true</border>
+		<!-- 是否居中 -->
+		<centralAlignment>true</centralAlignment>
+		<!-- Following elements are all Integer -->
+		<!-- 边界风格，默认细 BorderStyle.THIN -->
+		<borderStyle>1</borderStyle>
+		<!-- 边框颜色，默认黑色 IndexedColors.BLACK -->
+		<borderColor>8</borderColor>
+		
+		<!-- Following elements are all String -->
+		<font>等线</font>
+			
+		<!-- Following elements are all Integer -->
+		<!-- 字体大小 -->
+		<fontSize>220</fontSize>
+	</CellStyle>
+
+	<!-- Following elements are String -->
+	<!-- 输出时间格式 -->
+	<dateFormat>yyyy/MM/dd HH:mm</dateFormat>
+	<!-- log文件文件名时间格式，默认即可 -->
+	<fileDateFormat>yyyyMMdd</fileDateFormat>
+	<!-- 空值表示为 -->
+	<nullValue> </nullValue>
+
+</ExcelXMLConfig>

@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Config>
+	<ConnectorConfig>
+        <sessionTimeout>1500</sessionTimeout>
+        <!-- Configuration for oracle jdbc connector-->
+        <oracle>
+            <driver>oracle.jdbc.driver.OracleDriver</driver>
+            <url>jdbc:oracle:thin:@</url>
+        </oracle>
+    </ConnectorConfig>
+
+    <!-- 巡检主机部分 -->
+    <HostsInspection>    
+        <!-- 4.1.1 应用OS文件系统目录使用率 -->
+        <Sheet411>
+            <!-- 核心征管系统 -->
+            <Core>
+                <!-- 巡检内容 -->
+                <rootDirectory>/</rootDirectory>
+                <softwareDirectory>/dev/shm</softwareDirectory>
+
+                <!-- 2 核心前端，D列，E列 -->
+                <hosts2>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                </hosts2>
+
+                <!-- 3 核心后端，F列，G列 -->
+                <hosts3>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                </hosts3>
+
+                <!-- 4 通用查询，H列，I列 -->
+                <hosts4>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                </hosts4>
+
+                <!-- 5 门户web，J列，K列 -->
+                <hosts5>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                </hosts5>
+
+                <!-- 6 核心工作流，L列，M列 -->
+                <hosts6>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                </hosts6>
+
+                <!-- 8 跨层平台，P列，Q列 -->
+                <hosts8>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                </hosts8>
+            </Core> 
+
+            <!-- 个人税收系统 -->
+            <Personal>
+                <!-- 巡检内容 -->
+                <rootDirectory>/</rootDirectory>
+                <softwareDirectory>/dev/shm</softwareDirectory>
+
+                <!-- 2 个税大厅，D列，E列 -->
+                <hosts2>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                </hosts2>
+
+                <!-- 3 个税核心，D列，E列 -->
+                <hosts3>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                </hosts3>
+
+                <!-- 4 个税大厅，5 个税工作流 ，D列，E列 以及 J列，K列 -->
+                <hosts45>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                </hosts45>
+            </Personal>
+        </Sheet411>
+
+        <!-- 4.2.1 数据库OS文件系统目录使用率 -->
+        <Sheet421>
+            <!-- 核心征管系统 -->
+            <Core>
+                <!-- 巡检内容 -->
+                <rootDirectory>/</rootDirectory>
+                <softwareDirectory>/dev/shm</softwareDirectory>
+                <softwareGgsDirectory>/run</softwareGgsDirectory>
+
+                <!-- 2 征管库，E列，F列，G列 -->
+                <hosts2>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                </hosts2>
+
+                <!-- 3 查询库， 5 分发库 -->
+                <!-- H列，I列，N列，O列 -->
+                <hosts35>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                </hosts35>
+
+                <!-- 4 集成平台库，K列，L列，M列 -->
+                <hosts4>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                </hosts4>
+            </Core>
+
+            <!-- 个人税收系统 -->
+            <Personal>
+                <!-- 巡检内容 -->
+                <rootDirectory>/</rootDirectory>
+                <softwareDirectory>/dev/shm</softwareDirectory>
+                <softwareGgsDirectory>/run</softwareGgsDirectory>
+
+                <!-- 2 个税核心库，D列，E列，F列 -->
+                <hosts2>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                </hosts2>
+
+                <!-- 3 个税查询库，G列，H列 -->
+                <hosts3>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                </hosts3>
+            </Personal>
+        </Sheet421>
+
+        <!-- 4.2.8 时钟同步检查 -->
+        <Sheet428>
+            <!-- 时间服务器 -->
+            <timeServer>
+                <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+            </timeServer>
+
+            <!-- 获得系统时间命令 -->
+            <getTimeCMD>date "+%Y-%m-%d %H:%M:%S"</getTimeCMD>
+
+            <correctReport>准确，无差异</correctReport>
+
+            <!-- 可容忍的时间差异，单位毫秒，默认十分钟 -->
+            <diffTolerance>600000</diffTolerance>
+
+            <!-- 核心征管系统 -->
+            <Core>
+                <!-- 核心征管库 E列 -->
+                <hosts1>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                </hosts1>
+
+                <!-- 集成平台库 F列 -->
+                <hosts2>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                </hosts2>
+
+                <!-- 核心分发库，核心查询库，G列，H列 -->
+                <hosts34>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                </hosts34>            
+            </Core>
+
+            <!-- 个人税收系统 -->
+            <Personal>
+                <!-- 1 个税核心库 E列 -->
+                <hosts1>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                </hosts1>
+
+                <!-- 2 核心分发库 G列 -->
+                <hosts2>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                </hosts2>
+
+                <!-- 3 核心查询库 H列 -->
+                <hosts3>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                </hosts3>
+
+                <!-- 4 核心后端应用服务器 J列 -->
+                <hosts4>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                </hosts4>
+            </Personal>
+        </Sheet428>
+    </HostsInspection>
+
+    <!-- 巡检数据库部分 -->
+    <!-- Hosts区分先后顺序，对于集群数据巡检，仅取列表中第一个Host做检查 -->
+    <DatabaseInspection>
+        <!-- 个人税收系统 -->
+        <PersonalDatabase>
+            <!-- 个税核心库 -->
+            <CoreHosts>
+                <host ip="192.168.14.82" port="1521" user="dev_01" password="a" sid="ggjs" log="/software/oracle/trace/test.log">
+                	<OSInspection ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></OSInspection>  
+                </host>
+                <host ip="192.168.14.82" port="1521" user="dev_01" password="a" sid="ggjs" log="/software/oracle/trace/test2.log">
+                	<OSInspection ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></OSInspection>  
+                </host>
+            </CoreHosts>
+        </PersonalDatabase>
+
+        <!-- 核心征管系统 -->
+        <CoreDatabase>
+            <!-- 核心征管库 -->
+            <TaxationHosts>
+                <host ip="192.168.14.82" port="1521" user="dev_01" password="a" sid="ggjs" log="/software/oracle/trace/test.log">
+                	<OSInspection ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></OSInspection>  
+                </host>
+                <host ip="192.168.14.82" port="1521" user="dev_01" password="a" sid="ggjs" log="/software/oracle/trace/test2.log">
+                	<OSInspection ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></OSInspection>  
+                </host>
+            </TaxationHosts>
+
+            <!-- 集成平台库 -->
+            <IntegrationHosts>
+                <host ip="192.168.14.82" port="1521" user="dev_01" password="a" sid="ggjs" log="/software/oracle/trace/test.log">
+                	<OSInspection ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></OSInspection>  
+                </host>
+                <host ip="192.168.14.82" port="1521" user="dev_01" password="a" sid="ggjs" log="/software/oracle/trace/test2.log">
+                	<OSInspection ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></OSInspection>  
+                </host>
+            </IntegrationHosts>
+
+            <!-- 核心查询库 -->
+            <QueryHosts>
+                <host ip="192.168.14.82" port="1521" user="dev_01" password="a" sid="ggjs" log="/software/oracle/trace/test.log">
+                	<OSInspection ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></OSInspection>  
+                </host>
+            </QueryHosts>
+        </CoreDatabase>
+    </DatabaseInspection>
+
+    <!-- 控制 df -h | awk 命令参数，保持默认即可 -->
+    <DFFormat>
+    	<fileSystemColumn>1</fileSystemColumn>
+    	<mountedSysColumn>6</mountedSysColumn>
+    	<usageColumn>5</usageColumn>
+    </DFFormat>   
+
+</Config>
+

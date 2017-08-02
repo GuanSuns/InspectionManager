@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<SchedulerConfig>
+	<!-- 流程调度器运行时间，默认凌晨0点05分 -->
+	<SchedulerRunTime HH="0" mm="5"></SchedulerRunTime>
+
+	<!-- 征期范围配置 -->
+	<!-- 一月最后期限1月18日 -->
+	<Jan>18</Jan>
+	<Feb>15</Feb>
+	<Mar>15</Mar>
+	<Apr>19</Apr>
+	<May>15</May>
+	<Jun>15</Jun>
+	<Jul>17</Jul>
+	<Aug>15</Aug>
+	<Sep>15</Sep>
+	<Oct>23</Oct>
+	<Nov>15</Nov>
+	<Dec>15</Dec>
+</SchedulerConfig>
