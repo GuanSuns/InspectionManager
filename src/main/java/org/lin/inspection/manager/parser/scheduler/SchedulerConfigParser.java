@@ -5,10 +5,14 @@ import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 import org.lin.inspection.manager.config.SchedulerConfig;
 import org.lin.inspection.manager.parser.utils.ParserUtils;
+import org.lin.inspection.manager.utils.Pair;
+
+import java.util.ArrayList;
 
 public class SchedulerConfigParser {
     private Document SchedulerConfigDoc;
     private Element rootElem;
+    private Element dailyInspectionElem;
 
     public SchedulerConfigParser() throws Exception{
         init();
@@ -22,6 +26,18 @@ public class SchedulerConfigParser {
 
         if(rootElem == null){
             throw new Exception("Unexpected XML Config file format: missing root element");
+        }
+    }
+
+    private void initDailyInspectionElem() throws Exception{
+        if(rootElem == null){
+            throw new Exception("Uninitialized root element");
+        }
+
+        dailyInspectionElem = rootElem.getChild(SchedulerConfig.getDailyInspectionTag());
+        if(dailyInspectionElem == null){
+            throw new Exception("Unexpected XML Config file format: missing "
+                    + SchedulerConfig.getDailyInspectionTag() + " element");
         }
     }
 
@@ -146,5 +162,84 @@ public class SchedulerConfigParser {
 
         return ParserUtils.getIntFromElement(rootElem, SchedulerConfig.getDecTag());
     }
-    
+
+    public ArrayList<Pair<Integer, Integer>> getDailyEveTaxPeriodTime() throws Exception {
+        if (dailyInspectionElem == null) {
+            initDailyInspectionElem();
+        }
+
+        Element eveOfTaxPeriodElem = dailyInspectionElem
+                .getChild(SchedulerConfig.getEveOfTaxPeriodTag());
+        if (eveOfTaxPeriodElem == null) {
+            throw new Exception("Unexpected XML Config file format: missing element "
+                    + SchedulerConfig.getEveOfTaxPeriodTag());
+        }
+
+        return ParserUtils.extractTimeArrayFromElem(eveOfTaxPeriodElem
+                , SchedulerConfig.getTimeTag());
+    }
+
+    public ArrayList<Pair<Integer, Integer>> getDailyLastThreeDayTime() throws Exception {
+        if (dailyInspectionElem == null) {
+            initDailyInspectionElem();
+        }
+
+        Element lastThreeDayElem = dailyInspectionElem
+                .getChild(SchedulerConfig.getLastThreeDayTag());
+        if (lastThreeDayElem == null) {
+            throw new Exception("Unexpected XML Config file format: missing element "
+                    + SchedulerConfig.getLastThreeDayTag());
+        }
+
+        return ParserUtils.extractTimeArrayFromElem(lastThreeDayElem
+                , SchedulerConfig.getTimeTag());
+    }
+
+    public ArrayList<Pair<Integer, Integer>> getWithinTaxPeriodTime() throws Exception {
+        if (dailyInspectionElem == null) {
+            initDailyInspectionElem();
+        }
+
+        Element withinTaxPeriodElem = dailyInspectionElem
+                .getChild(SchedulerConfig.getWithinTaxPeriodTag());
+        if (withinTaxPeriodElem == null) {
+            throw new Exception("Unexpected XML Config file format: missing element "
+                    + SchedulerConfig.getWithinTaxPeriodTag());
+        }
+
+        return ParserUtils.extractTimeArrayFromElem(withinTaxPeriodElem
+                , SchedulerConfig.getTimeTag());
+    }
+
+    public ArrayList<Pair<Integer, Integer>> getWeeklyInspectionTime() throws Exception {
+        if(rootElem == null){
+            throw new Exception("Uninitialized root element");
+        }
+
+        Element weeklyInspectionElem = rootElem
+                .getChild(SchedulerConfig.getWeeklyInspectionTag());
+        if (weeklyInspectionElem == null) {
+            throw new Exception("Unexpected XML Config file format: missing element "
+                    + SchedulerConfig.getWeeklyInspectionTag());
+        }
+
+        return ParserUtils.extractTimeArrayFromElem(weeklyInspectionElem
+                , SchedulerConfig.getTimeTag());
+    }
+
+    public ArrayList<Pair<Integer, Integer>> getMonthlyInspectionTime() throws Exception {
+        if(rootElem == null){
+            throw new Exception("Uninitialized root element");
+        }
+
+        Element monthlyInspectionElem = rootElem
+                .getChild(SchedulerConfig.getMonthlyInspectionTag());
+        if (monthlyInspectionElem == null) {
+            throw new Exception("Unexpected XML Config file format: missing element "
+                    + SchedulerConfig.getMonthlyInspectionTag());
+        }
+
+        return ParserUtils.extractTimeArrayFromElem(monthlyInspectionElem
+                , SchedulerConfig.getTimeTag());
+    }
 }

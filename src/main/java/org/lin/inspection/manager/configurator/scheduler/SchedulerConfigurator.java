@@ -25,5 +25,16 @@ public class SchedulerConfigurator {
         SchedulerConfig.setTaxLastDayOct(schedulerConfigParser.getLastDayOct());
         SchedulerConfig.setTaxLastDayNov(schedulerConfigParser.getLastDayNov());
         SchedulerConfig.setTaxLastDayDec(schedulerConfigParser.getLastDayDec());
+
+        SchedulerConfig.setDailyEveInspectionTime(schedulerConfigParser
+                .getDailyEveTaxPeriodTime());
+        SchedulerConfig.setDailyLastThreeDayInspectionTime(schedulerConfigParser
+                .getDailyLastThreeDayTime());
+        SchedulerConfig.setDailyWithinTaxPeriodInspectionTime(schedulerConfigParser
+                .getWithinTaxPeriodTime());
+        SchedulerConfig.setWeeklyInspectionTime(schedulerConfigParser
+                .getWeeklyInspectionTime());
+        SchedulerConfig.setMonthlyInspectionTime(schedulerConfigParser
+                .getMonthlyInspectionTime());
     }
 }

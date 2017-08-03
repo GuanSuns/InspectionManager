@@ -4,8 +4,43 @@
 	<!-- 流程调度器运行时间，默认凌晨0点05分 -->
 	<SchedulerRunTime HH="0" mm="5"></SchedulerRunTime>
 
+	<!-- 日巡检时间 -->
+	<DailyInspection>
+		<!-- 征期开始前一晚 -->
+		<EveOfTaxPeriod>
+			<!-- 22时0分 -->
+			<time HH="15" mm="55"></time>
+		</EveOfTaxPeriod>
+
+		<!-- 征期内最后三天 -->
+		<LastThreeDay>
+			<time HH="15" mm="55"></time>
+			<time HH="15" mm="56"></time>
+			<time HH="16" mm="55"></time>
+		</LastThreeDay>
+
+		<!-- 征期内 -->
+		<WithinTaxPeriod>
+			<time HH="16" mm="27"></time>
+			<time HH="16" mm="27"></time>
+			<time HH="16" mm="28"></time>
+		</WithinTaxPeriod>		
+	</DailyInspection>
+
+	<WeeklyInspection>
+		<!-- 每周日时间 -->
+		<time HH="15" mm="59"></time>
+	</WeeklyInspection>
+
+	<MonthlyInspection>
+		<!-- 每月末最后一天 -->
+		<time HH="15" mm="55"></time>
+	</MonthlyInspection>
+
+
+
 	<!-- 征期范围配置 -->
-	<!-- 一月最后期限1月18日 -->
+	<!-- 例如一月最后期限1月18日 -->
 	<Jan>18</Jan>
 	<Feb>15</Feb>
 	<Mar>15</Mar>
@@ -18,4 +53,5 @@
 	<Oct>23</Oct>
 	<Nov>15</Nov>
 	<Dec>15</Dec>
+
 </SchedulerConfig>

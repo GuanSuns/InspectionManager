@@ -2,6 +2,7 @@ package org.lin.inspection.manager;
 
 import excel.filler.generator.*;
 import org.lin.inspection.manager.configurator.ConfigManager;
+import org.lin.inspection.manager.scheduler.MainScheduler;
 import org.suns.data.collector.collectors.sheet411.Sheet411CoreCollector;
 import org.suns.data.collector.collectors.sheet411.Sheet411PersonalCollector;
 import org.suns.data.collector.collectors.sheet421.Sheet421CoreCollector;
@@ -22,7 +23,9 @@ import org.suns.database.utils.controller.*;
 import org.suns.inspection.logger.InspectionLogger;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.*;
 
 public class Manager {
     public static void main(String[] args) {
@@ -36,9 +39,29 @@ public class Manager {
 
             InspectionLogger.turnOnDebug();
 
-            inspect();
-            generateExcel();
+            ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
+            final CountDownLatch waitCountDown = new CountDownLatch(1);
+            final CountDownLatch setFutureCountDown = new CountDownLatch(1);
+            Calendar now = Calendar.getInstance();
+            Calendar executeTime = Calendar.getInstance();
+            executeTime.set(Calendar.HOUR_OF_DAY, 16);
+            executeTime.set(Calendar.MINUTE, 25);
 
+            MainScheduler mainScheduler = new MainScheduler();
+            mainScheduler.setMainSchedulerCountDown(waitCountDown);
+            mainScheduler.setSetFutureCountDown(setFutureCountDown);
+
+            InspectionLogger.info("Manager evokes main scheduler");
+            Future future = service.scheduleAtFixedRate(mainScheduler
+                    , executeTime.getTimeInMillis() - now.getTimeInMillis()
+                    , 5*60*1000, TimeUnit.MILLISECONDS);
+
+            mainScheduler.setFuture(future);
+            setFutureCountDown.countDown();
+
+            InspectionLogger.info("Manager waits for main scheduler");
+            waitCountDown.await();
+            InspectionLogger.info("Manager finishes waiting for main scheduler");
         }catch (Exception e){
             e.printStackTrace();
         }

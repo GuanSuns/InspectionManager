@@ -2,6 +2,14 @@ package org.lin.inspection.manager.parser.utils;
 
 
 import org.jdom.Element;
+import org.lin.inspection.manager.config.ConnectorParserConfig;
+import org.lin.inspection.manager.config.SchedulerConfig;
+import org.lin.inspection.manager.parser.connector.HostConfig;
+import org.lin.inspection.manager.utils.Pair;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class ParserUtils {
     public static String getStringFromElement(Element rootElem
@@ -58,5 +66,27 @@ public class ParserUtils {
         }
 
         return Integer.valueOf(result);
+    }
+
+    public static ArrayList<Pair<Integer, Integer>> extractTimeArrayFromElem(Element rootElem
+            , String tag) throws Exception{
+        if(rootElem == null || tag == null || tag.equals("")){
+            throw new Exception("Uninitialized argument");
+        }
+
+        List timeElems = rootElem.getChildren(tag);
+        if(timeElems == null || timeElems.isEmpty()){
+            throw new Exception("Unexpected XML Config file format: empty element");
+        }
+
+        ArrayList<Pair<Integer, Integer>> timePairs = new ArrayList<>();
+        for (Iterator it = timeElems.iterator(); it.hasNext();) {
+            Element timeElem = (Element)it.next();
+            int hour = getIntFromAttr(timeElem, SchedulerConfig.getHourAttr());
+            int minute = getIntFromAttr(timeElem, SchedulerConfig.getMinuteAttr());
+            Pair<Integer, Integer> timePair = new Pair<>(hour,minute);
+            timePairs.add(timePair);
+        }
+        return timePairs;
     }
 }

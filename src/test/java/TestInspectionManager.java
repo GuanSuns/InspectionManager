@@ -1,5 +1,6 @@
 import excel.filler.generator.*;
 import org.junit.Test;
+import org.lin.inspection.manager.config.SchedulerConfig;
 import org.lin.inspection.manager.configurator.ConfigManager;
 import org.lin.inspection.manager.parser.connector.ConnectorParser;
 import org.lin.inspection.manager.parser.scheduler.SchedulerConfigParser;
@@ -39,6 +40,9 @@ public class TestInspectionManager {
     //@Test
     public void test_parser(){
         try{
+            ConfigManager configManager = new ConfigManager();
+            configManager.configure();
+
             ConnectorParser connectorParser = new ConnectorParser();
             System.out.println("\nSheet 411");
             System.out.println(connectorParser.getConnectorConfig().getOracleDriver());
@@ -156,6 +160,12 @@ public class TestInspectionManager {
             System.out.println(DFFormat.getMountedSysColumn(DFFormat.InspectionSysType.AIX));
             System.out.println(DFFormat.getMountedSysColumn(DFFormat.InspectionSysType.LINUX));
 
+            System.out.println();
+            System.out.println(SchedulerConfig.getMonthlyInspectionTime());
+            System.out.println(SchedulerConfig.getWeeklyInspectionTime());
+            System.out.println(SchedulerConfig.getDailyEveInspectionTime());
+            System.out.println(SchedulerConfig.getDailyLastThreeDayInspectionTime());
+            System.out.println(SchedulerConfig.getDailyWithinTaxPeriodInspectionTime());
 
         }catch (Exception e){
             e.printStackTrace();

@@ -1,5 +1,9 @@
 package org.lin.inspection.manager.config;
 
+import org.lin.inspection.manager.utils.Pair;
+
+import java.util.ArrayList;
+
 public class SchedulerConfig {
     private static int runTimeHH = 0;
     private static int runTimeMM = 5;
@@ -15,6 +19,17 @@ public class SchedulerConfig {
     private static int taxLastDayOct = 23;
     private static int taxLastDayNov = 15;
     private static int taxLastDayDec = 15;
+
+    private static ArrayList<Pair<Integer, Integer>> dailyEveInspectionTime
+            = new ArrayList<>(0);
+    private static ArrayList<Pair<Integer, Integer>> dailyLastThreeDayInspectionTime
+            = new ArrayList<>(0);
+    private static ArrayList<Pair<Integer, Integer>> dailyWithinTaxPeriodInspectionTime
+            = new ArrayList<>(0);
+    private static ArrayList<Pair<Integer, Integer>> weeklyInspectionTime
+            = new ArrayList<>(0);
+    private static ArrayList<Pair<Integer, Integer>> monthlyInspectionTime
+            = new ArrayList<>(0);
 
 
     private static String runTimeTag = "SchedulerRunTime";
@@ -42,10 +57,50 @@ public class SchedulerConfig {
     private static String dailyInspectionTag = "DailyInspection";
     private static String eveOfTaxPeriodTag = "EveOfTaxPeriod";
     private static String lastThreeDayTag = "LastThreeDay";
-    private static String withinTaxPeriod = "WithinTaxPeriod";
+    private static String withinTaxPeriodTag = "WithinTaxPeriod";
     private static String monthlyInspectionTag = "MonthlyInspection";
     private static String weeklyInspectionTag = "WeeklyInspection";
     private static String timeTag = "time";
+
+    public static ArrayList<Pair<Integer, Integer>> getDailyEveInspectionTime() {
+        return dailyEveInspectionTime;
+    }
+
+    public static void setDailyEveInspectionTime(ArrayList<Pair<Integer, Integer>> dailyEveInspectionTime) {
+        SchedulerConfig.dailyEveInspectionTime = dailyEveInspectionTime;
+    }
+
+    public static ArrayList<Pair<Integer, Integer>> getDailyLastThreeDayInspectionTime() {
+        return dailyLastThreeDayInspectionTime;
+    }
+
+    public static void setDailyLastThreeDayInspectionTime(ArrayList<Pair<Integer, Integer>> dailyLastThreeDayInspectionTime) {
+        SchedulerConfig.dailyLastThreeDayInspectionTime = dailyLastThreeDayInspectionTime;
+    }
+
+    public static ArrayList<Pair<Integer, Integer>> getDailyWithinTaxPeriodInspectionTime() {
+        return dailyWithinTaxPeriodInspectionTime;
+    }
+
+    public static void setDailyWithinTaxPeriodInspectionTime(ArrayList<Pair<Integer, Integer>> dailyWithinTaxPeriodInspectionTime) {
+        SchedulerConfig.dailyWithinTaxPeriodInspectionTime = dailyWithinTaxPeriodInspectionTime;
+    }
+
+    public static ArrayList<Pair<Integer, Integer>> getWeeklyInspectionTime() {
+        return weeklyInspectionTime;
+    }
+
+    public static void setWeeklyInspectionTime(ArrayList<Pair<Integer, Integer>> weeklyInspectionTime) {
+        SchedulerConfig.weeklyInspectionTime = weeklyInspectionTime;
+    }
+
+    public static ArrayList<Pair<Integer, Integer>> getMonthlyInspectionTime() {
+        return monthlyInspectionTime;
+    }
+
+    public static void setMonthlyInspectionTime(ArrayList<Pair<Integer, Integer>> monthlyInspectionTime) {
+        SchedulerConfig.monthlyInspectionTime = monthlyInspectionTime;
+    }
 
     public static String getDailyInspectionTag() {
         return dailyInspectionTag;
@@ -71,12 +126,12 @@ public class SchedulerConfig {
         SchedulerConfig.lastThreeDayTag = lastThreeDayTag;
     }
 
-    public static String getWithinTaxPeriod() {
-        return withinTaxPeriod;
+    public static String getWithinTaxPeriodTag() {
+        return withinTaxPeriodTag;
     }
 
-    public static void setWithinTaxPeriod(String withinTaxPeriod) {
-        SchedulerConfig.withinTaxPeriod = withinTaxPeriod;
+    public static void setWithinTaxPeriodTag(String withinTaxPeriodTag) {
+        SchedulerConfig.withinTaxPeriodTag = withinTaxPeriodTag;
     }
 
     public static String getMonthlyInspectionTag() {

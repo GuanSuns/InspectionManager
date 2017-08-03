@@ -271,10 +271,10 @@
 
     <!-- 控制 df -h | awk 命令参数，保持默认即可 -->
     <DFFormat>
-    	<fileSystemColumn>1</fileSystemColumn>
-    	<mountedSysColumn>6</mountedSysColumn>
-    	<usageColumn>5</usageColumn>
-    </DFFormat>   
+        <fileSystemColumn linux="1" aix="1"></fileSystemColumn>
+        <mountedSysColumn linux="6" aix="6"></mountedSysColumn>
+        <usageColumn linux="5" aix="5"></usageColumn>
+    </DFFormat>  
 
 </Config>
 

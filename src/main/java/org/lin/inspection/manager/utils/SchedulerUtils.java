@@ -2,6 +2,7 @@ package org.lin.inspection.manager.utils;
 
 import org.lin.inspection.manager.scheduler.AbstractScheduler;
 import org.lin.inspection.manager.scheduler.DailyScheduler;
+import org.lin.inspection.manager.scheduler.MonthlyScheduler;
 import org.lin.inspection.manager.scheduler.WeeklyScheduler;
 import org.suns.inspection.logger.InspectionLogger;
 
@@ -63,9 +64,9 @@ public class SchedulerUtils {
             case WEEKLY:
                 return new WeeklyScheduler();
             case MONTHLY:
-                return new DailyScheduler();
+                return new MonthlyScheduler();
             default:
-                return new DailyScheduler();
+                return new MonthlyScheduler();
         }
     }
 }

@@ -1,20 +1,24 @@
 package org.lin.inspection.manager.scheduler;
 
 import org.lin.inspection.manager.config.SchedulerConfig;
-import org.lin.inspection.manager.utils.Pair;
 import org.lin.inspection.manager.utils.SchedulerType;
 import org.lin.inspection.manager.utils.SchedulerUtils;
 import org.suns.inspection.logger.InspectionLogger;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 import java.util.concurrent.*;
 
 public class MainScheduler extends AbstractScheduler{
     @Override
     public void run() {
         try{
+            if(getSetFutureCountDown() == null){
+                throw new Exception("Uninitialized setFutureCountDown");
+            }
+
+            InspectionLogger.info("Main Scheduler waiting for setFutureCountDown");
+            getSetFutureCountDown().await();
+
             ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
             CountDownLatch dailyWaitCountDown = inspectDaily(service);
             CountDownLatch weeklyWaitCountDown = inspectWeekly(service);
@@ -22,19 +26,34 @@ public class MainScheduler extends AbstractScheduler{
 
             if(dailyWaitCountDown != null){
                 InspectionLogger.info("Main scheduler waits for daily inspection");
-                dailyWaitCountDown.await();
+                //dailyWaitCountDown.await();
                 InspectionLogger.info("Main scheduler finishes waiting for daily inspection");
             }
             if(weeklyWaitCountDown != null){
                 InspectionLogger.info("Main scheduler waits for weekly inspection");
-                weeklyWaitCountDown.await();
+                //weeklyWaitCountDown.await();
                 InspectionLogger.info("Main scheduler finishes waiting for weekly inspection");
             }
             if(monthlyWaitCountDown != null){
                 InspectionLogger.info("Main scheduler waits for monthly inspection");
-                monthlyWaitCountDown.await();
+                //monthlyWaitCountDown.await();
                 InspectionLogger.info("Main scheduler finishes waiting for monthly inspection");
             }
+
+            if(getMainSchedulerCountDown() == null){
+                throw new Exception("Uninitialized MainSchedulerCountDown");
+            }
+
+            InspectionLogger.info("Main scheduler waking up manager");
+            getMainSchedulerCountDown().countDown();
+
+            if(getFuture() == null){
+                throw new Exception("Uninitialized Future");
+            }
+
+            InspectionLogger.info("Main Scheduler finishes and kills itself");
+            getFuture().cancel(true);
+
         }catch (Exception e){
             InspectionLogger.error("Error In Main Scheduler - "
                     + e.toString());
@@ -50,12 +69,9 @@ public class MainScheduler extends AbstractScheduler{
             Calendar now = Calendar.getInstance();
 
             if(isLastDayOfMonth(now)){
-                List<Pair<Integer, Integer>> inspectionTimes
-                        = new ArrayList<>(1);
-                inspectionTimes.add(new Pair<>(9,0));
                 waitForChildCountDown = SchedulerUtils.setInspection(service
                         , setFutureCountDown, SchedulerType.MONTHLY
-                        , inspectionTimes);
+                        , SchedulerConfig.getMonthlyInspectionTime());
 
                 InspectionLogger.info("Monthly Inspection " +
                         "counting down future countDown");
@@ -79,12 +95,9 @@ public class MainScheduler extends AbstractScheduler{
             Calendar now = Calendar.getInstance();
 
             if(isSunday(now)){
-                List<Pair<Integer, Integer>> inspectionTimes
-                        = new ArrayList<>(1);
-                inspectionTimes.add(new Pair<>(22,0));
                 waitForChildCountDown = SchedulerUtils.setInspection(service
                         , setFutureCountDown, SchedulerType.WEEKLY
-                        , inspectionTimes);
+                        , SchedulerConfig.getWeeklyInspectionTime());
 
                 InspectionLogger.info("Weekly Inspection " +
                         "counting down future countDown");
@@ -108,40 +121,27 @@ public class MainScheduler extends AbstractScheduler{
             Calendar now = Calendar.getInstance();
 
             if(isOneDayBeforeTaxPeriod(now)){
-                List<Pair<Integer, Integer>> inspectionTimes
-                        = new ArrayList<>(1);
-                inspectionTimes.add(new Pair<>(22,0));
                 waitForChildCountDown = SchedulerUtils.setInspection(service
                         , setFutureCountDown, SchedulerType.DAILY
-                        , inspectionTimes);
+                        , SchedulerConfig.getDailyEveInspectionTime());
 
                 InspectionLogger.info("Daily (One day before Tax Period) " +
                         "Inspection counting down future countDown");
                 setFutureCountDown.countDown();
 
             }else if(isInLastThreeDay(now)){
-                List<Pair<Integer, Integer>> inspectionTimes
-                        = new ArrayList<>(3);
-                inspectionTimes.add(new Pair<>(6,30));
-                inspectionTimes.add(new Pair<>(11,0));
-                inspectionTimes.add(new Pair<>(22,0));
                 waitForChildCountDown = SchedulerUtils.setInspection(service
                         , setFutureCountDown, SchedulerType.DAILY
-                        , inspectionTimes);
+                        , SchedulerConfig.getDailyLastThreeDayInspectionTime());
 
                 InspectionLogger.info("Daily (Last three day) Inspection " +
                         "counting down future countDown");
                 setFutureCountDown.countDown();
 
             }else if(isInTaxPeriod(now)){
-                List<Pair<Integer, Integer>> inspectionTimes
-                        = new ArrayList<>(3);
-                inspectionTimes.add(new Pair<>(8,0));
-                inspectionTimes.add(new Pair<>(11,0));
-                inspectionTimes.add(new Pair<>(17,0));
                 waitForChildCountDown = SchedulerUtils.setInspection(service
                         , setFutureCountDown, SchedulerType.DAILY
-                        , inspectionTimes);
+                        , SchedulerConfig.getDailyWithinTaxPeriodInspectionTime());
 
                 InspectionLogger.info("Daily (In Common Tax Period) Inspection " +
                         "counting down future countDown");
