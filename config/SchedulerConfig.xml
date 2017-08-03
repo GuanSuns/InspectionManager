@@ -9,7 +9,7 @@
 		<!-- 征期开始前一晚 -->
 		<EveOfTaxPeriod>
 			<!-- 22时0分 -->
-			<time HH="15" mm="55"></time>
+			<time HH="11" mm="06"></time>
 		</EveOfTaxPeriod>
 
 		<!-- 征期内最后三天 -->
@@ -21,20 +21,20 @@
 
 		<!-- 征期内 -->
 		<WithinTaxPeriod>
-			<time HH="16" mm="27"></time>
-			<time HH="16" mm="27"></time>
-			<time HH="16" mm="28"></time>
+			<time HH="10" mm="22"></time>
+			<time HH="10" mm="25"></time>
+			<time HH="10" mm="27"></time>
 		</WithinTaxPeriod>		
 	</DailyInspection>
 
 	<WeeklyInspection>
 		<!-- 每周日时间 -->
-		<time HH="15" mm="59"></time>
+		<time HH="11" mm="08"></time>
 	</WeeklyInspection>
 
 	<MonthlyInspection>
 		<!-- 每月末最后一天 -->
-		<time HH="15" mm="55"></time>
+		<time HH="11" mm="07"></time>
 	</MonthlyInspection>
 
 

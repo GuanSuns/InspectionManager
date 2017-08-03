@@ -42,7 +42,9 @@ public class SchedulerUtils {
 
             if(executeTime.after(now)){
                 InspectionLogger.info("Inspection scheduler creating "
-                        + schedulerType.name() +  " inspection future");
+                        + schedulerType.name() +  " inspection future at "
+                        + executeTime.get(Calendar.HOUR_OF_DAY) + " : "
+                        + executeTime.get(Calendar.MINUTE));
 
                 Future future = service.scheduleAtFixedRate(scheduler
                         , executeTime.getTimeInMillis() - now.getTimeInMillis()

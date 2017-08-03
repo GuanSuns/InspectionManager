@@ -124,23 +124,26 @@ public class MonthlyScheduler extends AbstractScheduler{
             InspectionLogger.info("Daily Inspection Generating 429 core Excel");
             Sheet429Generator.generateCore();
 
-            if(getMainSchedulerCountDown() == null){
-                throw new Exception("Uninitialized MainSchedulerCountDown");
-            }
-
-            InspectionLogger.info("Monthly Inspection Waking up main scheduler");
-            getMainSchedulerCountDown().countDown();
-
-            if(getFuture() == null){
-                throw new Exception("Uninitialized Future");
-            }
-
-            InspectionLogger.info("Monthly Inspection finishes and kills itself");
-            getFuture().cancel(true);
-
         }catch (Exception e){
             InspectionLogger.error("Fail in Monthly Inspection - "
                     + e.toString());
+        }finally {
+            if(getMainSchedulerCountDown() == null){
+                InspectionLogger.error("Fail in Monthly Inspection " +
+                        "- Uninitialized MainSchedulerCountDown");
+            }else{
+                InspectionLogger.info("Monthly Inspection Waking up " +
+                        "main scheduler");
+                getMainSchedulerCountDown().countDown();
+            }
+
+            if(getFuture() == null){
+                InspectionLogger.error("Fail in Monthly Inspection " +
+                        "- Uninitialized Future");
+            }else{
+                InspectionLogger.info("Monthly Inspection finishes and kills itself");
+                getFuture().cancel(true);
+            }
         }
     }
 }

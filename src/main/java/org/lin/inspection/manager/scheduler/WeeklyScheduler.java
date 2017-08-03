@@ -40,23 +40,26 @@ public class WeeklyScheduler extends AbstractScheduler {
             InspectionLogger.info("Daily Inspection Generating 422 core Excel");
             Sheet422Generator.generateCore();
 
-            if(getMainSchedulerCountDown() == null){
-                throw new Exception("Uninitialized MainSchedulerCountDown");
-            }
-
-            InspectionLogger.info("Weekly Inspection Waking up main scheduler");
-            getMainSchedulerCountDown().countDown();
-
-            if(getFuture() == null){
-                throw new Exception("Uninitialized Future");
-            }
-
-            InspectionLogger.info("Weekly Inspection finishes and kills itself");
-            getFuture().cancel(true);
-
         }catch (Exception e){
             InspectionLogger.error("Fail in Weekly Inspection - "
                     + e.toString());
+        }finally {
+            if(getMainSchedulerCountDown() == null){
+                InspectionLogger.error("Fail in Weekly Inspection " +
+                        "- Uninitialized MainSchedulerCountDown");
+            }else{
+                InspectionLogger.info("Weekly Inspection Waking up " +
+                        "main scheduler");
+                getMainSchedulerCountDown().countDown();
+            }
+
+            if(getFuture() == null){
+                InspectionLogger.error("Fail in Weekly Inspection " +
+                        "- Uninitialized Future");
+            }else{
+                InspectionLogger.info("Weekly Inspection finishes and kills itself");
+                getFuture().cancel(true);
+            }
         }
     }
 }

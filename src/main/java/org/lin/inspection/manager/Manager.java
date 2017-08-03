@@ -44,8 +44,8 @@ public class Manager {
             final CountDownLatch setFutureCountDown = new CountDownLatch(1);
             Calendar now = Calendar.getInstance();
             Calendar executeTime = Calendar.getInstance();
-            executeTime.set(Calendar.HOUR_OF_DAY, 16);
-            executeTime.set(Calendar.MINUTE, 25);
+            executeTime.set(Calendar.HOUR_OF_DAY, 11);
+            executeTime.set(Calendar.MINUTE, 05);
 
             MainScheduler mainScheduler = new MainScheduler();
             mainScheduler.setMainSchedulerCountDown(waitCountDown);
@@ -54,14 +54,15 @@ public class Manager {
             InspectionLogger.info("Manager evokes main scheduler");
             Future future = service.scheduleAtFixedRate(mainScheduler
                     , executeTime.getTimeInMillis() - now.getTimeInMillis()
-                    , 5*60*1000, TimeUnit.MILLISECONDS);
+                    , 10*60*1000, TimeUnit.MILLISECONDS);
 
             mainScheduler.setFuture(future);
             setFutureCountDown.countDown();
 
             InspectionLogger.info("Manager waits for main scheduler");
             waitCountDown.await();
-            InspectionLogger.info("Manager finishes waiting for main scheduler");
+            InspectionLogger.info("Manager finishes waiting for main scheduler and shutdowns service");
+            service.shutdownNow();
         }catch (Exception e){
             e.printStackTrace();
         }

@@ -62,23 +62,26 @@ public class DailyScheduler extends AbstractScheduler{
             InspectionLogger.info("Daily Inspection Generating 426 core Excel");
             Sheet426Generator.generateCore();
 
-            if(getMainSchedulerCountDown() == null){
-                throw new Exception("Uninitialized MainSchedulerCountDown");
-            }
-
-            InspectionLogger.info("Daily Inspection Waking up main scheduler");
-            getMainSchedulerCountDown().countDown();
-
-            if(getFuture() == null){
-                throw new Exception("Uninitialized Future");
-            }
-
-            InspectionLogger.info("Daily Inspection finishes and kills itself");
-            getFuture().cancel(true);
-
         }catch (Exception e){
             InspectionLogger.error("Fail in Daily Inspection - "
                     + e.toString());
+        }finally {
+            if(getMainSchedulerCountDown() == null){
+                InspectionLogger.error("Fail in Daily Inspection " +
+                        "- Uninitialized MainSchedulerCountDown");
+            }else{
+                InspectionLogger.info("Daily Inspection Waking up " +
+                        "main scheduler");
+                getMainSchedulerCountDown().countDown();
+            }
+
+            if(getFuture() == null){
+                InspectionLogger.error("Fail in Daily Inspection " +
+                        "- Uninitialized Future");
+            }else{
+                InspectionLogger.info("Daily Inspection finishes and kills itself");
+                getFuture().cancel(true);
+            }
         }
     }
 }

@@ -9,6 +9,8 @@ import java.util.Calendar;
 import java.util.concurrent.*;
 
 public class MainScheduler extends AbstractScheduler{
+    ScheduledExecutorService service = null;
+
     @Override
     public void run() {
         try{
@@ -19,46 +21,51 @@ public class MainScheduler extends AbstractScheduler{
             InspectionLogger.info("Main Scheduler waiting for setFutureCountDown");
             getSetFutureCountDown().await();
 
-            ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
+            service = Executors.newSingleThreadScheduledExecutor();
             CountDownLatch dailyWaitCountDown = inspectDaily(service);
-            CountDownLatch weeklyWaitCountDown = inspectWeekly(service);
             CountDownLatch monthlyWaitCountDown = inspectMonthly(service);
+            CountDownLatch weeklyWaitCountDown = inspectWeekly(service);
 
             if(dailyWaitCountDown != null){
                 InspectionLogger.info("Main scheduler waits for daily inspection");
-                //dailyWaitCountDown.await();
+                dailyWaitCountDown.await();
                 InspectionLogger.info("Main scheduler finishes waiting for daily inspection");
             }
             if(weeklyWaitCountDown != null){
                 InspectionLogger.info("Main scheduler waits for weekly inspection");
-                //weeklyWaitCountDown.await();
+                weeklyWaitCountDown.await();
                 InspectionLogger.info("Main scheduler finishes waiting for weekly inspection");
             }
             if(monthlyWaitCountDown != null){
                 InspectionLogger.info("Main scheduler waits for monthly inspection");
-                //monthlyWaitCountDown.await();
+                monthlyWaitCountDown.await();
                 InspectionLogger.info("Main scheduler finishes waiting for monthly inspection");
             }
-
-            if(getMainSchedulerCountDown() == null){
-                throw new Exception("Uninitialized MainSchedulerCountDown");
-            }
-
-            InspectionLogger.info("Main scheduler waking up manager");
-            getMainSchedulerCountDown().countDown();
-
-            if(getFuture() == null){
-                throw new Exception("Uninitialized Future");
-            }
-
-            InspectionLogger.info("Main Scheduler finishes and kills itself");
-            getFuture().cancel(true);
 
         }catch (Exception e){
             InspectionLogger.error("Error In Main Scheduler - "
                     + e.toString());
-        }
+        }finally {
+            if(service != null){
+                service.shutdownNow();
+            }
 
+            if(getMainSchedulerCountDown() == null){
+                InspectionLogger.error("Error In Main Scheduler " +
+                        "- Uninitialized MainSchedulerCountDown");
+            }else{
+                InspectionLogger.info("Main scheduler waking up manager");
+                getMainSchedulerCountDown().countDown();
+            }
+
+            if(getFuture() == null){
+                InspectionLogger.error("Error In Main Scheduler " +
+                        "- Uninitialized Future");
+            }else{
+                InspectionLogger.info("Main Scheduler finishes and kills itself");
+                getFuture().cancel(true);
+            }
+        }
     }
 
     private CountDownLatch inspectMonthly(ScheduledExecutorService service){
@@ -159,7 +166,7 @@ public class MainScheduler extends AbstractScheduler{
 
     private static boolean isSunday(Calendar now){
         int dayOfWeek = now.get(Calendar.DAY_OF_WEEK) - 1;
-        return dayOfWeek == 0;
+        return true; //dayOfWeek == 0;
     }
 
     private static boolean isInTaxPeriod(Calendar now){
@@ -189,7 +196,7 @@ public class MainScheduler extends AbstractScheduler{
             case 7:
             case 9:
             case 11:
-                return day == 31;
+                return true;//day == 31;
             case 1:
             case 3:
             case 5:
