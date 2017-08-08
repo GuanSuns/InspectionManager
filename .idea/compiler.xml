@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="InspectionManager" />
+        <module name="MonitorManager" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="InspectionManager" target="1.8" />
+      <module name="MonitorManager" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

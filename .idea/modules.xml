@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/InspectionManager.iml" filepath="$PROJECT_DIR$/InspectionManager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MonitorManager.iml" filepath="$PROJECT_DIR$/MonitorManager.iml" />
     </modules>
   </component>
 </project>

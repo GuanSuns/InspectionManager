@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.lin</groupId>
-    <artifactId>inspection.manager</artifactId>
-    <version>1.0</version>
+    <artifactId>monitor.manager</artifactId>
+    <version>1.1</version>
 
     <build>
         <plugins>
@@ -27,7 +27,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>org.lin.inspection.manager.Manager</mainClass>
+                            <mainClass>org.lin.monitor.manager.Manager</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
