@@ -7,11 +7,11 @@ import org.suns.host.config.WebLogicServerConfig;
 
 import java.util.ArrayList;
 
-public class DailyAppInspectionPersonalParser {
+public class DailyAppInspectionCoreParser {
     private Element rootElem;
-    private Element personalAppElem;
+    private Element coreAppElem;
 
-    public DailyAppInspectionPersonalParser(Element rootElem) throws Exception{
+    public DailyAppInspectionCoreParser(Element rootElem) throws Exception{
         this.rootElem = rootElem;
         init();
     }
@@ -21,18 +21,18 @@ public class DailyAppInspectionPersonalParser {
             throw new Exception("Uninitialized Root Element");
         }
 
-        personalAppElem = rootElem.getChild(DailyAppParserConfig
-                .getPersonalAppInspectionTag());
-        if(personalAppElem == null){
-            throw new Exception("unexpected XML Config file format: missing personalAppInspection tag");
+        coreAppElem = rootElem.getChild(DailyAppParserConfig
+                .getCoreAppInspectionTag());
+        if(coreAppElem == null){
+            throw new Exception("unexpected XML Config file format: missing coreAppInspection tag");
         }
     }
 
     public ArrayList<WebLogicServerConfig> getWebLogicServers() throws Exception{
-        if(personalAppElem == null){
+        if(coreAppElem == null){
             init();
         }
-        return ParserUtils.extractWebLogicServersFromRootElem(personalAppElem
-                , DailyAppParserConfig.getPersonalAppInspectionTag());
+        return ParserUtils.extractWebLogicServersFromRootElem(coreAppElem
+                , DailyAppParserConfig.getCoreAppInspectionTag());
     }
 }

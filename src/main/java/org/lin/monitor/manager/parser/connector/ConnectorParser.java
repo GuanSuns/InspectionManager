@@ -4,6 +4,8 @@ import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 import org.lin.monitor.manager.config.ConnectorParserConfig;
+import org.lin.monitor.manager.parser.app.DailyAppInspectionCoreParser;
+import org.lin.monitor.manager.parser.app.DailyAppInspectionPersonalParser;
 import org.lin.monitor.manager.parser.connector.connector.InnerConnectorConfigParser;
 import org.lin.monitor.manager.parser.connector.database.InnerDatabaseInspectionConfigParser;
 import org.lin.monitor.manager.parser.connector.df.InnerDfFormatConfigParser;
@@ -19,6 +21,8 @@ public class ConnectorParser {
     private InnerDfFormatConfigParser dfFormatConfig;
     private InnerHostsInspectionConfigParser hostsInspectionConfig;
     private InnerDatabaseInspectionConfigParser databaseInspectionConfig;
+    private DailyAppInspectionCoreParser dailyAppInspectionCoreParser;
+    private DailyAppInspectionPersonalParser dailyAppInspectionPersonalParser;
 
     public ConnectorParser() throws Exception{
         init();
@@ -26,6 +30,8 @@ public class ConnectorParser {
         this.hostsInspectionConfig = null;
         this.databaseInspectionConfig = null;
         this.dfFormatConfig = null;
+        this.dailyAppInspectionCoreParser = null;
+        this.dailyAppInspectionPersonalParser = null;
     }
 
     private void init() throws Exception{
@@ -63,6 +69,24 @@ public class ConnectorParser {
         }else{
             databaseInspectionConfig = new InnerDatabaseInspectionConfigParser(rootElem);
             return databaseInspectionConfig;
+        }
+    }
+
+    public DailyAppInspectionCoreParser getAppInspectionCoreConfig() throws Exception{
+        if(dailyAppInspectionCoreParser != null){
+            return dailyAppInspectionCoreParser;
+        }else{
+            dailyAppInspectionCoreParser = new DailyAppInspectionCoreParser(rootElem);
+            return dailyAppInspectionCoreParser;
+        }
+    }
+
+    public DailyAppInspectionPersonalParser getAppInspectionPersonalConfig() throws Exception{
+        if(dailyAppInspectionPersonalParser != null){
+            return dailyAppInspectionPersonalParser;
+        }else{
+            dailyAppInspectionPersonalParser = new DailyAppInspectionPersonalParser(rootElem);
+            return dailyAppInspectionPersonalParser;
         }
     }
 

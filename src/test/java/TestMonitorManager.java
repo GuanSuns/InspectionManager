@@ -1,9 +1,15 @@
 import org.junit.Test;
 import org.lin.monitor.manager.config.SchedulerConfig;
 import org.lin.monitor.manager.configurator.ConfigManager;
+import org.lin.monitor.manager.parser.app.DailyAppInspectionCoreParser;
 import org.lin.monitor.manager.parser.connector.ConnectorParser;
 import org.lin.monitor.manager.parser.scheduler.SchedulerConfigParser;
 import org.suns.data.collector.config.DFFormat;
+import org.suns.host.config.AppCluster;
+import org.suns.host.config.AppHost;
+import org.suns.host.config.WebLogicServerConfig;
+
+import java.util.ArrayList;
 
 /**
  * Created by guanl on 7/14/2017.
@@ -12,13 +18,35 @@ public class TestMonitorManager {
     @Test
     public void testInspectionManager(){
         try{
-            test_parser();
+            test_app_parser();
 
         }catch (Exception e){
             e.printStackTrace();
         }
 
     }
+
+    public void test_app_parser() throws Exception{
+        ConnectorParser connectorParser = new ConnectorParser();
+
+        //System.out.println(connectorParser.getAppInspectionPersonalConfig().getWebLogicServers());
+        //System.out.println(connectorParser.getAppInspectionCoreConfig().getWebLogicServers());
+        ArrayList<WebLogicServerConfig> webLogicServerConfigs = connectorParser.getAppInspectionPersonalConfig().getWebLogicServers();
+        for(WebLogicServerConfig webLogicServerConfig : webLogicServerConfigs){
+            System.out.println("WebServer Name: " + webLogicServerConfig.getIp()
+                    + " , " + webLogicServerConfig.getPort());
+            for (AppCluster cluster: webLogicServerConfig.getClusters()){
+                System.out.println("  Cluster Name: " + cluster.getName());
+                for(AppHost host: cluster.getHosts()){
+                    System.out.println("    Host Name: " + host.getIp());
+                    for(String strServer : host.getServers()){
+                        System.out.println("      Server Name: " + strServer);
+                    }
+                }
+            }
+        }
+    }
+
     //@Test
     public void test_parser(){
         try{

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Config>
-	<ConnectorConfig>
+    <ConnectorConfig>
         <sessionTimeout>1500</sessionTimeout>
         <!-- Configuration for oracle jdbc connector-->
         <oracle>
@@ -18,45 +18,45 @@
             <Core>
                 <!-- 巡检内容 -->
                 <rootDirectory>/</rootDirectory>
-                <softwareDirectory>/dev/shm</softwareDirectory>
+                <softwareDirectory>/software</softwareDirectory>
 
                 <!-- 2 核心前端，D列，E列 -->
                 <hosts2>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="150.12.192.20" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.192.21" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.192.22" port="22" user="monitor" password="##micR66"></host>
                 </hosts2>
 
                 <!-- 3 核心后端，F列，G列 -->
                 <hosts3>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="150.12.200.20" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.200.21" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.200.22" port="22" user="monitor" password="##micR66"></host>
                 </hosts3>
 
                 <!-- 4 通用查询，H列，I列 -->
                 <hosts4>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="150.12.200.27" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.200.28" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.200.29" port="22" user="monitor" password="##micR66"></host>
                 </hosts4>
 
                 <!-- 5 门户web，J列，K列 -->
                 <hosts5>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="150.12.192.30" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.192.31" port="22" user="monitor" password="##micR66"></host>
                 </hosts5>
 
                 <!-- 6 核心工作流，L列，M列 -->
                 <hosts6>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="150.12.200.30" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.200.31" port="22" user="monitor" password="##micR66"></host>
                 </hosts6>
 
                 <!-- 8 跨层平台，P列，Q列 -->
                 <hosts8>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="150.12.240.34" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.240.35" port="22" user="monitor" password="##micR66"></host>
                 </hosts8>
             </Core> 
 
@@ -64,26 +64,26 @@
             <Personal>
                 <!-- 巡检内容 -->
                 <rootDirectory>/</rootDirectory>
-                <softwareDirectory>/dev/shm</softwareDirectory>
+                <softwareDirectory>/software</softwareDirectory>
 
                 <!-- 2 个税大厅，D列，E列 -->
                 <hosts2>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="150.12.192.40" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.192.41" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.192.42" port="22" user="monitor" password="##micR66"></host>
                 </hosts2>
 
                 <!-- 3 个税核心，D列，E列 -->
                 <hosts3>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="150.12.200.40" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.200.41" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.200.42" port="22" user="monitor" password="##micR66"></host>
                 </hosts3>
 
                 <!-- 4 个税大厅，5 个税工作流 ，D列，E列 以及 J列，K列 -->
                 <hosts45>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="150.12.200.40" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.200.41" port="22" user="monitor" password="##micR66"></host>
                 </hosts45>
             </Personal>
         </Sheet411>
@@ -94,30 +94,30 @@
             <Core>
                 <!-- 巡检内容 -->
                 <rootDirectory>/</rootDirectory>
-                <softwareDirectory>/dev/shm</softwareDirectory>
-                <softwareGgsDirectory>/run</softwareGgsDirectory>
+                <softwareDirectory>/software</softwareDirectory>
+                <softwareGgsDirectory>/software/ggs</softwareGgsDirectory>
 
                 <!-- 2 征管库，E列，F列，G列 -->
                 <hosts2>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="150.12.73.20" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.73.22" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.201.20" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.201.22" port="22" user="monitor" password="##micR66"></host>
                 </hosts2>
 
                 <!-- 3 查询库， 5 分发库 -->
                 <!-- H列，I列，N列，O列 -->
                 <hosts35>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="150.12.73.28" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.201.28" port="22" user="monitor" password="##micR66"></host>
                 </hosts35>
 
                 <!-- 4 集成平台库，K列，L列，M列 -->
                 <hosts4>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="150.12.73.30" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.73.32" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.201.30" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.201.32" port="22" user="monitor" password="##micR66"></host>
                 </hosts4>
             </Core>
 
@@ -125,21 +125,21 @@
             <Personal>
                 <!-- 巡检内容 -->
                 <rootDirectory>/</rootDirectory>
-                <softwareDirectory>/dev/shm</softwareDirectory>
-                <softwareGgsDirectory>/run</softwareGgsDirectory>
+                <softwareDirectory>/software</softwareDirectory>
+                <softwareGgsDirectory>/software/ggs</softwareGgsDirectory>
 
                 <!-- 2 个税核心库，D列，E列，F列 -->
                 <hosts2>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="150.12.73.40" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.73.42" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.201.40" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.201.42" port="22" user="monitor" password="##micR66"></host>
                 </hosts2>
 
                 <!-- 3 个税查询库，G列，H列 -->
                 <hosts3>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="150.12.73.28" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.201.28" port="22" user="monitor" password="##micR66"></host>
                 </hosts3>
             </Personal>
         </Sheet421>
@@ -148,7 +148,7 @@
         <Sheet428>
             <!-- 时间服务器 -->
             <timeServer>
-                <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                <host ip="150.12.216.250"  port="22" user="monitor" password="##micR66"></host>
             </timeServer>
 
             <!-- 获得系统时间命令 -->
@@ -157,35 +157,35 @@
             <correctReport>准确，无差异</correctReport>
 
             <!-- 可容忍的时间差异，单位毫秒，默认十分钟 -->
-            <diffTolerance>600000</diffTolerance>
+            <diffTolerance>100000</diffTolerance>
 
             <!-- 核心征管系统 -->
             <Core>
                 <!-- 核心征管库 E列 -->
                 <hosts1>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="150.12.73.20" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.201.20" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.201.22" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.73.22" port="22" user="monitor" password="##micR66"></host>
                 </hosts1>
 
                 <!-- 集成平台库 F列 -->
                 <hosts2>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="150.12.73.30" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.73.32" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.201.30" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.201.32" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.192.20" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.192.21" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.192.22" port="22" user="monitor" password="##micR66"></host>
                 </hosts2>
 
                 <!-- 核心分发库，核心查询库，G列，H列 -->
                 <hosts34>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="150.12.73.28" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.200.20" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.200.21" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.200.22" port="22" user="monitor" password="##micR66"></host>
                 </hosts34>            
             </Core>
 
@@ -193,88 +193,302 @@
             <Personal>
                 <!-- 1 个税核心库 E列 -->
                 <hosts1>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="150.12.73.40" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.201.40" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.201.42" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.73.42" port="22" user="monitor" password="##micR66"></host>
                 </hosts1>
 
                 <!-- 2 核心分发库 G列 -->
                 <hosts2>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="150.12.192.40" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.192.41" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.192.42" port="22" user="monitor" password="##micR66"></host>
                 </hosts2>
 
                 <!-- 3 核心查询库 H列 -->
                 <hosts3>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="150.12.200.40" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.200.41" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.200.42" port="22" user="monitor" password="##micR66"></host>
                 </hosts3>
 
                 <!-- 4 核心后端应用服务器 J列 -->
                 <hosts4>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
-                    <host ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></host>
+                    <host ip="150.12.200.40" port="22" user="monitor" password="##micR66"></host>
+                    <host ip="150.12.200.41" port="22" user="monitor" password="##micR66"></host>
                 </hosts4>
             </Personal>
         </Sheet428>
     </HostsInspection>
 
     <!-- 巡检数据库部分 -->
-    <!-- Hosts区分先后顺序，对于集群数据巡检，仅取列表中第一个Host做检查 -->
     <DatabaseInspection>
         <!-- 个人税收系统 -->
         <PersonalDatabase>
             <!-- 个税核心库 -->
             <CoreHosts>
-                <host ip="192.168.14.82" port="1521" user="dev_01" password="a" sid="ggjs" log="/software/oracle/trace/test.log">
-                	<OSInspection ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></OSInspection>  
+            	<host ip="150.12.201.42" port="1521" user="expdata" password="9ESV6v66n0" sid="gdltgshx2" log="/software/oracle/diag/rdbms/gdltgshx/gdltgshx2/trace/alert_gdltgshx2.log">
+                    <OSInspection ip="150.12.201.42" port="22" user="monitor" password="##micR66"></OSInspection>   
                 </host>
-                <host ip="192.168.14.82" port="1521" user="dev_01" password="a" sid="ggjs" log="/software/oracle/trace/test2.log">
-                	<OSInspection ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></OSInspection>  
-                </host>
+                <host ip="150.12.201.40" port="1521" user="expdata" password="9ESV6v66n0" sid="gdltgshx1" log="/software/oracle/diag/rdbms/gdltgshx/gdltgshx1/trace/alert_gdltgshx1.log">
+                    <OSInspection ip="150.12.201.40" port="22" user="monitor" password="##micR66"></OSInspection>  
+                </host>                
             </CoreHosts>
         </PersonalDatabase>
 
-        <!-- 核心征管系统 -->
+        <!-- 核心征管系统 -->        
         <CoreDatabase>
             <!-- 核心征管库 -->
             <TaxationHosts>
-                <host ip="192.168.14.82" port="1521" user="dev_01" password="a" sid="ggjs" log="/software/oracle/trace/test.log">
-                	<OSInspection ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></OSInspection>  
+            	<host ip="150.12.201.22" port="1521" user="expdata" password="9ESV6v66n0" sid="gdlthxzg2" log="/software/oracle/diag/rdbms/gdlthxzg/gdlthxzg2/trace/alert_gdlthxzg2.log">
+                    <OSInspection ip="150.12.201.22" port="22" user="monitor" password="##micR66"></OSInspection>     
                 </host>
-                <host ip="192.168.14.82" port="1521" user="dev_01" password="a" sid="ggjs" log="/software/oracle/trace/test2.log">
-                	<OSInspection ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></OSInspection>  
-                </host>
+                <host ip="150.12.201.20" port="1521" user="expdata" password="9ESV6v66n0" sid="gdlthxzg1" log="/software/oracle/diag/rdbms/gdlthxzg/gdlthxzg1/trace/alert_gdlthxzg1.log">
+                    <OSInspection ip="150.12.201.20" port="22" user="monitor" password="##micR66"></OSInspection> 
+                </host>        
             </TaxationHosts>
 
             <!-- 集成平台库 -->
             <IntegrationHosts>
-                <host ip="192.168.14.82" port="1521" user="dev_01" password="a" sid="ggjs" log="/software/oracle/trace/test.log">
-                	<OSInspection ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></OSInspection>  
+            	<host ip="150.12.201.32" port="1521" user="expdata" password="Data_weihuExp" sid="gdltjcpt2" log="/software/oracle/diag/rdbms/gdltjcpt/gdltjcpt2/trace/alert_gdltjcpt2.log">
+                    <OSInspection ip="150.12.201.32" port="22" user="monitor" password="##micR66"></OSInspection>    
                 </host>
-                <host ip="192.168.14.82" port="1521" user="dev_01" password="a" sid="ggjs" log="/software/oracle/trace/test2.log">
-                	<OSInspection ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></OSInspection>  
+                <host ip="150.12.201.30" port="1521" user="expdata" password="Data_weihuExp" sid="gdltjcpt1" log="/software/oracle/diag/rdbms/gdltjcpt/gdltjcpt1/trace/alert_gdltjcpt1.log">
+                    <OSInspection ip="150.12.201.30" port="22" user="monitor" password="##micR66"></OSInspection>    
                 </host>
             </IntegrationHosts>
 
             <!-- 核心查询库 -->
             <QueryHosts>
-                <host ip="192.168.14.82" port="1521" user="dev_01" password="a" sid="ggjs" log="/software/oracle/trace/test.log">
-                	<OSInspection ip="119.29.201.188" port="22" user="root" password="whiteglcap25"></OSInspection>  
+                <host ip="150.12.201.28" port="1521" user="expdata" password="Data_weihuExp" sid="gdltcxff" log="/software/oracle/diag/rdbms/gdltcxff/gdltgcxff/trace/alert_gdltcxff.log">
+                    <OSInspection ip="150.12.201.28" port="22" user="monitor" password="##micR66"></OSInspection>  
                 </host>
             </QueryHosts>
         </CoreDatabase>
     </DatabaseInspection>
+
+    <!-- 巡检日报应用检查部分 -->  
+    <CoreAppInspection>
+    	<WebLogicServer ip="150.12.192.20" port="9001" user="monitor" password="##micR66">
+    		<cluster name="hxqd">
+    			<host ip="150.12.192.20" port="22" user="monitor" password="##micR66">
+    				<server name="hxqd_gdlt_svr001"/>
+    				<server name="hxqd_gdlt_svr002"/>
+    				<server name="hxqd_gdlt_svr003"/>
+    				<server name="hxqd_gdlt_svr004"/>
+    			</host>
+    			<host ip="150.12.192.21" port="22" user="monitor" password="##micR66">
+    				<server name="hxqd_gdlt_svr005"/>
+    				<server name="hxqd_gdlt_svr006"/>
+    				<server name="hxqd_gdlt_svr007"/>
+    				<server name="hxqd_gdlt_svr008"/>
+    			</host>
+    			<host ip="150.12.192.22" port="22" user="monitor" password="##micR66">
+    				<server name="hxqd_gdlt_svr009"/>
+    				<server name="hxqd_gdlt_svr010"/>
+    				<server name="hxqd_gdlt_svr011"/>
+    				<server name="hxqd_gdlt_svr012"/>
+    			</host>
+    		</cluster>
+
+    		<cluster name="mhwb_wfbs">
+    			<host ip="150.12.192.30" port="22" user="monitor" password="##micR66">
+    				<server name="mhwb_gdlt_svr001"/>
+    				<server name="mhwb_gdlt_svr002"/>
+    				<server name="wfbs_gdlt_svr001"/>
+    				<server name="wfbs_gdlt_svr002"/>
+    			</host>
+    			<host ip="150.12.192.31" port="22" user="monitor" password="##micR66">
+    				<server name="mhwb_gdlt_svr003"/>
+    				<server name="mhwb_gdlt_svr004"/>
+    				<server name="wfbs_gdlt_svr003"/>
+    				<server name="wfbs_gdlt_svr004"/>
+    			</host>
+    		</cluster>
+    	</WebLogicServer>
+
+    	<WebLogicServer ip="150.12.200.32" port="9001" user="monitor" password="##micR66">
+    		<cluster name="hxhd_dsrw">
+    			<host ip="150.12.200.20" port="22" user="monitor" password="##micR66">
+    				<server name="hxhd_gdlt_svr001"/>
+    				<server name="hxhd_gdlt_svr002"/>
+    				<server name="hxhd_gdlt_svr003"/>
+    				<server name="hxhd_gdlt_svr004"/>
+    				<server name="dsrw_gdlt_svr001"/>
+    				<server name="dsrw_gdlt_svr002"/>
+    			</host>
+    			<host ip="150.12.200.21" port="22" user="monitor" password="##micR66">
+    				<server name="hxhd_gdlt_svr005"/>
+    				<server name="hxhd_gdlt_svr006"/>
+    				<server name="hxhd_gdlt_svr007"/>
+    				<server name="hxhd_gdlt_svr008"/>
+    				<server name="dsrw_gdlt_svr003"/>
+    				<server name="dsrw_gdlt_svr004"/>
+    			</host>
+    			<host ip="150.12.200.22" port="22" user="monitor" password="##micR66">
+    				<server name="hxhd_gdlt_svr009"/>
+    				<server name="hxhd_gdlt_svr010"/>
+    				<server name="hxhd_gdlt_svr011"/>
+    				<server name="hxhd_gdlt_svr012"/>
+    			</host>
+    		</cluster>
+
+    		<cluster name="tycx_jnap">
+    			<host ip="150.12.200.28" port="22" user="monitor" password="##micR66">
+    				<server name="tycx_gdlt_svr001"/>
+    				<server name="tycx_gdlt_svr002"/>
+    				<server name="tycx_gdlt_svr003"/>
+    				<server name="tycx_gdlt_svr004"/>
+    			</host>
+    			<host ip="150.12.200.29" port="22" user="monitor" password="##micR66">
+    				<server name="tycx_gdlt_svr005"/>
+    				<server name="tycx_gdlt_svr006"/>
+    				<server name="tycx_gdlt_svr007"/>
+    				<server name="tycx_gdlt_svr008"/>
+    			</host>
+    			<host ip="150.12.200.27" port="22" user="monitor" password="##micR66">
+    				<server name="tycx_gdlt_svr009"/>
+    				<server name="tycx_gdlt_svr010"/>
+    				<server name="tycx_gdlt_svr011"/>
+    				<server name="tycx_gdlt_svr012"/>
+    			</host>
+    			<host ip="150.12.200.32" port="22" user="monitor" password="##micR66">
+    				<server name="jnap_gdlt_svr001"/>
+    				<server name="jnap_gdlt_svr002"/>
+    				<server name="jnap_gdlt_svr003"/>
+    				<server name="jnap_gdlt_svr004"/>
+    			</host>
+    			<host ip="150.12.200.33" port="22" user="monitor" password="##micR66">
+    				<server name="jnap_gdlt_svr005"/>
+    				<server name="jnap_gdlt_svr006"/>
+    				<server name="jnap_gdlt_svr007"/>
+    				<server name="jnap_gdlt_svr008"/>
+    			</host>
+    			<host ip="150.12.200.34" port="22" user="monitor" password="##micR66">
+    				<server name="jnap_gdlt_svr009"/>
+    				<server name="jnap_gdlt_svr010"/>
+    				<server name="jnap_gdlt_svr011"/>
+    				<server name="jnap_gdlt_svr012"/>
+    			</host>
+    		</cluster>
+
+    		<cluster name="hxwf_mhap_jcpt">
+    			<host ip="150.12.200.30" port="22" user="monitor" password="##micR66">
+    				<server name="hxwf_gdlt_svr001"/>
+    				<server name="hxwf_gdlt_svr002"/>
+    				<server name="hxwf_gdlt_svr003"/>
+    				<server name="jcpt_gdlt_svr001"/>
+    				<server name="jcpt_gdlt_svr002"/>
+    				<server name="mhap_gdlt_svr001"/>    				
+    				<server name="mhap_gdlt_svr002"/>
+    			</host>
+    			<host ip="150.12.200.31" port="22" user="monitor" password="##micR66">
+    				<server name="hxwf_gdlt_svr004"/>
+    				<server name="hxwf_gdlt_svr005"/>
+    				<server name="hxwf_gdlt_svr006"/>
+    				<server name="jcpt_gdlt_svr003"/>
+    				<server name="jcpt_gdlt_svr004"/>
+    				<server name="mhap_gdlt_svr003"/>
+    				<server name="mhap_gdlt_svr004"/>
+    			</host>
+    		</cluster>
+    	</WebLogicServer>
+
+    	<WebLogicServer ip="150.12.240.32" port="9001" user="monitor" password="##micR66">
+    		<cluster name="kcpt">
+    			<host ip="150.12.240.34" port="22" user="monitor" password="##micR66">
+    				<server name="kcpt_gdlt_svr001"/>
+    				<server name="kcpt_gdlt_svr002"/>
+    			</host>
+    			<host ip="150.12.240.35" port="22" user="monitor" password="##micR66">
+    				<server name="kcpt_gdlt_svr003"/>
+    				<server name="kcpt_gdlt_svr004"/>
+    			</host>
+    		</cluster>
+    	</WebLogicServer>
+    </CoreAppInspection>
+
+    <PersonalAppInspection>
+    	<WebLogicServer ip="150.12.192.40" port="9001" user="monitor" password="##micR66">
+    		<cluster name="gsdt">
+    			<host ip="150.12.192.40" port="22" user="monitor" password="##micR66">
+    				<server name="gsdtServer_1"/>
+    				<server name="gsdtServer_2"/>
+    				<server name="gsdtServer_3"/>
+    				<server name="gsdtServer_4"/>
+    			</host>
+    			<host ip="150.12.192.41" port="22" user="monitor" password="##micR66">
+    				<server name="gsdtServer_5"/>
+    				<server name="gsdtServer_6"/>
+    				<server name="gsdtServer_7"/>
+    				<server name="gsdtServer_8"/>
+    			</host>
+    			<host ip="150.12.192.42" port="22" user="monitor" password="##micR66">
+    				<server name="gsdtServer_9"/>
+    				<server name="gsdtServer_10"/>
+    				<server name="gsdtServer_11"/>
+    				<server name="gsdtServer_12"/>
+    			</host>
+    		</cluster>
+    	</WebLogicServer>
+
+    	<WebLogicServer ip="150.12.200.40" port="9001" user="monitor" password="##micR66">
+    		<cluster name="gshx">
+    			<host ip="150.12.200.40" port="22" user="monitor" password="##micR66">
+    				<server name="gshxServer_1"/>
+    				<server name="gshxServer_2"/>
+    				<server name="gshxServer_3"/>
+    				<server name="gshxServer_4"/>
+    			</host>
+    			<host ip="150.12.200.41" port="22" user="monitor" password="##micR66">
+    				<server name="gshxServer_5"/>
+    				<server name="gshxServer_6"/>
+    				<server name="gshxServer_7"/>
+    				<server name="gshxServer_8"/>
+    			</host>
+    			<host ip="150.12.200.42" port="22" user="monitor" password="##micR66">
+    				<server name="gshxServer_9"/>
+    				<server name="gshxServer_10"/>
+    				<server name="gshxServer_11"/>
+    				<server name="gshxServer_12"/>
+    			</host>
+    		</cluster>
+    	</WebLogicServer>
+
+    	<WebLogicServer ip="150.12.200.40" port="9002" user="monitor" password="##micR66">
+    		<cluster name="gzl">
+    			<host ip="150.12.200.40" port="22" user="monitor" password="##micR66">
+    				<server name="gzlServer_1"/>
+    				<server name="gzlServer_2"/>
+    			</host>
+    			<host ip="150.12.200.41" port="22" user="monitor" password="##micR66">
+    				<server name="gzlServer_3"/>
+    				<server name="gzlServer_4"/>
+    			</host>
+    		</cluster>
+    	</WebLogicServer>
+
+    	<WebLogicServer ip="150.12.192.40" port="9002" user="monitor" password="##micR66">
+    		<cluster name="gscx">
+    			<host ip="150.12.192.40" port="22" user="monitor" password="##micR66">
+    				<server name="gscxServer_1"/>
+    				<server name="gscxServer_2"/>
+    			</host>
+    			<host ip="150.12.192.41" port="22" user="monitor" password="##micR66">
+    				<server name="gscxServer_3"/>
+    				<server name="gscxServer_4"/>
+    			</host>
+    		</cluster>
+    	</WebLogicServer>
+    </PersonalAppInspection>
 
     <!-- 控制 df -h | awk 命令参数，保持默认即可 -->
     <DFFormat>
         <fileSystemColumn linux="1" aix="1"></fileSystemColumn>
         <mountedSysColumn linux="6" aix="6"></mountedSysColumn>
         <usageColumn linux="5" aix="5"></usageColumn>
-    </DFFormat>  
+    </DFFormat>   
 
 </Config>
 

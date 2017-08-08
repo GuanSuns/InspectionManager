@@ -9,32 +9,32 @@
 		<!-- 征期开始前一晚 -->
 		<EveOfTaxPeriod>
 			<!-- 22时0分 -->
-			<time HH="11" mm="06"></time>
+			<time HH="22" mm="0"></time>
 		</EveOfTaxPeriod>
 
 		<!-- 征期内最后三天 -->
 		<LastThreeDay>
-			<time HH="15" mm="55"></time>
-			<time HH="15" mm="56"></time>
-			<time HH="16" mm="55"></time>
+			<time HH="6" mm="30"></time>
+			<time HH="11" mm="0"></time>
+			<time HH="22" mm="0"></time>
 		</LastThreeDay>
 
 		<!-- 征期内 -->
 		<WithinTaxPeriod>
-			<time HH="10" mm="22"></time>
-			<time HH="10" mm="25"></time>
-			<time HH="10" mm="27"></time>
+			<time HH="8" mm="0"></time>
+			<time HH="11" mm="0"></time>
+			<time HH="17" mm="0"></time>
 		</WithinTaxPeriod>		
 	</DailyInspection>
 
 	<WeeklyInspection>
 		<!-- 每周日时间 -->
-		<time HH="11" mm="08"></time>
+		<time HH="22" mm="0"></time>
 	</WeeklyInspection>
 
 	<MonthlyInspection>
 		<!-- 每月末最后一天 -->
-		<time HH="11" mm="07"></time>
+		<time HH="9" mm="0"></time>
 	</MonthlyInspection>
 
 

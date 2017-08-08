@@ -7,6 +7,7 @@ public class ConnectorParserConfig {
     private static String rootDirectory ="config\\";
     private static String connectorConfigXML = "ConnectorConfig.xml";
 
+    private static String serverTag = "server";
     private static String hostTag = "host";
     private static String inspectionOSHostTag = "OSInspection";
     private static String ipAttr = "ip";
@@ -15,6 +16,7 @@ public class ConnectorParserConfig {
     private static String passwordAttr = "password";
     private static String sidAttr = "sid";
     private static String logAttr = "log";
+    private static String nameAttr = "name";
 
     //Connector Config
     private static String connectorConfigRootTag = "ConnectorConfig";
@@ -99,6 +101,22 @@ public class ConnectorParserConfig {
 
     public static String getLinuxAttr() {
         return linuxAttr;
+    }
+
+    public static String getServerTag() {
+        return serverTag;
+    }
+
+    public static void setServerTag(String serverTag) {
+        ConnectorParserConfig.serverTag = serverTag;
+    }
+
+    public static String getNameAttr() {
+        return nameAttr;
+    }
+
+    public static void setNameAttr(String nameAttr) {
+        ConnectorParserConfig.nameAttr = nameAttr;
     }
 
     public static void setLinuxAttr(String linuxAttr) {
