@@ -7,7 +7,7 @@ import org.lin.monitor.manager.parser.scheduler.SchedulerConfigParser;
 import org.suns.data.collector.config.DFFormat;
 import org.suns.host.config.AppCluster;
 import org.suns.host.config.AppHost;
-import org.suns.host.config.WebLogicServerConfig;
+import org.suns.host.config.WebLogicServer;
 
 import java.util.ArrayList;
 
@@ -31,12 +31,13 @@ public class TestMonitorManager {
 
         //System.out.println(connectorParser.getAppInspectionPersonalConfig().getWebLogicServers());
         //System.out.println(connectorParser.getAppInspectionCoreConfig().getWebLogicServers());
-        ArrayList<WebLogicServerConfig> webLogicServerConfigs = connectorParser.getAppInspectionPersonalConfig().getWebLogicServers();
-        for(WebLogicServerConfig webLogicServerConfig : webLogicServerConfigs){
+        ArrayList<WebLogicServer> webLogicServerConfigs = connectorParser.getAppInspectionCoreConfig().getWebLogicServers();
+        for(WebLogicServer webLogicServerConfig : webLogicServerConfigs){
             System.out.println("WebServer Name: " + webLogicServerConfig.getIp()
                     + " , " + webLogicServerConfig.getPort());
             for (AppCluster cluster: webLogicServerConfig.getClusters()){
                 System.out.println("  Cluster Name: " + cluster.getName());
+                //System.out.println(cluster.getServers());
                 for(AppHost host: cluster.getHosts()){
                     System.out.println("    Host Name: " + host.getIp());
                     for(String strServer : host.getServers()){

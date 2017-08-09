@@ -17,6 +17,7 @@ public class ConnectorParserConfig {
     private static String sidAttr = "sid";
     private static String logAttr = "log";
     private static String nameAttr = "name";
+    private static String printedNameAttr = "printedName";
 
     //Connector Config
     private static String connectorConfigRootTag = "ConnectorConfig";
@@ -80,6 +81,7 @@ public class ConnectorParserConfig {
 
     //Connector Config
     private static String databaseInspectionConfigRootTag = "DatabaseInspection";
+    private static String databaseClusterTag = "Hosts";
 
     //PersonalDatabase Config
     private static String dbInspectionPersonalDatabaseTag = "PersonalDatabase";
@@ -98,6 +100,22 @@ public class ConnectorParserConfig {
     private static String dfUsageColumn = "usageColumn";
     private static String linuxAttr = "linux";
     private static String aixAttr = "aix";
+
+    public static String getDatabaseClusterTag() {
+        return databaseClusterTag;
+    }
+
+    public static void setDatabaseClusterTag(String databaseClusterTag) {
+        ConnectorParserConfig.databaseClusterTag = databaseClusterTag;
+    }
+
+    public static String getPrintedNameAttr() {
+        return printedNameAttr;
+    }
+
+    public static void setPrintedNameAttr(String printedNameAttr) {
+        ConnectorParserConfig.printedNameAttr = printedNameAttr;
+    }
 
     public static String getLinuxAttr() {
         return linuxAttr;

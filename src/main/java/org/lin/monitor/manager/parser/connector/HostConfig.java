@@ -2,6 +2,8 @@ package org.lin.monitor.manager.parser.connector;
 
 import org.jdom.Element;
 import org.lin.monitor.manager.config.ConnectorParserConfig;
+import org.suns.host.config.AppCluster;
+import org.suns.host.config.AppHost;
 
 /**
  * Created by guanl on 7/14/2017.
@@ -13,6 +15,41 @@ public class HostConfig {
     private String password;
     private String sid;
     private String logPath;
+
+    private String scriptCPUPath;
+    private String scriptMemoryPath;
+    private String scriptDiskPath;
+
+    private AppHost inspectionHost;
+
+    public HostConfig() {
+        this.ip = "";
+        this.port = 0;
+        this.user = "";
+        this.password = "";
+        this.sid = "";
+        this.logPath = "";
+        this.scriptCPUPath = "";
+        this.scriptMemoryPath = "";
+        this.scriptDiskPath = "";
+        this.inspectionHost = null;
+    }
+
+    public AppHost toAppHost(){
+        AppHost appHost = new AppHost();
+        appHost.setScriptMemoryPath(scriptMemoryPath);
+        appHost.setIp(ip);
+        appHost.setPassword(password);
+        appHost.setPort(port);
+        appHost.setUser(user);
+        appHost.setSid(sid);
+        appHost.setLogPath(logPath);
+        appHost.setScriptCPUPath(scriptCPUPath);
+        appHost.setScriptDiskPath(scriptDiskPath);
+        appHost.setInspectionHost(inspectionHost);
+
+        return appHost;
+    }
 
     public void copyFromElement(Element hostElem) throws Exception{
         String ip = hostElem.getAttributeValue(ConnectorParserConfig.getIpAttr());
@@ -106,13 +143,50 @@ public class HostConfig {
         this.password = password;
     }
 
+    public String getScriptCPUPath() {
+        return scriptCPUPath;
+    }
+
+    public void setScriptCPUPath(String scriptCPUPath) {
+        this.scriptCPUPath = scriptCPUPath;
+    }
+
+    public String getScriptMemoryPath() {
+        return scriptMemoryPath;
+    }
+
+    public void setScriptMemoryPath(String scriptMemoryPath) {
+        this.scriptMemoryPath = scriptMemoryPath;
+    }
+
+    public String getScriptDiskPath() {
+        return scriptDiskPath;
+    }
+
+    public void setScriptDiskPath(String scriptDiskPath) {
+        this.scriptDiskPath = scriptDiskPath;
+    }
+
+    public AppHost getInspectionHost() {
+        return inspectionHost;
+    }
+
+    public void setInspectionHost(AppHost inspectionHost) {
+        this.inspectionHost = inspectionHost;
+    }
+
     @Override
     public String toString() {
         return "HostConfig{" +
-                "ip='" + ip +
+                "ip='" + ip + '\'' +
                 ", port=" + port +
-                ", user='" + user +
-                ", password='" + password +
+                ", user='" + user + '\'' +
+                ", password='" + password + '\'' +
+                ", sid='" + sid + '\'' +
+                ", logPath='" + logPath + '\'' +
+                ", scriptCPUPath='" + scriptCPUPath + '\'' +
+                ", scriptMemoryPath='" + scriptMemoryPath + '\'' +
+                ", scriptDiskPath='" + scriptDiskPath + '\'' +
                 '}';
     }
 }

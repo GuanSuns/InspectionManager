@@ -61,7 +61,9 @@ public class DataCollectorSheet422Configurator {
         String[] taxationPasswords = new String[1];
         String[] taxationSids = new String[1];
         int[] taxationPorts = new int[1];
-        copyFromHostConfigArray(taxationHostConfigs, taxationHosts, taxationUsers, taxationPasswords, taxationPorts, taxationSids);
+        copyFromHostConfigArray(taxationHostConfigs, taxationHosts
+                , taxationUsers, taxationPasswords
+                , taxationPorts, taxationSids);
         Sheet422CoreConfig.setInspectedHosts2(taxationHosts);
         Sheet422CoreConfig.setPasswords2(taxationPasswords);
         Sheet422CoreConfig.setPorts2(taxationPorts);

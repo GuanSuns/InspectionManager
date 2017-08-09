@@ -3,7 +3,7 @@ package org.lin.monitor.manager.parser.app;
 import org.jdom.Element;
 import org.lin.monitor.manager.config.DailyAppParserConfig;
 import org.lin.monitor.manager.parser.utils.ParserUtils;
-import org.suns.host.config.WebLogicServerConfig;
+import org.suns.host.config.WebLogicServer;
 
 import java.util.ArrayList;
 
@@ -28,7 +28,7 @@ public class DailyAppInspectionPersonalParser {
         }
     }
 
-    public ArrayList<WebLogicServerConfig> getWebLogicServers() throws Exception{
+    public ArrayList<WebLogicServer> getWebLogicServers() throws Exception{
         if(personalAppElem == null){
             init();
         }

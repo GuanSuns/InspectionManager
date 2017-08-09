@@ -9,7 +9,7 @@ import org.lin.monitor.manager.parser.connector.HostConfig;
 import org.lin.monitor.manager.utils.Pair;
 import org.suns.host.config.AppCluster;
 import org.suns.host.config.AppHost;
-import org.suns.host.config.WebLogicServerConfig;
+import org.suns.host.config.WebLogicServer;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -94,7 +94,7 @@ public class ParserUtils {
         return timePairs;
     }
 
-    public static ArrayList<WebLogicServerConfig> extractWebLogicServersFromRootElem(Element rootElem
+    public static ArrayList<WebLogicServer> extractWebLogicServersFromRootElem(Element rootElem
             , String tag) throws Exception{
         if(rootElem == null){
             throw new Exception("Uninitialized argument");
@@ -105,10 +105,10 @@ public class ParserUtils {
             throw new Exception("Unexpected XML Config file format: empty " + tag + " element");
         }
 
-        ArrayList<WebLogicServerConfig> webLogicServers = new ArrayList<>();
+        ArrayList<WebLogicServer> webLogicServers = new ArrayList<>();
         for (Iterator it = webLogicServerElems.iterator(); it.hasNext();) {
             Element webLogicServerElem = (Element)it.next();
-            WebLogicServerConfig webLogicServer = new WebLogicServerConfig();
+            WebLogicServer webLogicServer = new WebLogicServer();
 
             webLogicServer.setUser(getStringFromAttr(webLogicServerElem
                     , ConnectorParserConfig.getUserAttr()));
@@ -126,7 +126,7 @@ public class ParserUtils {
         return webLogicServers;
     }
 
-    public static void extractClustersIntoWebLogicServer(WebLogicServerConfig webLogicServer
+    public static void extractClustersIntoWebLogicServer(WebLogicServer webLogicServer
             , Element webLogicElem) throws Exception{
         if(webLogicElem == null){
             throw new Exception("Uninitialized argument");

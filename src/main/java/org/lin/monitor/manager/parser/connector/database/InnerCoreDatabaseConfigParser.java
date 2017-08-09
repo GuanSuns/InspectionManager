@@ -35,6 +35,15 @@ public class InnerCoreDatabaseConfigParser extends AbstractInnerDBInspectionConf
         }
     }
 
+    @Override
+    protected Element getRootElement() throws Exception{
+        if(coreElem == null){
+            init();
+        }
+
+        return coreElem;
+    }
+
     public ArrayList<HostConfig> getTaxationHosts() throws Exception{
         if(coreElem == null){
             init();
