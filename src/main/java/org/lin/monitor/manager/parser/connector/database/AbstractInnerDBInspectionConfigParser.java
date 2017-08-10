@@ -35,8 +35,8 @@ public abstract class AbstractInnerDBInspectionConfigParser {
     }
 
     protected void initClusterNameHostsInfo() throws Exception{
-        clusters = null;
-        clusterNameMap = null;
+        clusters = new ArrayList<>();
+        clusterNameMap = new HashMap<>();
 
         Element rootElem = getRootElement();
 

@@ -1,4 +1,5 @@
 import org.junit.Test;
+import org.lin.monitor.manager.config.ConnectorParserConfig;
 import org.lin.monitor.manager.config.SchedulerConfig;
 import org.lin.monitor.manager.configurator.ConfigManager;
 import org.lin.monitor.manager.parser.app.DailyAppInspectionCoreParser;
@@ -18,7 +19,7 @@ public class TestMonitorManager {
     @Test
     public void testInspectionManager(){
         try{
-            test_app_parser();
+            test_parser();
 
         }catch (Exception e){
             e.printStackTrace();
@@ -129,30 +130,41 @@ public class TestMonitorManager {
             System.out.println(connectorParser.getHostsInspectionConfig()
                     .getSheet428Parser().getCore().getHosts34());
 
-            System.out.println("\nDatabase Inspection");
+            System.out.println("\nTaxation Database Inspection - " + connectorParser.getDatabaseInspectionConfig()
+                    .getCore().getClusterByName(ConnectorParserConfig
+                            .getDbInspectionCoreTaxationHostsTag()).getPrintedName());
             System.out.println(connectorParser.getDatabaseInspectionConfig()
-                    .getCore().getTaxationHosts());
-            System.out.println("OS Inspection Host");
+                    .getCore().getClusterByName(ConnectorParserConfig
+                            .getDbInspectionCoreTaxationHostsTag()).getHosts());
+            System.out.println("Taxation OS Inspection Host");
             System.out.println(connectorParser.getDatabaseInspectionConfig()
-                    .getCore().getTaxationOSInspectionHosts());
+                    .getCore().getClusterByName(ConnectorParserConfig
+                            .getDbInspectionCoreTaxationHostsTag()).getOSInspectionHosts());
+            System.out.println("\nQuery DB Inspection");
+            System.out.println(connectorParser.getDatabaseInspectionConfig()
+                    .getCore().getClusterByName(ConnectorParserConfig
+                            .getDbInspectionCoreQueryHostsTag()).getHosts());
+            System.out.println("Query OS Inspection Host");
+            System.out.println(connectorParser.getDatabaseInspectionConfig()
+                    .getCore().getClusterByName(ConnectorParserConfig
+                            .getDbInspectionCoreQueryHostsTag()).getOSInspectionHosts());
+            System.out.println("\nIntegration DB Inspection");
+            System.out.println(connectorParser.getDatabaseInspectionConfig()
+                    .getCore().getClusterByName(ConnectorParserConfig
+                            .getDbInspectionCoreIntegrationHostsTag()).getHosts());
+            System.out.println("Integration OS Inspection Host");
+            System.out.println(connectorParser.getDatabaseInspectionConfig()
+                    .getCore().getClusterByName(ConnectorParserConfig
+                            .getDbInspectionCoreIntegrationHostsTag()).getOSInspectionHosts());
             System.out.println("");
+            System.out.println("\nCore DB Inspection");
             System.out.println(connectorParser.getDatabaseInspectionConfig()
-                    .getCore().getQueryHosts());
-            System.out.println("OS Inspection Host");
+                    .getPersonal().getClusterByName(ConnectorParserConfig
+                            .getDbInspectionPersonalCoreDatabaseTag()).getHosts());
+            System.out.println("Core OS Inspection Host");
             System.out.println(connectorParser.getDatabaseInspectionConfig()
-                    .getCore().getQueryOSInspectionHosts());
-            System.out.println("");
-            System.out.println(connectorParser.getDatabaseInspectionConfig()
-                    .getCore().getIntegrationHosts());
-            System.out.println("OS Inspection Host");
-            System.out.println(connectorParser.getDatabaseInspectionConfig()
-                    .getCore().getIntegrationOSInspectionHosts());
-            System.out.println("");
-            System.out.println(connectorParser.getDatabaseInspectionConfig()
-                    .getPersonal().getCoreHosts());
-            System.out.println("OS Inspection Host");
-            System.out.println(connectorParser.getDatabaseInspectionConfig()
-                    .getPersonal().getCoreOSInspectionHosts());
+                    .getPersonal().getClusterByName(ConnectorParserConfig
+                            .getDbInspectionPersonalCoreDatabaseTag()).getOSInspectionHosts());
 
             SchedulerConfigParser schedulerConfigParser = new SchedulerConfigParser();
             System.out.println();

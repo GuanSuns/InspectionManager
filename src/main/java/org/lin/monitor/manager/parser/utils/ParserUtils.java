@@ -144,6 +144,8 @@ public class ParserUtils {
 
             cluster.setName(getStringFromAttr(clusterElem
                     , ConnectorParserConfig.getNameAttr()));
+            cluster.setPrintedName(getStringFromAttr(clusterElem
+                    , ConnectorParserConfig.getPrintedNameAttr()));
             extractHostsIntoClusters(cluster, clusterElem);
 
             clusters.add(cluster);

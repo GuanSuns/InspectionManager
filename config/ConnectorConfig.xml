@@ -10,6 +10,274 @@
         </oracle>
     </ConnectorConfig>
 
+    <!-- 巡检数据库部分 -->
+    <DatabaseInspection>
+        <!-- 个人税收系统 -->
+        <PersonalDatabase>
+            <!-- 个税核心库 -->
+            <Hosts name="CoreHosts" printedName="个税核心库">
+            	<host ip="150.12.201.42" port="1521" user="expdata" password="9ESV6v66n0" sid="gdltgshx2">
+                    <OSInspection ip="150.12.201.42" port="22" user="monitor" password="##micR66" cpuScript="/var/gold3check/ac.sh" memoryScript="/var/gold3check/am.sh" diskScript="/var/gold3check/ad.sh"  log="/software/oracle/diag/rdbms/gdltgshx/gdltgshx2/trace/alert_gdltgshx2.log"/>   
+                </host>
+                <host ip="150.12.201.40" port="1521" user="expdata" password="9ESV6v66n0" sid="gdltgshx1">
+                    <OSInspection ip="150.12.201.40" port="22" user="monitor" password="##micR66" cpuScript="/var/gold3check/ac.sh" memoryScript="/var/gold3check/am.sh" diskScript="/var/gold3check/ad.sh" log="/software/oracle/diag/rdbms/gdltgshx/gdltgshx1/trace/alert_gdltgshx1.log"/>  
+                </host>                
+            </Hosts>
+        </PersonalDatabase>
+
+        <!-- 核心征管系统 -->        
+        <CoreDatabase>
+            <!-- 核心征管库 -->
+            <Hosts name="TaxationHosts" printedName="核心征管库">
+            	<host ip="150.12.201.22" port="1521" user="expdata" password="9ESV6v66n0" sid="gdlthxzg2">
+                    <OSInspection ip="150.12.201.22" port="22" user="monitor" password="##micR66" cpuScript="/var/gold3check/ac.sh" memoryScript="/var/gold3check/am.sh" diskScript="/var/gold3check/ad.sh" log="/software/oracle/diag/rdbms/gdlthxzg/gdlthxzg2/trace/alert_gdlthxzg2.log"/>     
+                </host>
+                <host ip="150.12.201.20" port="1521" user="expdata" password="9ESV6v66n0" sid="gdlthxzg1">
+                    <OSInspection ip="150.12.201.20" port="22" user="monitor" password="##micR66" cpuScript="/var/gold3check/ac.sh" memoryScript="/var/gold3check/am.sh" diskScript="/var/gold3check/ad.sh" log="/software/oracle/diag/rdbms/gdlthxzg/gdlthxzg1/trace/alert_gdlthxzg1.log"/> 
+                </host>        
+            </Hosts>
+
+            <!-- 集成平台库 -->
+            <Hosts name="IntegrationHosts" printedName="集成平台库">
+            	<host ip="150.12.201.32" port="1521" user="expdata" password="Data_weihuExp" sid="gdltjcpt2">
+                    <OSInspection ip="150.12.201.32" port="22" user="monitor" password="##micR66" cpuScript="/var/gold3check/ac.sh" memoryScript="/var/gold3check/am.sh" diskScript="/var/gold3check/ad.sh" log="/software/oracle/diag/rdbms/gdltjcpt/gdltjcpt2/trace/alert_gdltjcpt2.log"/>
+                </host>
+                <host ip="150.12.201.30" port="1521" user="expdata" password="Data_weihuExp" sid="gdltjcpt1">
+                    <OSInspection ip="150.12.201.30" port="22" user="monitor" password="##micR66" cpuScript="/var/gold3check/ac.sh" memoryScript="/var/gold3check/am.sh" diskScript="/var/gold3check/ad.sh" log="/software/oracle/diag/rdbms/gdltjcpt/gdltjcpt1/trace/alert_gdltjcpt1.log"/>    
+                </host>
+            </Hosts>
+
+            <!-- 核心查询库 -->
+            <Hosts name="QueryHosts" printedName="核心查询库">
+                <host ip="150.12.201.28" port="1521" user="expdata" password="Data_weihuExp" sid="gdltcxff">
+                    <OSInspection ip="150.12.201.28" port="22" user="monitor" password="##micR66" cpuScript="/var/gold3check/ac.sh" memoryScript="/var/gold3check/am.sh" diskScript="/var/gold3check/ad.sh" log="/software/oracle/diag/rdbms/gdltcxff/gdltgcxff/trace/alert_gdltcxff.log"/>  
+                </host>
+            </Hosts>
+        </CoreDatabase>
+    </DatabaseInspection>
+
+    <!-- 巡检日报应用检查部分 -->  
+    <CoreAppInspection>
+    	<WebLogicServer ip="150.12.192.20" port="9001" user="monitor" password="##micR66">
+    		<cluster name="hxqd">
+    			<host ip="150.12.192.20" port="22" user="monitor" password="##micR66" cpuScript="/script/lc.sh" memoryScript="/script/lm.sh">
+    				<server name="hxqd_gdlt_svr001"/>
+    				<server name="hxqd_gdlt_svr002"/>
+    				<server name="hxqd_gdlt_svr003"/>
+    				<server name="hxqd_gdlt_svr004"/>
+    			</host>
+    			<host ip="150.12.192.21" port="22" user="monitor" password="##micR66" cpuScript="/script/lc.sh" memoryScript="/script/lm.sh">
+    				<server name="hxqd_gdlt_svr005"/>
+    				<server name="hxqd_gdlt_svr006"/>
+    				<server name="hxqd_gdlt_svr007"/>
+    				<server name="hxqd_gdlt_svr008"/>
+    			</host>
+    			<host ip="150.12.192.22" port="22" user="monitor" password="##micR66" cpuScript="/script/lc.sh" memoryScript="/script/lm.sh">
+    				<server name="hxqd_gdlt_svr009"/>
+    				<server name="hxqd_gdlt_svr010"/>
+    				<server name="hxqd_gdlt_svr011"/>
+    				<server name="hxqd_gdlt_svr012"/>
+    			</host>
+    		</cluster>
+
+    		<cluster name="mhwb_wfbs">
+    			<host ip="150.12.192.30" port="22" user="monitor" password="##micR66" cpuScript="/script/lc.sh" memoryScript="/script/lm.sh">
+    				<server name="mhwb_gdlt_svr001"/>
+    				<server name="mhwb_gdlt_svr002"/>
+    				<server name="wfbs_gdlt_svr001"/>
+    				<server name="wfbs_gdlt_svr002"/>
+    			</host>
+    			<host ip="150.12.192.31" port="22" user="monitor" password="##micR66" cpuScript="/script/lc.sh" memoryScript="/script/lm.sh">
+    				<server name="mhwb_gdlt_svr003"/>
+    				<server name="mhwb_gdlt_svr004"/>
+    				<server name="wfbs_gdlt_svr003"/>
+    				<server name="wfbs_gdlt_svr004"/>
+    			</host>
+    		</cluster>
+    	</WebLogicServer>
+
+    	<WebLogicServer ip="150.12.200.32" port="9001" user="monitor" password="##micR66">
+    		<cluster name="hxhd_dsrw">
+    			<host ip="150.12.200.20" port="22" user="monitor" password="##micR66" cpuScript="/script/lc.sh" memoryScript="/script/lm.sh">
+    				<server name="hxhd_gdlt_svr001"/>
+    				<server name="hxhd_gdlt_svr002"/>
+    				<server name="hxhd_gdlt_svr003"/>
+    				<server name="hxhd_gdlt_svr004"/>
+    				<server name="dsrw_gdlt_svr001"/>
+    				<server name="dsrw_gdlt_svr002"/>
+    			</host>
+    			<host ip="150.12.200.21" port="22" user="monitor" password="##micR66" cpuScript="/script/lc.sh" memoryScript="/script/lm.sh">
+    				<server name="hxhd_gdlt_svr005"/>
+    				<server name="hxhd_gdlt_svr006"/>
+    				<server name="hxhd_gdlt_svr007"/>
+    				<server name="hxhd_gdlt_svr008"/>
+    				<server name="dsrw_gdlt_svr003"/>
+    				<server name="dsrw_gdlt_svr004"/>
+    			</host>
+    			<host ip="150.12.200.22" port="22" user="monitor" password="##micR66" cpuScript="/script/lc.sh" memoryScript="/script/lm.sh">
+    				<server name="hxhd_gdlt_svr009"/>
+    				<server name="hxhd_gdlt_svr010"/>
+    				<server name="hxhd_gdlt_svr011"/>
+    				<server name="hxhd_gdlt_svr012"/>
+    			</host>
+    		</cluster>
+
+    		<cluster name="tycx_jnap">
+    			<host ip="150.12.200.28" port="22" user="monitor" password="##micR66" cpuScript="/script/lc.sh" memoryScript="/script/lm.sh">
+    				<server name="tycx_gdlt_svr001"/>
+    				<server name="tycx_gdlt_svr002"/>
+    				<server name="tycx_gdlt_svr003"/>
+    				<server name="tycx_gdlt_svr004"/>
+    			</host>
+    			<host ip="150.12.200.29" port="22" user="monitor" password="##micR66" cpuScript="/script/lc.sh" memoryScript="/script/lm.sh">
+    				<server name="tycx_gdlt_svr005"/>
+    				<server name="tycx_gdlt_svr006"/>
+    				<server name="tycx_gdlt_svr007"/>
+    				<server name="tycx_gdlt_svr008"/>
+    			</host>
+    			<host ip="150.12.200.27" port="22" user="monitor" password="##micR66" cpuScript="/script/lc.sh" memoryScript="/script/lm.sh">
+    				<server name="tycx_gdlt_svr009"/>
+    				<server name="tycx_gdlt_svr010"/>
+    				<server name="tycx_gdlt_svr011"/>
+    				<server name="tycx_gdlt_svr012"/>
+    			</host>
+    			<host ip="150.12.200.32" port="22" user="monitor" password="##micR66" cpuScript="/script/lc.sh" memoryScript="/script/lm.sh">
+    				<server name="jnap_gdlt_svr001"/>
+    				<server name="jnap_gdlt_svr002"/>
+    				<server name="jnap_gdlt_svr003"/>
+    				<server name="jnap_gdlt_svr004"/>
+    			</host>
+    			<host ip="150.12.200.33" port="22" user="monitor" password="##micR66" cpuScript="/script/lc.sh" memoryScript="/script/lm.sh">
+    				<server name="jnap_gdlt_svr005"/>
+    				<server name="jnap_gdlt_svr006"/>
+    				<server name="jnap_gdlt_svr007"/>
+    				<server name="jnap_gdlt_svr008"/>
+    			</host>
+    			<host ip="150.12.200.34" port="22" user="monitor" password="##micR66" cpuScript="/script/lc.sh" memoryScript="/script/lm.sh">
+    				<server name="jnap_gdlt_svr009"/>
+    				<server name="jnap_gdlt_svr010"/>
+    				<server name="jnap_gdlt_svr011"/>
+    				<server name="jnap_gdlt_svr012"/>
+    			</host>
+    		</cluster>
+
+    		<cluster name="hxwf_mhap_jcpt">
+    			<host ip="150.12.200.30" port="22" user="monitor" password="##micR66" cpuScript="/script/lc.sh" memoryScript="/script/lm.sh">
+    				<server name="hxwf_gdlt_svr001"/>
+    				<server name="hxwf_gdlt_svr002"/>
+    				<server name="hxwf_gdlt_svr003"/>
+    				<server name="jcpt_gdlt_svr001"/>
+    				<server name="jcpt_gdlt_svr002"/>
+    				<server name="mhap_gdlt_svr001"/>    				
+    				<server name="mhap_gdlt_svr002"/>
+    			</host>
+    			<host ip="150.12.200.31" port="22" user="monitor" password="##micR66" cpuScript="/script/lc.sh" memoryScript="/script/lm.sh">
+    				<server name="hxwf_gdlt_svr004"/>
+    				<server name="hxwf_gdlt_svr005"/>
+    				<server name="hxwf_gdlt_svr006"/>
+    				<server name="jcpt_gdlt_svr003"/>
+    				<server name="jcpt_gdlt_svr004"/>
+    				<server name="mhap_gdlt_svr003"/>
+    				<server name="mhap_gdlt_svr004"/>
+    			</host>
+    		</cluster>
+    	</WebLogicServer>
+
+    	<WebLogicServer ip="150.12.240.32" port="9001" user="monitor" password="##micR66">
+    		<cluster name="kcpt">
+    			<host ip="150.12.240.34" port="22" user="monitor" password="##micR66" cpuScript="/script/lc.sh" memoryScript="/script/lm.sh">
+    				<server name="kcpt_gdlt_svr001"/>
+    				<server name="kcpt_gdlt_svr002"/>
+    			</host>
+    			<host ip="150.12.240.35" port="22" user="monitor" password="##micR66" cpuScript="/script/lc.sh" memoryScript="/script/lm.sh">
+    				<server name="kcpt_gdlt_svr003"/>
+    				<server name="kcpt_gdlt_svr004"/>
+    			</host>
+    		</cluster>
+    	</WebLogicServer>
+    </CoreAppInspection>
+
+    <PersonalAppInspection>
+    	<WebLogicServer ip="150.12.192.40" port="9001" user="monitor" password="##micR66">
+    		<cluster name="gsdt">
+    			<host ip="150.12.192.40" port="22" user="monitor" password="##micR66" cpuScript="/script/lc.sh" memoryScript="/script/lm.sh">
+    				<server name="gsdtServer_1"/>
+    				<server name="gsdtServer_2"/>
+    				<server name="gsdtServer_3"/>
+    				<server name="gsdtServer_4"/>
+    			</host>
+    			<host ip="150.12.192.41" port="22" user="monitor" password="##micR66" cpuScript="/script/lc.sh" memoryScript="/script/lm.sh">
+    				<server name="gsdtServer_5"/>
+    				<server name="gsdtServer_6"/>
+    				<server name="gsdtServer_7"/>
+    				<server name="gsdtServer_8"/>
+    			</host>
+    			<host ip="150.12.192.42" port="22" user="monitor" password="##micR66" cpuScript="/script/lc.sh" memoryScript="/script/lm.sh">
+    				<server name="gsdtServer_9"/>
+    				<server name="gsdtServer_10"/>
+    				<server name="gsdtServer_11"/>
+    				<server name="gsdtServer_12"/>
+    			</host>
+    		</cluster>
+    	</WebLogicServer>
+
+    	<WebLogicServer ip="150.12.200.40" port="9001" user="monitor" password="##micR66">
+    		<cluster name="gshx">
+    			<host ip="150.12.200.40" port="22" user="monitor" password="##micR66" cpuScript="/script/lc.sh" memoryScript="/script/lm.sh">
+    				<server name="gshxServer_1"/>
+    				<server name="gshxServer_2"/>
+    				<server name="gshxServer_3"/>
+    				<server name="gshxServer_4"/>
+    			</host>
+    			<host ip="150.12.200.41" port="22" user="monitor" password="##micR66" cpuScript="/script/lc.sh" memoryScript="/script/lm.sh">
+    				<server name="gshxServer_5"/>
+    				<server name="gshxServer_6"/>
+    				<server name="gshxServer_7"/>
+    				<server name="gshxServer_8"/>
+    			</host>
+    			<host ip="150.12.200.42" port="22" user="monitor" password="##micR66" cpuScript="/script/lc.sh" memoryScript="/script/lm.sh">
+    				<server name="gshxServer_9"/>
+    				<server name="gshxServer_10"/>
+    				<server name="gshxServer_11"/>
+    				<server name="gshxServer_12"/>
+    			</host>
+    		</cluster>
+    	</WebLogicServer>
+
+    	<WebLogicServer ip="150.12.200.40" port="9002" user="monitor" password="##micR66">
+    		<cluster name="gzl">
+    			<host ip="150.12.200.40" port="22" user="monitor" password="##micR66" cpuScript="/script/lc.sh" memoryScript="/script/lm.sh">
+    				<server name="gzlServer_1"/>
+    				<server name="gzlServer_2"/>
+    			</host>
+    			<host ip="150.12.200.41" port="22" user="monitor" password="##micR66" cpuScript="/script/lc.sh" memoryScript="/script/lm.sh">
+    				<server name="gzlServer_3"/>
+    				<server name="gzlServer_4"/>
+    			</host>
+    		</cluster>
+    	</WebLogicServer>
+
+    	<WebLogicServer ip="150.12.192.40" port="9002" user="monitor" password="##micR66">
+    		<cluster name="gscx">
+    			<host ip="150.12.192.40" port="22" user="monitor" password="##micR66" cpuScript="/script/lc.sh" memoryScript="/script/lm.sh">
+    				<server name="gscxServer_1"/>
+    				<server name="gscxServer_2"/>
+    			</host>
+    			<host ip="150.12.192.41" port="22" user="monitor" password="##micR66" cpuScript="/script/lc.sh" memoryScript="/script/lm.sh">
+    				<server name="gscxServer_3"/>
+    				<server name="gscxServer_4"/>
+    			</host>
+    		</cluster>
+    	</WebLogicServer>
+    </PersonalAppInspection>
+
+    <!-- 控制 df -h | awk 命令参数，保持默认即可 -->
+    <DFFormat>
+        <fileSystemColumn linux="1" aix="1"></fileSystemColumn>
+        <mountedSysColumn linux="6" aix="6"></mountedSysColumn>
+        <usageColumn linux="5" aix="5"></usageColumn>
+    </DFFormat>   
+
     <!-- 巡检主机部分 -->
     <HostsInspection>    
         <!-- 4.1.1 应用OS文件系统目录使用率 -->
@@ -221,274 +489,6 @@
             </Personal>
         </Sheet428>
     </HostsInspection>
-
-    <!-- 巡检数据库部分 -->
-    <DatabaseInspection>
-        <!-- 个人税收系统 -->
-        <PersonalDatabase>
-            <!-- 个税核心库 -->
-            <CoreHosts>
-            	<host ip="150.12.201.42" port="1521" user="expdata" password="9ESV6v66n0" sid="gdltgshx2" log="/software/oracle/diag/rdbms/gdltgshx/gdltgshx2/trace/alert_gdltgshx2.log">
-                    <OSInspection ip="150.12.201.42" port="22" user="monitor" password="##micR66"></OSInspection>   
-                </host>
-                <host ip="150.12.201.40" port="1521" user="expdata" password="9ESV6v66n0" sid="gdltgshx1" log="/software/oracle/diag/rdbms/gdltgshx/gdltgshx1/trace/alert_gdltgshx1.log">
-                    <OSInspection ip="150.12.201.40" port="22" user="monitor" password="##micR66"></OSInspection>  
-                </host>                
-            </CoreHosts>
-        </PersonalDatabase>
-
-        <!-- 核心征管系统 -->        
-        <CoreDatabase>
-            <!-- 核心征管库 -->
-            <TaxationHosts>
-            	<host ip="150.12.201.22" port="1521" user="expdata" password="9ESV6v66n0" sid="gdlthxzg2" log="/software/oracle/diag/rdbms/gdlthxzg/gdlthxzg2/trace/alert_gdlthxzg2.log">
-                    <OSInspection ip="150.12.201.22" port="22" user="monitor" password="##micR66"></OSInspection>     
-                </host>
-                <host ip="150.12.201.20" port="1521" user="expdata" password="9ESV6v66n0" sid="gdlthxzg1" log="/software/oracle/diag/rdbms/gdlthxzg/gdlthxzg1/trace/alert_gdlthxzg1.log">
-                    <OSInspection ip="150.12.201.20" port="22" user="monitor" password="##micR66"></OSInspection> 
-                </host>        
-            </TaxationHosts>
-
-            <!-- 集成平台库 -->
-            <IntegrationHosts>
-            	<host ip="150.12.201.32" port="1521" user="expdata" password="Data_weihuExp" sid="gdltjcpt2" log="/software/oracle/diag/rdbms/gdltjcpt/gdltjcpt2/trace/alert_gdltjcpt2.log">
-                    <OSInspection ip="150.12.201.32" port="22" user="monitor" password="##micR66"></OSInspection>    
-                </host>
-                <host ip="150.12.201.30" port="1521" user="expdata" password="Data_weihuExp" sid="gdltjcpt1" log="/software/oracle/diag/rdbms/gdltjcpt/gdltjcpt1/trace/alert_gdltjcpt1.log">
-                    <OSInspection ip="150.12.201.30" port="22" user="monitor" password="##micR66"></OSInspection>    
-                </host>
-            </IntegrationHosts>
-
-            <!-- 核心查询库 -->
-            <QueryHosts>
-                <host ip="150.12.201.28" port="1521" user="expdata" password="Data_weihuExp" sid="gdltcxff" log="/software/oracle/diag/rdbms/gdltcxff/gdltgcxff/trace/alert_gdltcxff.log">
-                    <OSInspection ip="150.12.201.28" port="22" user="monitor" password="##micR66"></OSInspection>  
-                </host>
-            </QueryHosts>
-        </CoreDatabase>
-    </DatabaseInspection>
-
-    <!-- 巡检日报应用检查部分 -->  
-    <CoreAppInspection>
-    	<WebLogicServer ip="150.12.192.20" port="9001" user="monitor" password="##micR66">
-    		<cluster name="hxqd">
-    			<host ip="150.12.192.20" port="22" user="monitor" password="##micR66">
-    				<server name="hxqd_gdlt_svr001"/>
-    				<server name="hxqd_gdlt_svr002"/>
-    				<server name="hxqd_gdlt_svr003"/>
-    				<server name="hxqd_gdlt_svr004"/>
-    			</host>
-    			<host ip="150.12.192.21" port="22" user="monitor" password="##micR66">
-    				<server name="hxqd_gdlt_svr005"/>
-    				<server name="hxqd_gdlt_svr006"/>
-    				<server name="hxqd_gdlt_svr007"/>
-    				<server name="hxqd_gdlt_svr008"/>
-    			</host>
-    			<host ip="150.12.192.22" port="22" user="monitor" password="##micR66">
-    				<server name="hxqd_gdlt_svr009"/>
-    				<server name="hxqd_gdlt_svr010"/>
-    				<server name="hxqd_gdlt_svr011"/>
-    				<server name="hxqd_gdlt_svr012"/>
-    			</host>
-    		</cluster>
-
-    		<cluster name="mhwb_wfbs">
-    			<host ip="150.12.192.30" port="22" user="monitor" password="##micR66">
-    				<server name="mhwb_gdlt_svr001"/>
-    				<server name="mhwb_gdlt_svr002"/>
-    				<server name="wfbs_gdlt_svr001"/>
-    				<server name="wfbs_gdlt_svr002"/>
-    			</host>
-    			<host ip="150.12.192.31" port="22" user="monitor" password="##micR66">
-    				<server name="mhwb_gdlt_svr003"/>
-    				<server name="mhwb_gdlt_svr004"/>
-    				<server name="wfbs_gdlt_svr003"/>
-    				<server name="wfbs_gdlt_svr004"/>
-    			</host>
-    		</cluster>
-    	</WebLogicServer>
-
-    	<WebLogicServer ip="150.12.200.32" port="9001" user="monitor" password="##micR66">
-    		<cluster name="hxhd_dsrw">
-    			<host ip="150.12.200.20" port="22" user="monitor" password="##micR66">
-    				<server name="hxhd_gdlt_svr001"/>
-    				<server name="hxhd_gdlt_svr002"/>
-    				<server name="hxhd_gdlt_svr003"/>
-    				<server name="hxhd_gdlt_svr004"/>
-    				<server name="dsrw_gdlt_svr001"/>
-    				<server name="dsrw_gdlt_svr002"/>
-    			</host>
-    			<host ip="150.12.200.21" port="22" user="monitor" password="##micR66">
-    				<server name="hxhd_gdlt_svr005"/>
-    				<server name="hxhd_gdlt_svr006"/>
-    				<server name="hxhd_gdlt_svr007"/>
-    				<server name="hxhd_gdlt_svr008"/>
-    				<server name="dsrw_gdlt_svr003"/>
-    				<server name="dsrw_gdlt_svr004"/>
-    			</host>
-    			<host ip="150.12.200.22" port="22" user="monitor" password="##micR66">
-    				<server name="hxhd_gdlt_svr009"/>
-    				<server name="hxhd_gdlt_svr010"/>
-    				<server name="hxhd_gdlt_svr011"/>
-    				<server name="hxhd_gdlt_svr012"/>
-    			</host>
-    		</cluster>
-
-    		<cluster name="tycx_jnap">
-    			<host ip="150.12.200.28" port="22" user="monitor" password="##micR66">
-    				<server name="tycx_gdlt_svr001"/>
-    				<server name="tycx_gdlt_svr002"/>
-    				<server name="tycx_gdlt_svr003"/>
-    				<server name="tycx_gdlt_svr004"/>
-    			</host>
-    			<host ip="150.12.200.29" port="22" user="monitor" password="##micR66">
-    				<server name="tycx_gdlt_svr005"/>
-    				<server name="tycx_gdlt_svr006"/>
-    				<server name="tycx_gdlt_svr007"/>
-    				<server name="tycx_gdlt_svr008"/>
-    			</host>
-    			<host ip="150.12.200.27" port="22" user="monitor" password="##micR66">
-    				<server name="tycx_gdlt_svr009"/>
-    				<server name="tycx_gdlt_svr010"/>
-    				<server name="tycx_gdlt_svr011"/>
-    				<server name="tycx_gdlt_svr012"/>
-    			</host>
-    			<host ip="150.12.200.32" port="22" user="monitor" password="##micR66">
-    				<server name="jnap_gdlt_svr001"/>
-    				<server name="jnap_gdlt_svr002"/>
-    				<server name="jnap_gdlt_svr003"/>
-    				<server name="jnap_gdlt_svr004"/>
-    			</host>
-    			<host ip="150.12.200.33" port="22" user="monitor" password="##micR66">
-    				<server name="jnap_gdlt_svr005"/>
-    				<server name="jnap_gdlt_svr006"/>
-    				<server name="jnap_gdlt_svr007"/>
-    				<server name="jnap_gdlt_svr008"/>
-    			</host>
-    			<host ip="150.12.200.34" port="22" user="monitor" password="##micR66">
-    				<server name="jnap_gdlt_svr009"/>
-    				<server name="jnap_gdlt_svr010"/>
-    				<server name="jnap_gdlt_svr011"/>
-    				<server name="jnap_gdlt_svr012"/>
-    			</host>
-    		</cluster>
-
-    		<cluster name="hxwf_mhap_jcpt">
-    			<host ip="150.12.200.30" port="22" user="monitor" password="##micR66">
-    				<server name="hxwf_gdlt_svr001"/>
-    				<server name="hxwf_gdlt_svr002"/>
-    				<server name="hxwf_gdlt_svr003"/>
-    				<server name="jcpt_gdlt_svr001"/>
-    				<server name="jcpt_gdlt_svr002"/>
-    				<server name="mhap_gdlt_svr001"/>    				
-    				<server name="mhap_gdlt_svr002"/>
-    			</host>
-    			<host ip="150.12.200.31" port="22" user="monitor" password="##micR66">
-    				<server name="hxwf_gdlt_svr004"/>
-    				<server name="hxwf_gdlt_svr005"/>
-    				<server name="hxwf_gdlt_svr006"/>
-    				<server name="jcpt_gdlt_svr003"/>
-    				<server name="jcpt_gdlt_svr004"/>
-    				<server name="mhap_gdlt_svr003"/>
-    				<server name="mhap_gdlt_svr004"/>
-    			</host>
-    		</cluster>
-    	</WebLogicServer>
-
-    	<WebLogicServer ip="150.12.240.32" port="9001" user="monitor" password="##micR66">
-    		<cluster name="kcpt">
-    			<host ip="150.12.240.34" port="22" user="monitor" password="##micR66">
-    				<server name="kcpt_gdlt_svr001"/>
-    				<server name="kcpt_gdlt_svr002"/>
-    			</host>
-    			<host ip="150.12.240.35" port="22" user="monitor" password="##micR66">
-    				<server name="kcpt_gdlt_svr003"/>
-    				<server name="kcpt_gdlt_svr004"/>
-    			</host>
-    		</cluster>
-    	</WebLogicServer>
-    </CoreAppInspection>
-
-    <PersonalAppInspection>
-    	<WebLogicServer ip="150.12.192.40" port="9001" user="monitor" password="##micR66">
-    		<cluster name="gsdt">
-    			<host ip="150.12.192.40" port="22" user="monitor" password="##micR66">
-    				<server name="gsdtServer_1"/>
-    				<server name="gsdtServer_2"/>
-    				<server name="gsdtServer_3"/>
-    				<server name="gsdtServer_4"/>
-    			</host>
-    			<host ip="150.12.192.41" port="22" user="monitor" password="##micR66">
-    				<server name="gsdtServer_5"/>
-    				<server name="gsdtServer_6"/>
-    				<server name="gsdtServer_7"/>
-    				<server name="gsdtServer_8"/>
-    			</host>
-    			<host ip="150.12.192.42" port="22" user="monitor" password="##micR66">
-    				<server name="gsdtServer_9"/>
-    				<server name="gsdtServer_10"/>
-    				<server name="gsdtServer_11"/>
-    				<server name="gsdtServer_12"/>
-    			</host>
-    		</cluster>
-    	</WebLogicServer>
-
-    	<WebLogicServer ip="150.12.200.40" port="9001" user="monitor" password="##micR66">
-    		<cluster name="gshx">
-    			<host ip="150.12.200.40" port="22" user="monitor" password="##micR66">
-    				<server name="gshxServer_1"/>
-    				<server name="gshxServer_2"/>
-    				<server name="gshxServer_3"/>
-    				<server name="gshxServer_4"/>
-    			</host>
-    			<host ip="150.12.200.41" port="22" user="monitor" password="##micR66">
-    				<server name="gshxServer_5"/>
-    				<server name="gshxServer_6"/>
-    				<server name="gshxServer_7"/>
-    				<server name="gshxServer_8"/>
-    			</host>
-    			<host ip="150.12.200.42" port="22" user="monitor" password="##micR66">
-    				<server name="gshxServer_9"/>
-    				<server name="gshxServer_10"/>
-    				<server name="gshxServer_11"/>
-    				<server name="gshxServer_12"/>
-    			</host>
-    		</cluster>
-    	</WebLogicServer>
-
-    	<WebLogicServer ip="150.12.200.40" port="9002" user="monitor" password="##micR66">
-    		<cluster name="gzl">
-    			<host ip="150.12.200.40" port="22" user="monitor" password="##micR66">
-    				<server name="gzlServer_1"/>
-    				<server name="gzlServer_2"/>
-    			</host>
-    			<host ip="150.12.200.41" port="22" user="monitor" password="##micR66">
-    				<server name="gzlServer_3"/>
-    				<server name="gzlServer_4"/>
-    			</host>
-    		</cluster>
-    	</WebLogicServer>
-
-    	<WebLogicServer ip="150.12.192.40" port="9002" user="monitor" password="##micR66">
-    		<cluster name="gscx">
-    			<host ip="150.12.192.40" port="22" user="monitor" password="##micR66">
-    				<server name="gscxServer_1"/>
-    				<server name="gscxServer_2"/>
-    			</host>
-    			<host ip="150.12.192.41" port="22" user="monitor" password="##micR66">
-    				<server name="gscxServer_3"/>
-    				<server name="gscxServer_4"/>
-    			</host>
-    		</cluster>
-    	</WebLogicServer>
-    </PersonalAppInspection>
-
-    <!-- 控制 df -h | awk 命令参数，保持默认即可 -->
-    <DFFormat>
-        <fileSystemColumn linux="1" aix="1"></fileSystemColumn>
-        <mountedSysColumn linux="6" aix="6"></mountedSysColumn>
-        <usageColumn linux="5" aix="5"></usageColumn>
-    </DFFormat>   
 
 </Config>
 
