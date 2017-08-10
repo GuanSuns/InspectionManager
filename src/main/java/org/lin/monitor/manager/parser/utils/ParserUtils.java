@@ -193,4 +193,34 @@ public class ParserUtils {
 
         cluster.setHosts(hosts);
     }
+
+    public static void copyDBHostInfoToArray(ArrayList<AppHost> appHosts
+            , String[] hosts, String[] users
+            , String[] passwords, int[] ports, String[] sids, int size){
+
+        for(int i=0; i<size; i++){
+            hosts[i] = appHosts.get(i).getIp();
+            users[i] = appHosts.get(i).getUser();
+            passwords[i] = appHosts.get(i).getPassword();
+            ports[i] = appHosts.get(i).getPort();
+            sids[i] = appHosts.get(i).getSid();
+        }
+    }
+
+    public static void copyDBOSHostInfoToArray(ArrayList<AppHost> appHosts
+            ,String[] hosts, String[] users, String[] passwords
+            , int[] ports, String[] sids, String[] logs
+            , String[] cpuScripts, String[] memoryScripts
+            , String[] diskScripts, int size){
+
+        copyDBHostInfoToArray(appHosts, hosts
+                , users, passwords, ports, sids, size);
+
+        for(int i=0; i<size; i++){
+            logs[i] = appHosts.get(i).getLogPath();
+            cpuScripts[i] = appHosts.get(i).getScriptCPUPath();
+            memoryScripts[i] = appHosts.get(i).getScriptMemoryPath();
+            diskScripts[i] = appHosts.get(i).getScriptDiskPath();
+        }
+    }
 }

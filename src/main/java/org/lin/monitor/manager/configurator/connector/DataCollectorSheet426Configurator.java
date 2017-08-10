@@ -1,9 +1,12 @@
 package org.lin.monitor.manager.configurator.connector;
 
+import org.lin.monitor.manager.config.ConnectorParserConfig;
 import org.lin.monitor.manager.parser.connector.ConnectorParser;
 import org.lin.monitor.manager.parser.connector.HostConfig;
+import org.lin.monitor.manager.parser.utils.ParserUtils;
 import org.suns.data.collector.config.sheet426.Sheet426CoreConfig;
 import org.suns.data.collector.config.sheet426.Sheet426PersonalConfig;
+import org.suns.host.config.AppCluster;
 
 import java.util.ArrayList;
 
@@ -34,20 +37,31 @@ public class DataCollectorSheet426Configurator {
             throw new Exception("Uninitialized connector parser");
         }
 
-        ArrayList<HostConfig> coreHosts = connectorParser.getDatabaseInspectionConfig()
-                .getPersonal().getCoreOSInspectionHosts();
-        int sizeHost = coreHosts.size();
-        String[] hosts = new String[sizeHost];
-        String[] users = new String[sizeHost];
-        String[] passwords = new String[sizeHost];
-        String[] logPaths = new String[sizeHost];
-        int[] ports = new int[sizeHost];
-        copyFromHostConfigArray(coreHosts, hosts, users, passwords, ports, logPaths);
-        Sheet426PersonalConfig.setInspectedHosts2(hosts);
-        Sheet426PersonalConfig.setPasswords2(passwords);
-        Sheet426PersonalConfig.setPorts2(ports);
-        Sheet426PersonalConfig.setUsers2(users);
-        Sheet426PersonalConfig.setLogPath2(logPaths);
+        AppCluster coreCluster = connectorParser.getDatabaseInspectionConfig()
+                .getPersonal().getClusterByName(ConnectorParserConfig.getDbInspectionPersonalCoreDatabaseTag());
+
+        int coreSize = coreCluster.getOSInspectionHosts().size();
+        String[] coreHosts = new String[coreSize];
+        String[] coreUsers = new String[coreSize];
+        String[] corePasswords = new String[coreSize];
+        String[] coreLogPaths = new String[coreSize];
+        String[] coreSids = new String[coreSize];
+        String[] coreCPUScriptPaths = new String[coreSize];
+        String[] coreMemoryScriptPaths = new String[coreSize];
+        String[] coreDiskScriptPaths = new String[coreSize];
+        int[] corePorts = new int[coreSize];
+
+        ParserUtils.copyDBOSHostInfoToArray(coreCluster.getOSInspectionHosts()
+                , coreHosts, coreUsers, corePasswords
+                , corePorts, coreSids, coreLogPaths
+                , coreCPUScriptPaths, coreMemoryScriptPaths
+                , coreDiskScriptPaths, coreSize);
+        
+        Sheet426PersonalConfig.setInspectedHosts2(coreHosts);
+        Sheet426PersonalConfig.setPasswords2(corePasswords);
+        Sheet426PersonalConfig.setPorts2(corePorts);
+        Sheet426PersonalConfig.setUsers2(coreUsers);
+        Sheet426PersonalConfig.setLogPath2(coreLogPaths);
     }
 
     public void configureCore() throws Exception{
@@ -55,63 +69,82 @@ public class DataCollectorSheet426Configurator {
             throw new Exception("Uninitialized connector parser");
         }
 
-        ArrayList<HostConfig> taxationHostConfigs = connectorParser.getDatabaseInspectionConfig()
-                .getCore().getTaxationOSInspectionHosts();
-        int taxationSize = taxationHostConfigs.size();
+        AppCluster taxationCluster = connectorParser.getDatabaseInspectionConfig()
+                .getCore().getClusterByName(ConnectorParserConfig.getDbInspectionCoreTaxationHostsTag());
+        
+        int taxationSize = taxationCluster.getOSInspectionHosts().size();
         String[] taxationHosts = new String[taxationSize];
         String[] taxationUsers = new String[taxationSize];
         String[] taxationPasswords = new String[taxationSize];
         String[] taxationLogPaths = new String[taxationSize];
+        String[] taxationSids = new String[taxationSize];
+        String[] taxationCPUScriptPaths = new String[taxationSize];
+        String[] taxationMemoryScriptPaths = new String[taxationSize];
+        String[] taxationDiskScriptPaths = new String[taxationSize];
         int[] taxationPorts = new int[taxationSize];
-        copyFromHostConfigArray(taxationHostConfigs, taxationHosts, taxationUsers, taxationPasswords, taxationPorts, taxationLogPaths);
+
+        ParserUtils.copyDBOSHostInfoToArray(taxationCluster.getOSInspectionHosts()
+                , taxationHosts, taxationUsers, taxationPasswords
+                , taxationPorts, taxationSids, taxationLogPaths
+                , taxationCPUScriptPaths, taxationMemoryScriptPaths
+                , taxationDiskScriptPaths, taxationSize);
+        
         Sheet426CoreConfig.setInspectedHosts2(taxationHosts);
         Sheet426CoreConfig.setPasswords2(taxationPasswords);
         Sheet426CoreConfig.setPorts2(taxationPorts);
         Sheet426CoreConfig.setUsers2(taxationUsers);
         Sheet426CoreConfig.setLogPath2(taxationLogPaths);
 
-        ArrayList<HostConfig> queryHostConfigs = connectorParser.getDatabaseInspectionConfig()
-                .getCore().getQueryOSInspectionHosts();
-        int querySize = queryHostConfigs.size();
+        AppCluster queryCluster = connectorParser.getDatabaseInspectionConfig()
+                .getCore().getClusterByName(ConnectorParserConfig.getDbInspectionCoreQueryHostsTag());
+
+        int querySize = queryCluster.getOSInspectionHosts().size();
         String[] queryHosts = new String[querySize];
         String[] queryUsers = new String[querySize];
         String[] queryPasswords = new String[querySize];
         String[] queryLogPaths = new String[querySize];
+        String[] querySids = new String[querySize];
+        String[] queryCPUScriptPaths = new String[querySize];
+        String[] queryMemoryScriptPaths = new String[querySize];
+        String[] queryDiskScriptPaths = new String[querySize];
         int[] queryPorts = new int[querySize];
-        copyFromHostConfigArray(queryHostConfigs, queryHosts, queryUsers, queryPasswords, queryPorts, queryLogPaths);
+
+        ParserUtils.copyDBOSHostInfoToArray(queryCluster.getOSInspectionHosts()
+                , queryHosts, queryUsers, queryPasswords
+                , queryPorts, querySids, queryLogPaths
+                , queryCPUScriptPaths, queryMemoryScriptPaths
+                , queryDiskScriptPaths, querySize);
+        
         Sheet426CoreConfig.setInspectedHosts3(queryHosts);
         Sheet426CoreConfig.setPasswords3(queryPasswords);
         Sheet426CoreConfig.setPorts3(queryPorts);
         Sheet426CoreConfig.setUsers3(queryUsers);
         Sheet426CoreConfig.setLogPath3(queryLogPaths);
 
-        ArrayList<HostConfig> integrationHostConfigs = connectorParser.getDatabaseInspectionConfig()
-                .getCore().getIntegrationOSInspectionHosts();
-        int integrationSize = integrationHostConfigs.size();
+        AppCluster integrationCluster = connectorParser.getDatabaseInspectionConfig()
+                .getCore().getClusterByName(ConnectorParserConfig.getDbInspectionCoreIntegrationHostsTag());
+
+        int integrationSize = integrationCluster.getOSInspectionHosts().size();
         String[] integrationHosts = new String[integrationSize];
         String[] integrationUsers = new String[integrationSize];
         String[] integrationPasswords = new String[integrationSize];
         String[] integrationLogPaths = new String[integrationSize];
+        String[] integrationSids = new String[integrationSize];
+        String[] integrationCPUScriptPaths = new String[integrationSize];
+        String[] integrationMemoryScriptPaths = new String[integrationSize];
+        String[] integrationDiskScriptPaths = new String[integrationSize];
         int[] integrationPorts = new int[integrationSize];
-        copyFromHostConfigArray(integrationHostConfigs, integrationHosts, integrationUsers, integrationPasswords, integrationPorts, integrationLogPaths);
+
+        ParserUtils.copyDBOSHostInfoToArray(integrationCluster.getOSInspectionHosts()
+                , integrationHosts, integrationUsers, integrationPasswords
+                , integrationPorts, integrationSids, integrationLogPaths
+                , integrationCPUScriptPaths, integrationMemoryScriptPaths
+                , integrationDiskScriptPaths, integrationSize);
+        
         Sheet426CoreConfig.setInspectedHosts4(integrationHosts);
         Sheet426CoreConfig.setPasswords4(integrationPasswords);
         Sheet426CoreConfig.setPorts4(integrationPorts);
         Sheet426CoreConfig.setUsers4(integrationUsers);
         Sheet426CoreConfig.setLogPath4(integrationLogPaths);
-    }
-
-    private void copyFromHostConfigArray(ArrayList<HostConfig> hostsConfig
-            ,String[] hosts, String[] users
-            , String[] passwords, int[] ports, String[] logPaths){
-        int size = hostsConfig.size();
-
-        for(int i=0; i<size; i++){
-            hosts[i] = hostsConfig.get(i).getIp();
-            users[i] = hostsConfig.get(i).getUser();
-            passwords[i] = hostsConfig.get(i).getPassword();
-            ports[i] = hostsConfig.get(i).getPort();
-            logPaths[i] = hostsConfig.get(i).getLogPath();            
-        }
     }
 }

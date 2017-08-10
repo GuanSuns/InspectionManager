@@ -18,6 +18,22 @@ public abstract class AbstractInnerDBInspectionConfigParser {
     protected ArrayList<AppCluster> clusters = null;
     protected abstract Element getRootElement() throws Exception;
 
+    public AppCluster getClusterByName(String clusterName) throws Exception{
+        if(clusterNameMap == null || clusters == null){
+            initClusterNameHostsInfo();
+        }
+
+        if(!clusterNameMap.containsKey(clusterName)){
+            return null;
+        }else {
+            return clusterNameMap.get(clusterName);
+        }
+    }
+
+    public ArrayList<AppCluster> getClustersList() {
+        return clusters;
+    }
+
     protected void initClusterNameHostsInfo() throws Exception{
         clusters = null;
         clusterNameMap = null;
@@ -92,7 +108,7 @@ public abstract class AbstractInnerDBInspectionConfigParser {
 
         AppHost getOSInspectionHost() throws Exception{
             HostConfig hostConfig = new HostConfig();
-            hostConfig.copyFromElement(inspectDBOSElem);
+            hostConfig.copyDbOSHostFromElement(inspectDBOSElem);
             return hostConfig.toAppHost();
         }
     }

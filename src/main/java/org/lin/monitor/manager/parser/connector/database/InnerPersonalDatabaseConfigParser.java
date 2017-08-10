@@ -3,6 +3,7 @@ package org.lin.monitor.manager.parser.connector.database;
 import org.jdom.Element;
 import org.lin.monitor.manager.config.ConnectorParserConfig;
 import org.lin.monitor.manager.parser.connector.HostConfig;
+import org.suns.host.config.AppHost;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +20,12 @@ public class InnerPersonalDatabaseConfigParser extends AbstractInnerDBInspection
         this.personalElem = null;
     }
 
-    public InnerPersonalDatabaseConfigParser() {
-        this.databaseInspectionElem = null;
-        this.personalElem = null;
+    @Override
+    protected Element getRootElement() throws Exception {
+        if(personalElem == null){
+            init();
+        }
+        return personalElem;
     }
 
     private void init() throws Exception{
@@ -33,22 +37,5 @@ public class InnerPersonalDatabaseConfigParser extends AbstractInnerDBInspection
         if(personalElem == null){
             throw new Exception("Unexpected XML Config file format: missing PersonalDatabase element");
         }
-    }
-
-    private List getCoreHostsList() throws Exception{
-        if(personalElem == null){
-            init();
-        }
-        return getDBHostsList(personalElem, ConnectorParserConfig.getDbInspectionPersonalCoreDatabaseTag());
-    }
-
-    public ArrayList<HostConfig> getCoreHosts() throws Exception{
-        List coreHosts = getCoreHostsList();
-        return copyHostsFromElemList(coreHosts);
-    }
-
-    public ArrayList<HostConfig> getCoreOSInspectionHosts() throws Exception{
-        List coreHosts = getCoreHostsList();
-        return getOSInspectionHosts(coreHosts);
     }
 }

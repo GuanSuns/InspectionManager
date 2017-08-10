@@ -2,10 +2,6 @@ package org.lin.monitor.manager.parser.connector.database;
 
 import org.jdom.Element;
 import org.lin.monitor.manager.config.ConnectorParserConfig;
-import org.lin.monitor.manager.parser.connector.HostConfig;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by guanl on 7/15/2017.
@@ -16,11 +12,6 @@ public class InnerCoreDatabaseConfigParser extends AbstractInnerDBInspectionConf
 
     public InnerCoreDatabaseConfigParser(Element databaseInspectionElem) {
         this.databaseInspectionElem = databaseInspectionElem;
-        this.coreElem = null;
-    }
-
-    public InnerCoreDatabaseConfigParser() {
-        this.databaseInspectionElem = null;
         this.coreElem = null;
     }
 
@@ -40,58 +31,6 @@ public class InnerCoreDatabaseConfigParser extends AbstractInnerDBInspectionConf
         if(coreElem == null){
             init();
         }
-
         return coreElem;
-    }
-
-    public ArrayList<HostConfig> getTaxationHosts() throws Exception{
-        if(coreElem == null){
-            init();
-        }
-        return copyHostsFromElemList(getDBHostsList(coreElem
-                , ConnectorParserConfig.getDbInspectionCoreTaxationHostsTag()));
-    }
-
-    public ArrayList<HostConfig> getTaxationOSInspectionHosts() throws Exception{
-        if(coreElem == null){
-            init();
-        }
-        List dbHostList = getDBHostsList(coreElem
-                , ConnectorParserConfig.getDbInspectionCoreTaxationHostsTag());
-        return getOSInspectionHosts(dbHostList);
-    }
-
-    public ArrayList<HostConfig> getIntegrationHosts() throws Exception{
-        if(coreElem == null){
-            init();
-        }
-        return copyHostsFromElemList(getDBHostsList(coreElem
-                , ConnectorParserConfig.getDbInspectionCoreIntegrationHostsTag()));
-    }
-
-    public ArrayList<HostConfig> getIntegrationOSInspectionHosts() throws Exception{
-        if(coreElem == null){
-            init();
-        }
-        List dbHostList = getDBHostsList(coreElem
-                , ConnectorParserConfig.getDbInspectionCoreIntegrationHostsTag());
-        return getOSInspectionHosts(dbHostList);
-    }
-
-    public ArrayList<HostConfig> getQueryHosts() throws Exception{
-        if(coreElem == null){
-            init();
-        }
-        return copyHostsFromElemList(getDBHostsList(coreElem
-                , ConnectorParserConfig.getDbInspectionCoreQueryHostsTag()));
-    }
-
-    public ArrayList<HostConfig> getQueryOSInspectionHosts() throws Exception{
-        if(coreElem == null){
-            init();
-        }
-        List dbHostList = getDBHostsList(coreElem
-                , ConnectorParserConfig.getDbInspectionCoreQueryHostsTag());
-        return getOSInspectionHosts(dbHostList);
     }
 }

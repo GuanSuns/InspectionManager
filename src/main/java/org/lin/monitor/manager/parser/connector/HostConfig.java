@@ -2,6 +2,7 @@ package org.lin.monitor.manager.parser.connector;
 
 import org.jdom.Element;
 import org.lin.monitor.manager.config.ConnectorParserConfig;
+import org.lin.monitor.manager.parser.utils.ParserUtils;
 import org.suns.host.config.AppCluster;
 import org.suns.host.config.AppHost;
 
@@ -52,47 +53,35 @@ public class HostConfig {
     }
 
     public void copyFromElement(Element hostElem) throws Exception{
-        String ip = hostElem.getAttributeValue(ConnectorParserConfig.getIpAttr());
-        if(ip == null || ip.equals("")){
-            throw new Exception("Missing attribute ip");
-        }
 
-        String user = hostElem.getAttributeValue(ConnectorParserConfig.getUserAttr());
-        if(user == null || user.equals("")){
-            throw new Exception("Missing attribute user");
-        }
-
-        String password = hostElem.getAttributeValue(ConnectorParserConfig.getPasswordAttr());
-        if(password == null || password.equals("")){
-            throw new Exception("Missing attribute password");
-        }
-
-        String port = hostElem.getAttributeValue(ConnectorParserConfig.getPortAttr());
-        if(port == null || port.equals("")){
-            throw new Exception("Missing attribute port");
-        }
-
-        setIp(ip);
-        setPassword(password);
-        setUser(user);
-        setPort(Integer.valueOf(port));
+        setIp(ParserUtils.getStringFromAttr(hostElem
+                , ConnectorParserConfig.getIpAttr()));
+        setPassword(ParserUtils.getStringFromAttr(hostElem
+                , ConnectorParserConfig.getPasswordAttr()));
+        setUser(ParserUtils.getStringFromAttr(hostElem
+                , ConnectorParserConfig.getUserAttr()));
+        setPort(ParserUtils.getIntFromAttr(hostElem
+                , ConnectorParserConfig.getPortAttr()));
     }
 
     public void copyDbHostFromElement(Element hostElem) throws Exception{
         copyFromElement(hostElem);
 
-        String sid = hostElem.getAttributeValue(ConnectorParserConfig.getSidAttr());
-        if(sid == null || sid.equals("")){
-            throw new Exception("Missing attribute sid");
-        }
-        setSid(sid);
+        setSid(ParserUtils.getStringFromAttr(hostElem
+                , ConnectorParserConfig.getSidAttr()));
+    }
 
-        String logPath = hostElem.getAttributeValue(ConnectorParserConfig.getLogAttr());
-        if(logPath == null || logPath.equals("")){
-            throw new Exception("Missing attribute log");
-        }
+    public void copyDbOSHostFromElement(Element hostElem) throws Exception{
+        copyFromElement(hostElem);
 
-        setLogPath(logPath);
+        setLogPath(ParserUtils.getStringFromAttr(hostElem
+                , ConnectorParserConfig.getLogAttr()));
+        setScriptCPUPath(ParserUtils.getStringFromAttr(hostElem
+                , ConnectorParserConfig.getCpuScriptAttr()));
+        setScriptMemoryPath(ParserUtils.getStringFromAttr(hostElem
+                , ConnectorParserConfig.getMemoryScriptAttr()));
+        setScriptDiskPath(ParserUtils.getStringFromAttr(hostElem
+                , ConnectorParserConfig.getDiskScriptAttr()));
     }
 
     public String getLogPath() {
