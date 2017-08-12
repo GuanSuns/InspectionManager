@@ -84,6 +84,15 @@ public class HostConfig {
                 , ConnectorParserConfig.getDiskScriptAttr()));
     }
 
+    public void copyDailyAppOSHostFromElement(Element hostElem) throws Exception{
+        copyFromElement(hostElem);
+
+        setScriptCPUPath(ParserUtils.getStringFromAttr(hostElem
+                , ConnectorParserConfig.getCpuScriptAttr()));
+        setScriptMemoryPath(ParserUtils.getStringFromAttr(hostElem
+                , ConnectorParserConfig.getMemoryScriptAttr()));
+    }
+
     public String getLogPath() {
         return logPath;
     }

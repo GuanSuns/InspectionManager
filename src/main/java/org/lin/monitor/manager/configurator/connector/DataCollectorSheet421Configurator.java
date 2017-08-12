@@ -2,8 +2,8 @@ package org.lin.monitor.manager.configurator.connector;
 
 import org.lin.monitor.manager.parser.connector.ConnectorParser;
 import org.lin.monitor.manager.parser.connector.HostConfig;
-import org.suns.data.collector.config.sheet412.Sheet421CoreConfig;
-import org.suns.data.collector.config.sheet412.Sheet421PersonalConfig;
+import org.suns.data.collector.config.sheet421.Sheet421CoreConfig;
+import org.suns.data.collector.config.sheet421.Sheet421PersonalConfig;
 
 import java.util.ArrayList;
 

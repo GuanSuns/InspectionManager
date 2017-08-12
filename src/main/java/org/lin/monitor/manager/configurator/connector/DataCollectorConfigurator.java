@@ -38,6 +38,8 @@ public class DataCollectorConfigurator {
         configureSheet426();
         configureSheet428();
         configureSheet429();
+        configureDailyApp();
+        configureDailyDB();
 
     }
 
@@ -175,5 +177,29 @@ public class DataCollectorConfigurator {
 
         sheet429Configurator.configureCore();
         sheet429Configurator.configurePersonal();
+    }
+
+    private void configureDailyApp() throws Exception{
+        if(connectorParser == null){
+            throw new Exception("Uninitialized connector parser");
+        }
+
+        DataCollectorDailyAppConfigurator dailyAppConfigurator
+                = new DataCollectorDailyAppConfigurator(connectorParser);
+
+        dailyAppConfigurator.configureCore();
+        dailyAppConfigurator.configurePersonal();
+    }
+
+    private void configureDailyDB() throws Exception{
+        if(connectorParser == null){
+            throw new Exception("Uninitialized connector parser");
+        }
+
+        DataCollectorDailyDBConfigurator dailyDBConfigurator
+                = new DataCollectorDailyDBConfigurator(connectorParser);
+
+        dailyDBConfigurator.configureCore();
+        dailyDBConfigurator.configurePersonal();
     }
 }

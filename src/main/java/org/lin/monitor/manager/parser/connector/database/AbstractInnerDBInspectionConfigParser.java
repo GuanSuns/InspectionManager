@@ -24,13 +24,17 @@ public abstract class AbstractInnerDBInspectionConfigParser {
         }
 
         if(!clusterNameMap.containsKey(clusterName)){
-            return null;
+            throw new Exception("Missing " + clusterName + " in config file");
         }else {
             return clusterNameMap.get(clusterName);
         }
     }
 
-    public ArrayList<AppCluster> getClustersList() {
+    public ArrayList<AppCluster> getClustersList() throws Exception{
+        if(clusterNameMap == null || clusters == null){
+            initClusterNameHostsInfo();
+        }
+
         return clusters;
     }
 

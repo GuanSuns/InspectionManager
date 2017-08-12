@@ -2,14 +2,37 @@
 
 <LocalDatabaseConfig>
 	<!-- 数据库类型，可选mySQL以及oracle -->
-	<databaseType>oracle</databaseType>
+	<databaseType>mySQL</databaseType>
 	<!-- 对应的Java驱动，必须与数据库类型相匹配 -->
-	<driver>oracle.jdbc.driver.OracleDriver</driver>
+	<driver>com.mysql.cj.jdbc.Driver</driver>
 	<!-- 登录本地数据库所使用的url -->
-	<url>jdbc:oracle:thin:@150.12.201.42:1521:gdltgshx2</url>
+	<url>jdbc:mysql://localhost:3306/test_jdbc?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false&amp;serverTimezone=GMT%2B8</url>
 	<!-- 用户名及密码 -->
-	<username>expdata</username>
-	<password>9ESV6v66n0</password>
+	<username>root</username>
+	<password>guanlin25</password>
+
+
+	<!-- 数据库类型，可选mySQL以及oracle -->
+	<!-- <databaseType>mySQL</databaseType> -->
+	<!-- 对应的Java驱动，必须与数据库类型相匹配 -->
+	<!-- <driver>com.mysql.cj.jdbc.Driver</driver> -->
+	<!-- 登录本地数据库所使用的url -->
+	<!-- <url>jdbc:mysql://localhost:3306/test_jdbc?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false&amp;serverTimezone=GMT%2B8</url> -->
+	<!-- 用户名及密码 -->
+	<!-- <username>root</username> -->
+	<!-- <password>guanlin25</password> -->
+
+	<!-- 数据库类型，可选mySQL以及oracle -->
+	<!-- <databaseType>oracle</databaseType> -->
+	<!-- 对应的Java驱动，必须与数据库类型相匹配 -->
+	<!-- <driver>oracle.jdbc.driver.OracleDriver</driver> -->
+	<!-- 登录本地数据库所使用的url -->
+	<!-- <url>jdbc:oracle:thin:@localhost:1521:XE</url> -->
+	<!-- 用户名及密码 -->
+	<!-- <username>root_jdbc</username> -->
+	<!-- <password>guanlin25</password> -->
+
+
 
 	<!-- 数据库中空数值的表示方式，保持默认即可 -->
 	<defaultNumericNullValue>-1</defaultNumericNullValue>

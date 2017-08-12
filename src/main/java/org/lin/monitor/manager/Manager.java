@@ -2,7 +2,10 @@ package org.lin.monitor.manager;
 
 import excel.filler.generator.*;
 import org.lin.monitor.manager.configurator.ConfigManager;
-import org.lin.monitor.manager.scheduler.MainScheduler;
+import org.suns.data.collector.collectors.daily.app.DailyAppCoreCollector;
+import org.suns.data.collector.collectors.daily.app.DailyAppPersonalCollector;
+import org.suns.data.collector.collectors.daily.database.DailyDBCoreCollector;
+import org.suns.data.collector.collectors.daily.database.DailyDBPersonalCollector;
 import org.suns.data.collector.collectors.sheet411.Sheet411CoreCollector;
 import org.suns.data.collector.collectors.sheet411.Sheet411PersonalCollector;
 import org.suns.data.collector.collectors.sheet421.Sheet421CoreCollector;
@@ -23,9 +26,7 @@ import org.suns.database.utils.controller.*;
 import org.suns.inspection.logger.InspectionLogger;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.concurrent.*;
 
 public class Manager {
     public static void main(String[] args) {
@@ -33,12 +34,14 @@ public class Manager {
             ConfigManager configManager = new ConfigManager();
             configManager.configure();
 
+
             if(args.length > 0 && args[0].equals("clear")){
                 clearAllTable();
             }
 
             InspectionLogger.turnOnDebug();
-
+            inspect();
+/*
             ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
             final CountDownLatch waitCountDown = new CountDownLatch(1);
             final CountDownLatch setFutureCountDown = new CountDownLatch(1);
@@ -63,6 +66,8 @@ public class Manager {
             waitCountDown.await();
             InspectionLogger.info("Manager finishes waiting for main scheduler and shutdowns service");
             service.shutdownNow();
+
+            */
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -82,6 +87,29 @@ public class Manager {
     private static void inspect() throws Exception{
         SimpleDateFormat df = new SimpleDateFormat("yy/MM/dd HH:mm");
 
+        System.out.println(df.format(new Date()) + " Inspecting Sheet 422 Personal");
+        Sheet422PersonalCollector sheet422PersonalCollector
+                = new Sheet422PersonalCollector();
+        sheet422PersonalCollector.inspect();
+        System.out.println(df.format(new Date()) + " Inspecting Sheet 422 Core");
+        Sheet422CoreCollector sheet422CoreCollector
+                = new Sheet422CoreCollector();
+        sheet422CoreCollector.inspect();
+
+        System.out.println(df.format(new Date()) + " Daily Core App Monitoring");
+        DailyAppCoreCollector dailyAppCoreCollector = new DailyAppCoreCollector();
+        dailyAppCoreCollector.inspect();
+        System.out.println(df.format(new Date()) + " Daily Personal App Monitoring");
+        DailyAppPersonalCollector dailyAppPersonalCollector = new DailyAppPersonalCollector();
+        dailyAppPersonalCollector.inspect();
+
+        System.out.println(df.format(new Date()) + " Daily Core DB Monitoring");
+        DailyDBCoreCollector dailyDBCoreCollector = new DailyDBCoreCollector();
+        dailyDBCoreCollector.inspect();
+        System.out.println(df.format(new Date()) + " Daily Personal DB Monitoring");
+        DailyDBPersonalCollector dailyDBPersonalCollector = new DailyDBPersonalCollector();
+        dailyDBPersonalCollector.inspect();
+/*
         System.out.println(df.format(new Date()) + " Inspecting Sheet 411 Personal");
         Sheet411PersonalCollector sheet411PersonalCollector
                 = new Sheet411PersonalCollector();
@@ -145,16 +173,7 @@ public class Manager {
         Sheet426CoreCollector sheet426CoreCollector
                 = new Sheet426CoreCollector();
         sheet426CoreCollector.inspect();
-
-        System.out.println(df.format(new Date()) + " Inspecting Sheet 429 Personal");
-        Sheet429PersonalCollector sheet429PersonalCollector
-                = new Sheet429PersonalCollector();
-        sheet429PersonalCollector.inspect();
-        System.out.println(df.format(new Date()) + " Inspecting Sheet 429 Core");
-        Sheet429CoreCollector sheet429CoreCollector
-                = new Sheet429CoreCollector();
-        sheet429CoreCollector.inspect();
-
+*/
 
     }
 

@@ -170,12 +170,14 @@ public class ParserUtils {
             AppHost host = new AppHost();
 
             HostConfig hostConfig = new HostConfig();
-            hostConfig.copyFromElement(hostElem);
+            hostConfig.copyDailyAppOSHostFromElement(hostElem);
 
             host.setIp(hostConfig.getIp());
             host.setPassword(hostConfig.getPassword());
             host.setPort(hostConfig.getPort());
             host.setUser(hostConfig.getUser());
+            host.setScriptCPUPath(hostConfig.getScriptCPUPath());
+            host.setScriptMemoryPath(hostConfig.getScriptMemoryPath());
 
             List serverElems = hostElem.getChildren(ConnectorParserConfig.getServerTag());
             if(serverElems == null || serverElems.isEmpty()){
