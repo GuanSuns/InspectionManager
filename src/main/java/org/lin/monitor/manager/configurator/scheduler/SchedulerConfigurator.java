@@ -1,7 +1,13 @@
 package org.lin.monitor.manager.configurator.scheduler;
 
+import excel.filler.config.DailyAppExcelConfig;
+import excel.filler.config.DailyDBExcelConfig;
 import org.lin.monitor.manager.config.SchedulerConfig;
 import org.lin.monitor.manager.parser.scheduler.SchedulerConfigParser;
+import org.lin.monitor.manager.utils.Pair;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 
 public class SchedulerConfigurator {
     private SchedulerConfigParser schedulerConfigParser;
@@ -31,10 +37,35 @@ public class SchedulerConfigurator {
         SchedulerConfig.setDailyLastThreeDayInspectionTime(schedulerConfigParser
                 .getDailyLastThreeDayTime());
         SchedulerConfig.setDailyWithinTaxPeriodInspectionTime(schedulerConfigParser
-                .getWithinTaxPeriodTime());
+                .getDailyWithinTaxPeriodTime());
         SchedulerConfig.setWeeklyInspectionTime(schedulerConfigParser
                 .getWeeklyInspectionTime());
         SchedulerConfig.setMonthlyInspectionTime(schedulerConfigParser
                 .getMonthlyInspectionTime());
+
+        setDailyInspectionTime();
+    }
+
+    private void setDailyInspectionTime() throws Exception{
+        DailyAppExcelConfig.setInspectTimes(timePairArrayToCalendarArray(schedulerConfigParser
+                .getDailyWithinTaxPeriodTime()));
+
+        DailyDBExcelConfig.setInspectTimes(timePairArrayToCalendarArray(schedulerConfigParser
+                .getDailyWithinTaxPeriodTime()));
+    }
+
+    private Calendar[] timePairArrayToCalendarArray(ArrayList<Pair<Integer, Integer>> timePairs){
+        ArrayList<Calendar> calendars = new ArrayList<>();
+        for(Pair<Integer, Integer> timePair : timePairs){
+            calendars.add(timePairToCalendar(timePair));
+        }
+        return (Calendar[])calendars.toArray();
+    }
+
+    private Calendar timePairToCalendar(Pair<Integer, Integer> timePair){
+        Calendar time = Calendar.getInstance();
+        time.set(Calendar.HOUR_OF_DAY, timePair.getHour());
+        time.set(Calendar.MINUTE, timePair.getMinute());
+        return time;
     }
 }

@@ -195,7 +195,7 @@ public class SchedulerConfigParser {
                 , SchedulerConfig.getTimeTag());
     }
 
-    public ArrayList<Pair<Integer, Integer>> getWithinTaxPeriodTime() throws Exception {
+    public ArrayList<Pair<Integer, Integer>> getDailyWithinTaxPeriodTime() throws Exception {
         if (dailyInspectionElem == null) {
             initDailyInspectionElem();
         }
