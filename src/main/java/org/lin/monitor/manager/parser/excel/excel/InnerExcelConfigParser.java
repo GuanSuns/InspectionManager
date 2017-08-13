@@ -45,20 +45,36 @@ public class InnerExcelConfigParser {
                 , ExcelParserConfig.getRootDirectoryTag());
     }
 
-    public String getPersonalFile() throws Exception{
+    public String getPersonalMonthlyFile() throws Exception{
         if(excelConfigElem == null){
             init();
         }
         return ParserUtils.getStringFromElement(excelConfigElem
-                , ExcelParserConfig.getPersonalFileTag());
+                , ExcelParserConfig.getPersonalMonthlyFileTag());
     }
 
-    public String getCoreFile() throws Exception{
+    public String getCoreMonthlyFile() throws Exception{
         if(excelConfigElem == null){
             init();
         }
         return ParserUtils.getStringFromElement(excelConfigElem
-                , ExcelParserConfig.getCoreFileTag());
+                , ExcelParserConfig.getCoreMonthlyFileTag());
+    }
+
+    public String getPersonalDailyFile() throws Exception{
+        if(excelConfigElem == null){
+            init();
+        }
+        return ParserUtils.getStringFromElement(excelConfigElem
+                , ExcelParserConfig.getPersonalDailyFileTag());
+    }
+
+    public String getCoreDailyFile() throws Exception{
+        if(excelConfigElem == null){
+            init();
+        }
+        return ParserUtils.getStringFromElement(excelConfigElem
+                , ExcelParserConfig.getCoreDailyFileTag());
     }
 
     public String getProvince() throws Exception{
@@ -134,6 +150,16 @@ public class InnerExcelConfigParser {
         public String getSheet429Name() throws Exception{
             return ParserUtils.getStringFromElement(sheetNamesElem
                     , ExcelParserConfig.getSheet429NameTag());
+        }
+
+        public String getSheetDailyApp() throws Exception{
+            return ParserUtils.getStringFromElement(sheetNamesElem
+                    , ExcelParserConfig.getSheetDailyAppNameTag());
+        }
+
+        public String getSheetDailyDB() throws Exception{
+            return ParserUtils.getStringFromElement(sheetNamesElem
+                    , ExcelParserConfig.getSheetDailyDBNameTag());
         }
     }
 }

@@ -2,6 +2,7 @@ package org.lin.monitor.manager;
 
 import excel.filler.generator.*;
 import org.lin.monitor.manager.configurator.ConfigManager;
+import org.lin.monitor.manager.scheduler.MainScheduler;
 import org.suns.data.collector.collectors.daily.app.DailyAppCoreCollector;
 import org.suns.data.collector.collectors.daily.app.DailyAppPersonalCollector;
 import org.suns.data.collector.collectors.daily.database.DailyDBCoreCollector;
@@ -26,7 +27,9 @@ import org.suns.database.utils.controller.*;
 import org.suns.inspection.logger.InspectionLogger;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.*;
 
 public class Manager {
     public static void main(String[] args) {
@@ -39,35 +42,9 @@ public class Manager {
                 clearAllTable();
             }
 
-            InspectionLogger.turnOnDebug();
+            InspectionLogger.turnOffDebug();
             inspect();
-/*
-            ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
-            final CountDownLatch waitCountDown = new CountDownLatch(1);
-            final CountDownLatch setFutureCountDown = new CountDownLatch(1);
-            Calendar now = Calendar.getInstance();
-            Calendar executeTime = Calendar.getInstance();
-            executeTime.set(Calendar.HOUR_OF_DAY, 11);
-            executeTime.set(Calendar.MINUTE, 05);
 
-            MainScheduler mainScheduler = new MainScheduler();
-            mainScheduler.setMainSchedulerCountDown(waitCountDown);
-            mainScheduler.setSetFutureCountDown(setFutureCountDown);
-
-            InspectionLogger.info("Manager evokes main scheduler");
-            Future future = service.scheduleAtFixedRate(mainScheduler
-                    , executeTime.getTimeInMillis() - now.getTimeInMillis()
-                    , 10*60*1000, TimeUnit.MILLISECONDS);
-
-            mainScheduler.setFuture(future);
-            setFutureCountDown.countDown();
-
-            InspectionLogger.info("Manager waits for main scheduler");
-            waitCountDown.await();
-            InspectionLogger.info("Manager finishes waiting for main scheduler and shutdowns service");
-            service.shutdownNow();
-
-            */
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -84,17 +61,36 @@ public class Manager {
         Sheet429Controller.clearAll();
     }
 
+    private static void run_scheduler() throws Exception{
+        ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
+        final CountDownLatch waitCountDown = new CountDownLatch(1);
+        final CountDownLatch setFutureCountDown = new CountDownLatch(1);
+        Calendar now = Calendar.getInstance();
+        Calendar executeTime = Calendar.getInstance();
+        executeTime.set(Calendar.HOUR_OF_DAY, 11);
+        executeTime.set(Calendar.MINUTE, 05);
+
+        MainScheduler mainScheduler = new MainScheduler();
+        mainScheduler.setMainSchedulerCountDown(waitCountDown);
+        mainScheduler.setSetFutureCountDown(setFutureCountDown);
+
+        InspectionLogger.info("Manager evokes main scheduler");
+        Future future = service.scheduleAtFixedRate(mainScheduler
+                , executeTime.getTimeInMillis() - now.getTimeInMillis()
+                , 10*60*1000, TimeUnit.MILLISECONDS);
+
+        mainScheduler.setFuture(future);
+        setFutureCountDown.countDown();
+
+        InspectionLogger.info("Manager waits for main scheduler");
+        waitCountDown.await();
+        InspectionLogger.info("Manager finishes waiting for main scheduler and shutdowns service");
+        service.shutdownNow();
+    }
+
     private static void inspect() throws Exception{
         SimpleDateFormat df = new SimpleDateFormat("yy/MM/dd HH:mm");
 
-        System.out.println(df.format(new Date()) + " Inspecting Sheet 422 Personal");
-        Sheet422PersonalCollector sheet422PersonalCollector
-                = new Sheet422PersonalCollector();
-        sheet422PersonalCollector.inspect();
-        System.out.println(df.format(new Date()) + " Inspecting Sheet 422 Core");
-        Sheet422CoreCollector sheet422CoreCollector
-                = new Sheet422CoreCollector();
-        sheet422CoreCollector.inspect();
 
         System.out.println(df.format(new Date()) + " Daily Core App Monitoring");
         DailyAppCoreCollector dailyAppCoreCollector = new DailyAppCoreCollector();
