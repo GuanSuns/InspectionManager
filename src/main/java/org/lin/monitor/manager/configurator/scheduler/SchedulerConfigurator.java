@@ -55,11 +55,11 @@ public class SchedulerConfigurator {
     }
 
     private Calendar[] timePairArrayToCalendarArray(ArrayList<Pair<Integer, Integer>> timePairs){
-        ArrayList<Calendar> calendars = new ArrayList<>();
-        for(Pair<Integer, Integer> timePair : timePairs){
-            calendars.add(timePairToCalendar(timePair));
+        Calendar[] calendars = new Calendar[timePairs.size()];
+        for(int i=0; i<timePairs.size(); i++){
+            calendars[i] = timePairToCalendar(timePairs.get(i));
         }
-        return (Calendar[])calendars.toArray();
+        return calendars;
     }
 
     private Calendar timePairToCalendar(Pair<Integer, Integer> timePair){
