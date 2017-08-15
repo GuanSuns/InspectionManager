@@ -1,6 +1,6 @@
 package org.lin.monitor.manager;
 
-import com.jcraft.jsch.HASH;
+
 import excel.filler.generator.*;
 import org.lin.monitor.manager.configurator.ConfigManager;
 import org.lin.monitor.manager.scheduler.MainScheduler;
@@ -22,8 +22,6 @@ import org.suns.data.collector.collectors.sheet426.Sheet426CoreCollector;
 import org.suns.data.collector.collectors.sheet426.Sheet426PersonalCollector;
 import org.suns.data.collector.collectors.sheet428.Sheet428CoreCollector;
 import org.suns.data.collector.collectors.sheet428.Sheet428PersonalCollector;
-import org.suns.data.collector.collectors.sheet429.Sheet429CoreCollector;
-import org.suns.data.collector.collectors.sheet429.Sheet429PersonalCollector;
 import org.suns.database.utils.controller.*;
 import org.suns.inspection.logger.InspectionLogger;
 
@@ -81,15 +79,23 @@ public class Manager {
         System.out.println("\n" + df.format(new Date())
                 + " 正在清空记录数据库");
 
+        System.out.println(df.format(new Date()) + "正在删除表 411");
         Sheet411Controller.clearAll();
+        System.out.println(df.format(new Date()) + "正在删除表 421");
         Sheet421Controller.clearAll();
+        System.out.println(df.format(new Date()) + "正在删除表 422");
         Sheet422Controller.clearAll();
+        System.out.println(df.format(new Date()) + "正在删除表 423");
         Sheet423Controller.clearAll();
+        System.out.println(df.format(new Date()) + "正在删除表 424");
         Sheet424Controller.clearAll();
+        System.out.println(df.format(new Date()) + "正在删除表 426");
         Sheet426Controller.clearAll();
+        System.out.println(df.format(new Date()) + "正在删除表 428");
         Sheet428Controller.clearAll();
-        Sheet429Controller.clearAll();
+        System.out.println(df.format(new Date()) + "正在删除表 数据库巡检");
         DailyDBController.clearAll();
+        System.out.println(df.format(new Date()) + "正在删除表 应用巡检");
         DailyAppController.clearAll();
     }
 
